@@ -15,6 +15,7 @@
 
 //==============================================================================
 class ChataigneApplication : public OrganicApplication
+                         , public ParameterListener
 {
 public:
 	//============================================================================== 
@@ -22,11 +23,14 @@ public:
 
 	//---- GLOBAL SETTINGS CHATAIGNE SPECIFIC
 	BoolParameter * enableSendAnalytics;
+	EnumParameter * interfaceLanguage;
     bool crashSent;
 	//
 
 	void initialiseInternal(const String& /*commandLine*/) override;
+	void afterSettingsLoaded() override;
 	void afterInit() override;
+	void parameterValueChanged(Parameter*) override;
 
 	void shutdown() override;
 

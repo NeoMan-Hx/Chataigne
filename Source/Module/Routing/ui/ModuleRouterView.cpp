@@ -10,21 +10,21 @@
 
 ModuleRouterView::ModuleRouterView() :
 	currentRouter(nullptr),
-	sourceLabel("SourceModule","Source Module"),
-	destLabel("OutModule","Out Module"),
-	sourceValueLabel("SourceValue","Source Value"),
-	feedbackLabel("Feedback","Value Feedback"),
-	outParamsLabel("OutParams","Out Parameters")
+	sourceLabel("SourceModule",juce::translate("Source Module")),
+	destLabel("OutModule",juce::translate("Out Module")),
+	sourceValueLabel("SourceValue",juce::translate("Source Value")),
+	feedbackLabel("Feedback",juce::translate("Value Feedback")),
+	outParamsLabel("OutParams",juce::translate("Out Parameters"))
 {
 	InspectableSelectionManager::mainSelectionManager->addSelectionListener(this);
 
-	sourceChooser.setTextWhenNoChoicesAvailable("No Module");
-	sourceChooser.setTextWhenNothingSelected("[Source Module]");
+	sourceChooser.setTextWhenNoChoicesAvailable(juce::translate("No Module"));
+	sourceChooser.setTextWhenNothingSelected(juce::translate("[Source Module]"));
 	sourceChooser.addChooserListener(this);
 	addAndMakeVisible(&sourceChooser);
 
-	destChooser.setTextWhenNoChoicesAvailable("No Module");
-	destChooser.setTextWhenNothingSelected("[Out Module]");
+	destChooser.setTextWhenNoChoicesAvailable(juce::translate("No Module"));
+	destChooser.setTextWhenNothingSelected(juce::translate("[Out Module]"));
 	destChooser.addChooserListener(this);
 	destChooser.filterModuleFunc = &ModuleRouterView::isModuleRoutable;
 	addAndMakeVisible(&destChooser);
@@ -35,11 +35,11 @@ ModuleRouterView::ModuleRouterView() :
 	feedbackLabel.setColour(Label::textColourId, Colours::grey);
 	outParamsLabel.setColour(Label::textColourId, Colours::grey);
 	
-	sourceLabel.setFont(12);
-	destLabel.setFont(12);
-	sourceValueLabel.setFont(12);
-	feedbackLabel.setFont(12);
-	outParamsLabel.setFont(12);
+	GlobalSettings::setUIFont(sourceLabel, 12);
+	GlobalSettings::setUIFont(destLabel, 12);
+	GlobalSettings::setUIFont(sourceValueLabel, 12);
+	GlobalSettings::setUIFont(feedbackLabel, 12);
+	GlobalSettings::setUIFont(outParamsLabel, 12);
 
 
 	addAndMakeVisible(&sourceLabel);
@@ -61,8 +61,8 @@ void ModuleRouterView::paint(Graphics & g)
 	if (currentRouter == nullptr)
 	{
 		g.setColour(BG_COLOR.brighter(.3f));
-		g.setFont(14);
-		g.drawFittedText("To start routing values between modules, add a router from the menu on the left", getLocalBounds().reduced(10), Justification::centred, 4);
+		g.setFont(GlobalSettings::getUIFont(14));
+		g.drawFittedText(juce::translate("To start routing values between modules, add a router from the menu on the left"), getLocalBounds().reduced(10), Justification::centred, 4);
 	}
 }
 
@@ -197,7 +197,7 @@ void ModuleRouterView::buildValueManagerUI()
 	if (managerUI != nullptr) removeChildComponent(managerUI.get());
 	if (currentRouter == nullptr) return;
 
-	managerUI.reset(new BaseManagerUI<BaseManager<ModuleRouterValue>, ModuleRouterValue, ModuleRouterValueEditor>("Values", &currentRouter->sourceValues));
+	managerUI.reset(new BaseManagerUI<BaseManager<ModuleRouterValue>, ModuleRouterValue, ModuleRouterValueEditor>(juce::translate("Values"), &currentRouter->sourceValues));
 	managerUI->setShowAddButton(false);
 	managerUI->animateItemOnAdd = false;
 	managerUI->addExistingItems(); //force adding, normally we do it in a child classes but as we use the basic ui, we have to do it here

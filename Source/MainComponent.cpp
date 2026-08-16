@@ -47,7 +47,7 @@ void MainContentComponent::init()
 	if (lastVersion != getAppVersion())
 	{
 		welcomeScreen.reset(new WelcomeScreen());
-		DialogWindow::showDialog("Welcome", welcomeScreen.get(), getTopLevelComponent(), Colours::black, true);
+		DialogWindow::showDialog(juce::translate("Welcome"), welcomeScreen.get(), getTopLevelComponent(), Colours::black, true);
 	}
 #endif
 
@@ -71,7 +71,7 @@ void MainContentComponent::parameterAddToContextMenu(ControllableUI* ui, PopupMe
 		{
 			cvMenu.addItem(g->niceName, [g, ui]() { g->addItemFromParameter((Parameter*)ui->controllable.get()); });
 		}
-		m->addSubMenu("Add & Link to Custom Variable...", cvMenu);
+		m->addSubMenu(juce::translate("Add & Link to Custom Variable..."), cvMenu);
 	}
 	
 	{
@@ -106,7 +106,7 @@ void MainContentComponent::parameterAddToContextMenu(ControllableUI* ui, PopupMe
 			}
 
 			if (layerMenu.getNumItems() > 0) layerMenu.addSeparator();
-			layerMenu.addItem("Create new Mapping", [commandDef, sequence, ui]
+			layerMenu.addItem(juce::translate("Create new Mapping"), [commandDef, sequence, ui]
 				{
 					Controllable* controllable = ui->controllable;
 					MappingLayer* mappingLayer = nullptr;
@@ -137,7 +137,7 @@ void MainContentComponent::parameterAddToContextMenu(ControllableUI* ui, PopupMe
 
 			seqMenu.addSubMenu(sequence->niceName, layerMenu);
 		}
-		m->addSubMenu("Add & Link to Sequence...", seqMenu);
+		m->addSubMenu(juce::translate("Add & Link to Sequence..."), seqMenu);
 	}
 }
 

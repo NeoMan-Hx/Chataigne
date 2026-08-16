@@ -69,8 +69,8 @@ void CommandTemplateManagerPanel::paint(Graphics & g)
 	if (module == nullptr)
 	{
 		g.setColour(Colours::white.withAlpha(.4f));
-		g.setFont(16);
-		g.drawFittedText("Select a Module to edit its command models or create new ones", getLocalBounds().reduced(20), Justification::centred, 6);
+		g.setFont(GlobalSettings::getUIFont(16));
+		g.drawFittedText(juce::translate("Select a Module to edit its command models or create new ones"), getLocalBounds().reduced(20), Justification::centred, 6);
 	}
 }
 
@@ -90,11 +90,11 @@ void CommandTemplateManagerPanel::inspectableDestroyed(Inspectable * i)
 //ManagerUI
 
 CommandTemplateManagerUI::CommandTemplateManagerUI(CommandTemplateManager * manager, const String &moduleName) :
-	BaseManagerUI("Command Templates for " + moduleName, manager)
+	BaseManagerUI(juce::translate("Command Templates for") + " " + moduleName, manager)
 {
 	drawContour = true;
 
-	noItemText = "Here you can add your own commands for the module " + moduleName;
+	noItemText = juce::translate("Here you can add your own commands for the module") + " " + moduleName;
 
 	addExistingItems();
 	resized();
@@ -104,4 +104,3 @@ CommandTemplateManagerUI::CommandTemplateManagerUI(CommandTemplateManager * mana
 CommandTemplateManagerUI::~CommandTemplateManagerUI()
 {
 }
-

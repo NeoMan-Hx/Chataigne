@@ -29,6 +29,7 @@
 		4482F1AEF42497B7CD326C97 /* include_juce_audio_basics.mm */ = {isa = PBXBuildFile; fileRef = 8883C7CD4CC4127DC5FA03FE; };
 		4ACACCD0579323DDC1DBE7D9 /* os_mac_find.m */ = {isa = PBXBuildFile; fileRef = 21D1C7EA304A7B4384016B50; };
 		4B5C294DEFF9C23F03035B05 /* server.key */ = {isa = PBXBuildFile; fileRef = F8E7D02E47F748ADED4BD659; };
+		4E6B2F0A9D3C7B185A0F24D1 /* ChataigneTranslations.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 4E6B2F19A7C8D03F5B2E641C; };
 		4D75BBCB531AE4968206FB8D /* include_juce_audio_utils.mm */ = {isa = PBXBuildFile; fileRef = 8802698D52924F5FAB243444; };
 		5543461C198B589786255629 /* DiscRecording.framework */ = {isa = PBXBuildFile; fileRef = 2EF4541423C08B373926C946; };
 		56A3A435A695E8A3A4E6D156 /* ir.c */ = {isa = PBXBuildFile; fileRef = 89F9438672D70B382A25E5C9; };
@@ -907,6 +908,7 @@
 		F4434FB01936328B5554CC03 /* CustomValuesCommandArgumentManagerEditor.cpp */ /* CustomValuesCommandArgumentManagerEditor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CustomValuesCommandArgumentManagerEditor.cpp; path = ../../Source/Common/Command/CustomValues/ui/CustomValuesCommandArgumentManagerEditor.cpp; sourceTree = SOURCE_ROOT; };
 		F4590876F89E291434F6B792 /* include_juce_opengl.mm */ /* include_juce_opengl.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_opengl.mm; path = ../../JuceLibraryCode/include_juce_opengl.mm; sourceTree = SOURCE_ROOT; };
 		F48B60EA0060221C4AE8EFB4 /* ChataigneAssetManager.cpp */ /* ChataigneAssetManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ChataigneAssetManager.cpp; path = ../../Source/UI/ChataigneAssetManager.cpp; sourceTree = SOURCE_ROOT; };
+		4E6B2F19A7C8D03F5B2E641C /* ChataigneTranslations.tsv */ = {isa = PBXFileReference; lastKnownFileType = text; name = ChataigneTranslations.tsv; path = ../../Source/UI/ChataigneTranslations.tsv; sourceTree = SOURCE_ROOT; };
 		F4A3071E9B164D64387DC016 /* KinectV2Module.cpp */ /* KinectV2Module.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KinectV2Module.cpp; path = ../../Source/Module/modules/controller/kinect/KinectV2Module.cpp; sourceTree = SOURCE_ROOT; };
 		F4F243B4A118FB7C15ADC97A /* os_nix.c */ /* os_nix.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = os_nix.c; path = ../../Source/Module/modules/controller/wiimote/lib/wiiuse/os_nix.c; sourceTree = SOURCE_ROOT; };
 		F56AD1F7A1FFB055336F6891 /* CustomValuesCommandArgumentEditor.cpp */ /* CustomValuesCommandArgumentEditor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CustomValuesCommandArgumentEditor.cpp; path = ../../Source/Common/Command/CustomValues/ui/CustomValuesCommandArgumentEditor.cpp; sourceTree = SOURCE_ROOT; };
@@ -3196,6 +3198,7 @@
 				DA313B773F3BE136635AC538,
 				E8A5F9A2228D5E3719F9F36B,
 				D2069FDD45985C94F69B02FD,
+				4E6B2F19A7C8D03F5B2E641C,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -3610,6 +3613,7 @@
 				323F052E99BDC8B730E6C8DE,
 				B541DE1692C46AFA909B6DD4,
 				4B5C294DEFF9C23F03035B05,
+				4E6B2F0A9D3C7B185A0F24D1,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3879,6 +3883,7 @@
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(HOME)/JUCE/modules",
 					"$(SRCROOT)/../../Modules",
+					"$(SRCROOT)/../../Modules/juce_simpleweb",
 					"$(SRCROOT)/../../Source",
 					"$(SRCROOT)/../../External/wiiuse",
 					"$(SRCROOT)/../../External/asio",
@@ -3961,6 +3966,7 @@
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(HOME)/JUCE/modules",
 					"$(SRCROOT)/../../Modules",
+					"$(SRCROOT)/../../Modules/juce_simpleweb",
 					"$(SRCROOT)/../../Source",
 					"$(SRCROOT)/../../External/wiiuse",
 					"$(SRCROOT)/../../External/asio",
@@ -4094,6 +4100,7 @@
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(HOME)/JUCE/modules",
 					"$(SRCROOT)/../../Modules",
+					"$(SRCROOT)/../../Modules/juce_simpleweb",
 					"$(SRCROOT)/../../Source",
 					"$(SRCROOT)/../../External/wiiuse",
 					"$(SRCROOT)/../../External/asio",
@@ -4176,6 +4183,7 @@
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(HOME)/JUCE/modules",
 					"$(SRCROOT)/../../Modules",
+					"$(SRCROOT)/../../Modules/juce_simpleweb",
 					"$(SRCROOT)/../../Source",
 					"$(SRCROOT)/../../External/wiiuse",
 					"$(SRCROOT)/../../External/asio",

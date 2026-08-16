@@ -3294,6 +3294,7 @@
     <ClInclude Include="..\..\Source\TimeMachine\TimeMachineIncludes.h"/>
     <ClInclude Include="..\..\Source\UI\AboutWindow.h"/>
     <ClInclude Include="..\..\Source\UI\ChataigneAssetManager.h"/>
+    <ClInclude Include="..\..\Source\UI\ChataigneLocalization.h"/>
     <ClInclude Include="..\..\Source\UI\WelcomeScreen.h"/>
     <ClInclude Include="..\..\Source\MainIncludes.h"/>
     <ClInclude Include="..\..\Source\ChataigneEngine.h"/>
@@ -5027,6 +5028,9 @@
     <None Include="..\..\Modules\juce_simpleweb\asio\README.md"/>
     <None Include="..\..\Modules\juce_simpleweb\README.md"/>
     <None Include="..\..\Modules\juce_timeline\README.md"/>
+    <None Include="..\..\Source\UI\ChataigneTranslations.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include=".\icon.ico"/>
     <None Include="packages.config"/>
   </ItemGroup>

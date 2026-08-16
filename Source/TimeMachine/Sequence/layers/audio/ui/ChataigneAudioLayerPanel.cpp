@@ -15,8 +15,8 @@ ChataigneAudioLayerPanel::ChataigneAudioLayerPanel(ChataigneAudioLayer * layer) 
 	chataigneAudioLayer(layer)
 {
 	
-	moduleChooser.setTextWhenNoChoicesAvailable("No audio module");
-	moduleChooser.setTextWhenNothingSelected("Choose an audio module");
+	moduleChooser.setTextWhenNoChoicesAvailable(juce::translate("No audio module"));
+	moduleChooser.setTextWhenNothingSelected(juce::translate("Choose an audio module"));
 	
 	moduleChooser.filterModuleFunc = &ChataigneAudioLayerPanel::isAudioModule;
 	moduleChooser.buildModuleBox();
@@ -82,9 +82,9 @@ void ChataigneAudioLayerPanel::mouseDown(const MouseEvent& e)
 		if (e.eventComponent == this)
 		{
 			PopupMenu p;
-			p.addItem(1, "Export Enveloppe to new mapping layer");
-			p.addItem(2, "Export Enveloppe to clipboard");
-			p.addItem(3, "Export Enveloppe to clipboard (data only)");
+			p.addItem(1, juce::translate("Export Enveloppe to new mapping layer"));
+			p.addItem(2, juce::translate("Export Enveloppe to clipboard"));
+			p.addItem(3, juce::translate("Export Enveloppe to clipboard (data only)"));
 
 			p.showMenuAsync(PopupMenu::Options(), [this](int result)
 				{

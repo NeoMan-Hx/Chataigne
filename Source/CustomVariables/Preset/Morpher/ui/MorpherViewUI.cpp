@@ -85,8 +85,8 @@ void MorpherPanel::paint(Graphics& g)
 	if (currentMorpherUI == nullptr)
 	{
 		g.setColour(TEXTNAME_COLOR);
-		g.setFont(20);
-		g.drawFittedText("Select a Custom Variable Group with 2D Voronoi mode\nto edit its morpher here.", getLocalBounds().reduced(20), Justification::centred, 3);
+		g.setFont(GlobalSettings::getUIFont(20));
+		g.drawFittedText(juce::translate("Select a Custom Variable Group with 2D Voronoi mode\nto edit its morpher here."), getLocalBounds().reduced(20), Justification::centred, 3);
 	}
 }
 

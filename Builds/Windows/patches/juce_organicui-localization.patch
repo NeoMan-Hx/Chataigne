@@ -1,0 +1,2174 @@
+diff --git a/app/CrashHandler.cpp b/app/CrashHandler.cpp
+index 604e46bc..994f0a34 100644
+--- a/app/CrashHandler.cpp
++++ b/app/CrashHandler.cpp
+@@ -111,7 +111,7 @@ void CrashDumpUploader::handleCrash(int e)
+ 	if (getApp().useWindow && crashAction == GlobalSettings::REPORT)
+ 	{
+ 		w.reset(new UploadWindow());
+-		DialogWindow::showDialog("Got crashed ?", w.get(), getMainWindow(), Colours::black, true);
++		DialogWindow::showDialog(juce::translate("Got crashed ?"), w.get(), getMainWindow(), Colours::black, true);
+ 
+ 		MessageManager::getInstance()->runDispatchLoop();
+ 
+@@ -331,10 +331,10 @@ void createDumpAndStrackTrace(int signum, File dumpFile, File traceFile)
+ 
+ 
+ CrashDumpUploader::UploadWindow::UploadWindow() :
+-	okBT("Send and close"),
+-	cancelBT("Close only"),
+-	autoReopenBT("Send and recover"),
+-	recoverOnlyBT("Recover Only"),
++	okBT(juce::translate("Send and close")),
++	cancelBT(juce::translate("Close only")),
++	autoReopenBT(juce::translate("Send and recover")),
++	recoverOnlyBT(juce::translate("Recover Only")),
+ 	progressUI(&CrashDumpUploader::getInstance()->progress)
+ {
+ 	okBT.addListener(this);
+@@ -358,7 +358,7 @@ CrashDumpUploader::UploadWindow::UploadWindow() :
+ 	mail.setColour(mail.textColourId, TEXT_COLOR.brighter());
+ 	mail.setColour(mail.outlineColourId, BG_COLOR.brighter(.6f));
+ 	mail.setText(GlobalSettings::getInstance()->crashContactEmail->stringValue(), dontSendNotification);
+-	mail.setTextToShowWhenEmpty("Your contact email if you accept to be contacted to help fix the problem (and only that !).", TEXT_COLOR);
++	mail.setTextToShowWhenEmpty(juce::translate("Your contact email if you accept to be contacted to help fix the problem (and only that !)."), TEXT_COLOR);
+ 
+ 	addAndMakeVisible(mail);
+ 
+@@ -366,7 +366,7 @@ CrashDumpUploader::UploadWindow::UploadWindow() :
+ 	editor.setColour(editor.backgroundColourId, BG_COLOR.brighter(.3f));
+ 	editor.setColour(editor.textColourId, TEXT_COLOR.brighter());
+ 	editor.setColour(editor.outlineColourId, BG_COLOR.brighter(.6f));
+-	editor.setTextToShowWhenEmpty("Your super comprehensive yet fun explanation here. You can write love messages as well, but only if you mean it.", TEXT_COLOR);
++	editor.setTextToShowWhenEmpty(juce::translate("Your super comprehensive yet fun explanation here. You can write love messages as well, but only if you mean it."), TEXT_COLOR);
+ 	editor.setMultiLine(true);
+ 	editor.setReturnKeyStartsNewLine(true);
+ 
+diff --git a/app/OrganicApplication.cpp b/app/OrganicApplication.cpp
+index 51f6ad55..216ad271 100644
+--- a/app/OrganicApplication.cpp
++++ b/app/OrganicApplication.cpp
+@@ -328,10 +328,12 @@ void OrganicApplication::clearGlobalSettings()
+ 
+ 	AlertWindow::showAsync(
+ 		MessageBoxOptions().withIconType(AlertWindow::QuestionIcon)
+-		.withTitle("So you want a fresh start")
+-		.withMessage("Are you sure you want to delete the Preferences ? If so, you should definitely restart " + getApplicationName() + " after clearing in order to see changes.")
+-		.withButton("Yes")
+-		.withButton("No"),
++		.withTitle(juce::translate("So you want a fresh start"))
++		.withMessage(juce::translate("Are you sure you want to delete the Preferences ?") + " "
++			+ juce::translate("If so, you should definitely restart") + " " + getApplicationName() + " "
++			+ juce::translate("after clearing in order to see changes."))
++		.withButton(juce::translate("Yes"))
++		.withButton(juce::translate("No")),
+ 		[](int result)
+ 		{
+ 			if (result)
+@@ -490,7 +492,7 @@ void OrganicApplication::MainWindow::showTrayMenu()
+ 	PopupMenu p;
+ 	addTrayMenuOptions(p);
+ 	p.addSeparator();
+-	p.addItem(-1, "Exit");
++	p.addItem(-1, juce::translate("Exit"));
+ 
+ 	p.showMenuAsync(PopupMenu::Options(), [this](int result)
+ 		{
+diff --git a/app/OrganicMainComponent.cpp b/app/OrganicMainComponent.cpp
+index 4584c8b8..cee211df 100644
+--- a/app/OrganicMainComponent.cpp
++++ b/app/OrganicMainComponent.cpp
+@@ -172,8 +172,13 @@ void OrganicMainContentComponent::paint(Graphics& g)
+ 
+ void OrganicMainContentComponent::resized()
+ {
++	const float scale = GlobalSettings::getGlobalUIScale();
+ 	juce::Rectangle<int> r = getLocalBounds();
++	r.setSize(jmax(1, roundToInt(r.getWidth() / scale)),
++		jmax(1, roundToInt(r.getHeight() / scale)));
+ 	ShapeShifterManager::getInstance()->mainContainer.setBounds(r);
++	ShapeShifterManager::getInstance()->mainContainer.setTransform(
++		scale == 1.0f ? juce::AffineTransform() : juce::AffineTransform::scale(scale));
+ }
+ 
+ #if ORGANICUI_USE_SHAREDTEXTURE
+diff --git a/app/OrganicMainComponentCommands.cpp b/app/OrganicMainComponentCommands.cpp
+index 31f8bba1..63ff33d5 100644
+--- a/app/OrganicMainComponentCommands.cpp
++++ b/app/OrganicMainComponentCommands.cpp
+@@ -9,6 +9,7 @@
+  */
+ 
+ #include "JuceHeader.h"
++#include "../../../Source/UI/ChataigneLocalization.h"
+ 
+ ApplicationProperties& getAppProperties();
+ OrganicApplication::MainWindow* getMainWindow();
+@@ -262,6 +263,11 @@ void OrganicMainContentComponent::getCommandInfo(CommandID commandID, Applicatio
+ 		JUCEApplication::getInstance()->getCommandInfo(commandID, result);
+ 		break;
+ 	}
++
++	result.shortName = juce::translate(result.shortName);
++	result.description = juce::translate(result.description);
++	result.categoryName = juce::translate(result.categoryName);
++	result.shortName = ChataigneLocalization::translateCommandLabel(result.shortName);
+ }
+ 
+ void OrganicMainContentComponent::getAllCommands(Array<CommandID>& commands)
+@@ -310,7 +316,7 @@ PopupMenu OrganicMainContentComponent::getMenuForIndex(int /*topLevelMenuIndex*/
+ {
+ 	PopupMenu menu;
+ 
+-	if (menuName == "File")
++	if (menuName == juce::translate("File"))
+ 	{
+ 		// "File" menu
+ 		menu.addCommandItem(&getCommandManager(), CommandIDs::newFile);
+@@ -322,7 +328,7 @@ PopupMenu OrganicMainContentComponent::getMenuForIndex(int /*topLevelMenuIndex*/
+ 
+ 		PopupMenu recentFilesMenu;
+ 		recentFiles.createPopupMenuItems(recentFilesMenu, CommandIDs::lastFileStartID, true, true);
+-		menu.addSubMenu("Open recent file", recentFilesMenu);
++		menu.addSubMenu(juce::translate("Open recent file"), recentFilesMenu);
+ 
+ 		menu.addCommandItem(&getCommandManager(), CommandIDs::save);
+ 		menu.addCommandItem(&getCommandManager(), CommandIDs::saveAs);
+@@ -342,7 +348,7 @@ PopupMenu OrganicMainContentComponent::getMenuForIndex(int /*topLevelMenuIndex*/
+ 		menu.addSeparator();
+ 		menu.addCommandItem(&getCommandManager(), StandardApplicationCommandIDs::quit);
+ 	}
+-	else if (menuName == "Edit")
++	else if (menuName == juce::translate("Edit"))
+ 	{
+ 		menu.addCommandItem(&getCommandManager(), CommandIDs::undo);
+ 		menu.addCommandItem(&getCommandManager(), CommandIDs::redo);
+@@ -357,7 +363,7 @@ PopupMenu OrganicMainContentComponent::getMenuForIndex(int /*topLevelMenuIndex*/
+ 		menu.addSeparator();
+ 		menu.addCommandItem(&getCommandManager(), CommandIDs::switchDashboardEditMode);
+ 	}
+-	else if (menuName == "View")
++	else if (menuName == juce::translate("View"))
+ 	{
+ 		menu = ShapeShifterManager::getInstance()->getPanelsMenu();
+ 		menu.addSeparator();
+@@ -818,7 +824,7 @@ void OrganicMainContentComponent::menuItemSelected(int menuItemID, int topLevelM
+ {
+ 	String menuName = getMenuBarNames()[topLevelMenuIndex];
+ 
+-	if (menuName == "View" && menuItemID != CommandIDs::toggleKioskMode)
++	if (menuName == juce::translate("View") && menuItemID != CommandIDs::toggleKioskMode)
+ 	{
+ 		ShapeShifterManager::getInstance()->handleMenuPanelCommand(menuItemID);
+ 	}
+@@ -833,11 +839,12 @@ void OrganicMainContentComponent::menuItemSelected(int menuItemID, int topLevelM
+ StringArray OrganicMainContentComponent::getMenuBarNames()
+ {
+ 	StringArray names;
+-	names.addArray({"File", "Edit"});
++	names.add(juce::translate("File"));
++	names.add(juce::translate("Edit"));
+ 
+ #if TIMELINE_ADD_MENU_ITEMS
+ 	names.addArray(TimelineAppCommands::getMenuBarNames());
+ #endif
+-	names.add("View");
++	names.add(juce::translate("View"));
+ 	return names;
+ }
+diff --git a/automation/ui/AutomationUI.cpp b/automation/ui/AutomationUI.cpp
+index 20c9e323..196e6e74 100644
+--- a/automation/ui/AutomationUI.cpp
++++ b/automation/ui/AutomationUI.cpp
+@@ -139,7 +139,7 @@ void AutomationUIKeys::drawLinesBackground(Graphics& g)
+ 	int unitStart = floor((start / unitSteps)) * unitSteps;
+ 	int unitEndTime = jmax<int>(ceil((end / unitSteps)) * unitSteps, unitStart + 1);
+ 
+-	g.setFont(12);
++	g.setFont(GlobalSettings::getUIFont(12));
+ 	float unitFadeAlpha = jlimit<float>(0, 1, jmap<float>(unitGap, minGap, fadeGap, 0, 1));
+ 	float fadeAlpha = jlimit<float>(0, 1, jmap<float>(decimalGap, minGap, fadeGap, 0, 1));
+ 
+diff --git a/controllable/Controllable.h b/controllable/Controllable.h
+index e552030e..47d13ef9 100644
+--- a/controllable/Controllable.h
++++ b/controllable/Controllable.h
+@@ -66,8 +66,19 @@ public:
+ 	juce::WeakReference<ControllableContainer> parentContainer;
+ 
+ 	juce::UndoableAction* setUndoableNiceName(const juce::String& _niceName, bool onlyReturnAction = false);
+-	void setNiceName(const juce::String& _niceName);
+-	void setCustomShortName(const juce::String& _shortName);
++	void setNiceName(const juce::String& _niceName);
++	// UI-only accessors.  The stored names remain the stable English/script
++	// identifiers; these accessors apply the active JUCE translation mapping
++	// only when a value is presented to the user.
++	juce::String getDisplayName() const
++	{
++		const auto translated = juce::translate(niceName);
++		return translated == niceName && niceName != niceName.trim()
++			? juce::translate(niceName.trim())
++			: translated;
++	}
++	juce::String getDisplayDescription() const { return juce::translate(description.trim()); }
++	void setCustomShortName(const juce::String& _shortName);
+ 	void setAutoShortName();
+ 
+ 	virtual void setEnabled(bool value, bool silentSet = false, bool force = false);
+diff --git a/controllable/ControllableContainer.h b/controllable/ControllableContainer.h
+index cc0ea3aa..14d8a716 100644
+--- a/controllable/ControllableContainer.h
++++ b/controllable/ControllableContainer.h
+@@ -77,7 +77,15 @@ public:
+ 	juce::WeakReference<ControllableContainer> parentContainer;
+ 
+ 	juce::UndoableAction* setUndoableNiceName(const juce::String& _niceName, bool onlyReturnAction = false);
+-	void setNiceName(const juce::String& _niceName);
++	void setNiceName(const juce::String& _niceName);
++	// UI-only accessors. Keep stored names stable for project, OSC and script data.
++	juce::String getDisplayName() const
++	{
++		const auto translated = juce::translate(niceName);
++		return translated == niceName && niceName != niceName.trim()
++			? juce::translate(niceName.trim())
++			: translated;
++	}
+ 	void setCustomShortName(const juce::String& _shortName);
+ 	void setAutoShortName();
+ 	virtual void niceNameChanged() {}
+diff --git a/controllable/ControllableHelpers.cpp b/controllable/ControllableHelpers.cpp
+index 825269cc..8e752d06 100644
+--- a/controllable/ControllableHelpers.cpp
++++ b/controllable/ControllableHelpers.cpp
+@@ -65,7 +65,7 @@ void ControllableChooserPopupMenu::populateMenu(PopupMenu* subMenu, Controllable
+ 		if (!typesFilter.isEmpty() && !typesFilter.contains(c->getTypeString())) continue;
+ 		if (filterFunc != nullptr && !filterFunc(c)) continue;
+ 
+-		subMenu->addItem(currentId, c->niceName, true, c == currentSelection);
++		subMenu->addItem(currentId, c->getDisplayName(), true, c == currentSelection);
+ 		controllableList.add(c);
+ 		currentId++;
+ 	}
+@@ -142,7 +142,7 @@ void ContainerChooserPopupMenu::populateMenu(PopupMenu* subMenu, ControllableCon
+ 		{
+ 			if (!isSelectable) continue;
+ 			containerList.add(cc);
+-			subMenu->addItem(currentId, cc->niceName, true, cc == currentSelection);
++			subMenu->addItem(currentId, cc->getDisplayName(), true, cc == currentSelection);
+ 			currentId++;
+ 		}
+ 		else if (maxDefaultSearchLevel == -1 || currentLevel < maxDefaultSearchLevel)
+@@ -160,7 +160,7 @@ void ContainerChooserPopupMenu::populateMenu(PopupMenu* subMenu, ControllableCon
+ 			if (allowSelectAtAnyLevel && isSelectable)
+ 			{
+ 				containerList.add(cc);
+-				p.addItem(currentId, "Select", true, cc == currentSelection);
++				p.addItem(currentId, juce::translate("Select"), true, cc == currentSelection);
+ 				currentId++;
+ 				p.addSeparator();
+ 
+diff --git a/controllable/parameter/ui/BoolToggleUI.cpp b/controllable/parameter/ui/BoolToggleUI.cpp
+index f0fd7427..f1ca0565 100644
+--- a/controllable/parameter/ui/BoolToggleUI.cpp
++++ b/controllable/parameter/ui/BoolToggleUI.cpp
+@@ -30,7 +30,7 @@ BoolToggleUI::BoolToggleUI(Array<BoolParameter*> parameters, Image _onImage, Ima
+ 
+ 	showEditWindowOnDoubleClick = false;
+ 
+-	setSize(200, GlobalSettings::getInstance()->fontSize->floatValue() + 4);//default size
++	setSize(200, GlobalSettings::getUIFontSize(14.0f) + 4);//default size
+ 
+ }
+ 
+@@ -66,9 +66,10 @@ void BoolToggleUI::paint(Graphics& g)
+ 
+ 	if (showLabel)
+ 	{
+-		int fontSize = customTextSize > 0 ? customTextSize : jlimit(12, 40, jmin(r.getHeight(), r.getWidth()) - 16);
+-		g.setFont(fontSize);
+-		labelWidth = g.getCurrentFont().getStringWidth(parameter->niceName) + 10;
++		float fontSize = customTextSize > 0 ? GlobalSettings::getUIFontSize((float) customTextSize)
++			: GlobalSettings::getUIFontSize((float) jlimit(12, 40, jmin(r.getHeight(), r.getWidth()) - 16));
++		g.setFont(fontSize);
++		labelWidth = g.getCurrentFont().getStringWidth(parameter->getDisplayName()) + 10;
+ 		/*if (r.getHeight() > r.getWidth())
+ 		{
+ 			cr = r.removeFromRight(jmin<float>(r.getHeight(), r.getWidth() - labelWidth));
+@@ -89,7 +90,7 @@ void BoolToggleUI::paint(Graphics& g)
+ 	if (showLabel)
+ 	{
+ 		g.setColour(useCustomTextColor ? customTextColor : (isInteractable() ? TEXT_COLOR : FEEDBACK_COLOR));
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->niceName, r, Justification::left, 1);
++		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName(), r, Justification::left, 1);
+ 	}
+ 
+ 	if (m.isValid())
+@@ -184,9 +185,9 @@ void BoolButtonToggleUI::paint(Graphics& g)
+ 	if (showLabel)
+ 	{
+ 		juce::Rectangle<int> tr = getLocalBounds().reduced(2);
+-		g.setFont(jlimit(10, 40, jmin(tr.getHeight() - 4, tr.getWidth()) - 16));
++		g.setFont(GlobalSettings::getUIFont((float) jlimit(10, 40, jmin(tr.getHeight() - 4, tr.getWidth()) - 16)));
+ 		g.setColour(useCustomTextColor ? customTextColor : TEXT_COLOR);
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->niceName, tr, Justification::centred, 3);
++		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName(), tr, Justification::centred, 3);
+ 	}
+ }
+ 
+diff --git a/controllable/parameter/ui/ColorParameterUI.cpp b/controllable/parameter/ui/ColorParameterUI.cpp
+index 77943d32..151ba714 100644
+--- a/controllable/parameter/ui/ColorParameterUI.cpp
++++ b/controllable/parameter/ui/ColorParameterUI.cpp
+@@ -18,7 +18,7 @@ ColorParameterUI::ColorParameterUI(Array<ColorParameter *> parameters) :
+ 	colorEditor(nullptr),
+     dispatchOnSingleClick(false)
+ {
+-	setSize(200, GlobalSettings::getInstance()->fontSize->floatValue() + 4);//default size
++	setSize(200, GlobalSettings::getUIFontSize(14.0f) + 4);//default size
+ 	showLabel = false;
+ }
+ 
+@@ -52,9 +52,9 @@ void ColorParameterUI::paint(Graphics & g)
+ 	if (showLabel)
+ 	{
+ 		juce::Rectangle<int> tr = r.reduced(2);
+-		g.setFont(jlimit(12, 40, jmin(tr.getHeight(), tr.getWidth()) - 16));
++		g.setFont(GlobalSettings::getUIFont((float) jlimit(12, 40, jmin(tr.getHeight(), tr.getWidth()) - 16)));
+ 		g.setColour(useCustomTextColor ? customTextColor : TEXT_COLOR);
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : colorParam->niceName, tr, Justification::centred, 1);
++	g.drawFittedText(customLabel.isNotEmpty() ? customLabel : colorParam->getDisplayName(), tr, Justification::centred, 1);
+ 	}
+ 	
+ }
+@@ -76,7 +76,7 @@ void ColorParameterUI::showEditWindowInternal()
+ 
+ 	std::unique_ptr<ColourSelector> selector(new ColourSelector(ColourSelector::showAlphaChannel | ColourSelector::showSliders | ColourSelector::showHexColorValue | ColourSelector::showColourspace));
+ 	selector->addChangeListener(this);
+-	selector->setName("Color for " + parameter->niceName);
++	selector->setName(juce::translate("Color for ") + parameter->getDisplayName());
+ 	selector->setCurrentColour(colorParam->getColor());
+ 	selector->setColour(ColourSelector::backgroundColourId, Colours::transparentBlack);
+ 	selector->setColour(ColourSelector::labelTextColourId, TEXT_COLOR);
+diff --git a/controllable/parameter/ui/ColorStatusUI.cpp b/controllable/parameter/ui/ColorStatusUI.cpp
+index 3d0b3c93..9a57de74 100644
+--- a/controllable/parameter/ui/ColorStatusUI.cpp
++++ b/controllable/parameter/ui/ColorStatusUI.cpp
+@@ -38,9 +38,9 @@ void ColorStatusUI::paint(Graphics& g)
+ 
+ 	if (showLabel)
+ 	{
+-		if (customTextSize > 0) g.setFont(customTextSize);
++		if (customTextSize > 0) g.setFont(GlobalSettings::getUIFont((float) customTextSize));
+ 		g.setColour(useCustomTextColor ? customTextColor : (isInteractable() ? TEXT_COLOR : FEEDBACK_COLOR));
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->niceName, getLocalBounds().reduced(2), Justification::centred, 3);
++	g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName(), getLocalBounds().reduced(2), Justification::centred, 3);
+ 	}
+ }
+ 
+diff --git a/controllable/parameter/ui/DoubleSliderUI.cpp b/controllable/parameter/ui/DoubleSliderUI.cpp
+index 81556cdc..2545ff15 100644
+--- a/controllable/parameter/ui/DoubleSliderUI.cpp
++++ b/controllable/parameter/ui/DoubleSliderUI.cpp
+@@ -57,7 +57,7 @@ DoubleSliderUI::DoubleSliderUI(Array<Point2DParameter*> parameters) :
+ 	addAndMakeVisible(xSlider.get());
+ 	addAndMakeVisible(ySlider.get());
+ 
+-	float baseHeight = GlobalSettings::getInstance()->fontSize->floatValue() + 4;
++	float baseHeight = GlobalSettings::getUIFontSize(14.0f) + 4;
+ 	setSize(200, baseHeight);//default size
+ 
+ 	updateUIParams(); //force update
+@@ -96,16 +96,16 @@ void DoubleSliderUI::paint(Graphics& g)
+ {
+ 	ParameterUI::paint(g);
+ 
+-	float baseHeight = GlobalSettings::getInstance()->fontSize->floatValue() + 4;
++	float baseHeight = GlobalSettings::getUIFontSize(14.0f) + 4;
+ 	juce::Rectangle<int> r = getLocalBounds();
+ 	juce::Rectangle<int> sr = canvasUI == nullptr ? r : r.removeFromTop(baseHeight);
+ 
+ 	if (showLabel)
+ 	{
+-		g.setFont(jlimit(12, 40, jmin(sr.getHeight(), sr.getWidth()) - 16));
+-		juce::Rectangle<int> tr = sr.removeFromLeft(jmin(g.getCurrentFont().getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->niceName) + 10, sr.getWidth() - 60));
++		g.setFont(GlobalSettings::getUIFont((float) jlimit(12, 40, jmin(sr.getHeight(), sr.getWidth()) - 16)));
++		juce::Rectangle<int> tr = sr.removeFromLeft(jmin(g.getCurrentFont().getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName()) + 10, sr.getWidth() - 60));
+ 		g.setColour(useCustomTextColor ? customTextColor : TEXT_COLOR);
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->niceName, tr, Justification::centred, 1);
++		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName(), tr, Justification::centred, 1);
+ 		sr.removeFromLeft(2);
+ 	}
+ 
+@@ -122,13 +122,13 @@ void DoubleSliderUI::paint(Graphics& g)
+ 
+ void DoubleSliderUI::resized()
+ {
+-	float baseHeight = GlobalSettings::getInstance()->fontSize->floatValue() + 4;
++	float baseHeight = GlobalSettings::getUIFontSize(14.0f) + 4;
+ 	juce::Rectangle<int> r = getLocalBounds();
+ 	juce::Rectangle<int> sr = canvasUI == nullptr ? r : r.removeFromTop(baseHeight);
+ 	if (showLabel)
+ 	{
+ 		Font font(jlimit(12, 40, jmin(sr.getHeight(), sr.getWidth()) - 16));
+-		sr.removeFromLeft(jmin(font.getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->niceName) + 10, sr.getWidth() - 60));
++		sr.removeFromLeft(jmin(font.getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName()) + 10, sr.getWidth() - 60));
+ 		sr.removeFromLeft(2);
+ 	}
+ 
+@@ -204,7 +204,7 @@ void DoubleSliderUI::showEditRangeWindowInternal()
+ 
+ void DoubleSliderUI::updateUseExtendedEditor()
+ {
+-	float baseHeight = GlobalSettings::getInstance()->fontSize->floatValue() + 4;
++	float baseHeight = GlobalSettings::getUIFontSize(14.0f) + 4;
+ 
+ 	if (p2d->showExtendedEditor && canShowExtendedEditor)
+ 	{
+diff --git a/controllable/parameter/ui/EnumParameterUI.cpp b/controllable/parameter/ui/EnumParameterUI.cpp
+index aeb87f23..b429472a 100644
+--- a/controllable/parameter/ui/EnumParameterUI.cpp
++++ b/controllable/parameter/ui/EnumParameterUI.cpp
+@@ -24,9 +24,9 @@ EnumParameterUIBase::~EnumParameterUIBase()
+ 	if (parameter != nullptr && !parameter.wasObjectDeleted()) ep->removeAsyncEnumParameterListener(this);
+ }
+ 
+-void EnumParameterUIBase::addPopupMenuItemsInternal(PopupMenu* p)
+-{
+-	p->addItem(101, "Set Options...");
++void EnumParameterUIBase::addPopupMenuItemsInternal(PopupMenu* p)
++{
++	p->addItem(101, juce::translate("Set Options..."));
+ }
+ 
+ void EnumParameterUIBase::handleMenuSelectedID(int result)
+@@ -53,7 +53,7 @@ EnumParameterUI::EnumParameterUI(Array<EnumParameter*> parameters) :
+ {
+ 	cb.addListener(this);
+ 	cb.setTextWhenNoChoicesAvailable("");
+-	cb.setTextWhenNothingSelected("Select an element");
++	cb.setTextWhenNothingSelected(juce::translate("Select an element"));
+ 	cb.setTooltip(tooltip);
+ 	addAndMakeVisible(cb);
+ 
+@@ -87,7 +87,7 @@ void EnumParameterUI::updateFromParameter()
+ 			continue;
+ 		}
+ 
+-		cb.addItem(ev->key, id);
++		cb.addItem(juce::translate(ev->key), id);
+ 		idKeyMap.set(id, ev->key);
+ 		keyIdMap.set(ev->key, id);
+ 		id++;
+@@ -166,8 +166,8 @@ void EnumOptionManager::paint(Graphics& g)
+ {
+ 	juce::Rectangle<int> hr = getLocalBounds().removeFromTop(20);
+ 	g.setColour(TEXT_COLOR);
+-	g.drawText("Value", hr.removeFromRight(getWidth() / 2).reduced(2).toFloat(), Justification::centred, false);
+-	g.drawText("Key", hr.reduced(2).toFloat(), Justification::centred, false);
++	g.drawText(juce::translate("Value"), hr.removeFromRight(getWidth() / 2).reduced(2).toFloat(), Justification::centred, false);
++	g.drawText(juce::translate("Key"), hr.reduced(2).toFloat(), Justification::centred, false);
+ }
+ 
+ void EnumOptionManager::resized()
+@@ -251,7 +251,7 @@ void EnumParameterButtonBarUI::updateFromParameter()
+ 	String selectedKey = ep->getValueKey();
+ 	for (auto& ev : ep->enumValues)
+ 	{
+-		TextButton* tb = new TextButton(ev->key);
++		TextButton* tb = new TextButton(juce::translate(ev->key));
+ 		tb->addListener(this);
+ 		tb->setClickingTogglesState(true);
+ 		tb->setRadioGroupId(radioId);
+@@ -297,16 +297,19 @@ void EnumParameterButtonBarUI::updateUIParamsInternal()
+ 	}
+ }
+ 
+-void EnumParameterButtonBarUI::valueChanged(const var&)
+-{
+-	String selectedKey = ep->getValueKey();
+-	for (auto& tb : buttons)
+-	{
+-		if (tb->getButtonText() == selectedKey) tb->setToggleState(true, dontSendNotification);
+-	}
+-}
+-
+-void EnumParameterButtonBarUI::buttonClicked(Button* b)
+-{
+-	ep->setValueWithKey(b->getButtonText());
+-}
++void EnumParameterButtonBarUI::valueChanged(const var&)
++{
++	String selectedKey = ep->getValueKey();
++	for (int i = 0; i < buttons.size(); ++i)
++	{
++		if (i < ep->enumValues.size() && ep->enumValues[i] != nullptr)
++			buttons[i]->setToggleState(ep->enumValues[i]->key == selectedKey, dontSendNotification);
++	}
++}
++
++void EnumParameterButtonBarUI::buttonClicked(Button* b)
++{
++	int index = buttons.indexOf(dynamic_cast<TextButton*>(b));
++	if (index >= 0 && index < ep->enumValues.size() && ep->enumValues[index] != nullptr)
++		ep->setValueWithKey(ep->enumValues[index]->key);
++}
+diff --git a/controllable/parameter/ui/FloatParameterLabelUI.cpp b/controllable/parameter/ui/FloatParameterLabelUI.cpp
+index 4548a099..c7283040 100644
+--- a/controllable/parameter/ui/FloatParameterLabelUI.cpp
++++ b/controllable/parameter/ui/FloatParameterLabelUI.cpp
+@@ -14,7 +14,7 @@ FloatParameterLabelUI::FloatParameterLabelUI(Array<Parameter*> parameters) :
+ 	ParameterUI(parameters, ORGANICUI_SLOW_TIMER),
+ 	floatParam((FloatParameter*)parameters[0]),
+ 	valueLabel(parameters[0]->niceName + "_ValueLabel"),
+-	maxFontHeight(GlobalSettings::getInstance()->fontSize->floatValue()),
++	maxFontHeight(14.0f),
+ 	autoSize(false)
+ {
+ 	opaqueBackground = true;
+@@ -26,7 +26,7 @@ FloatParameterLabelUI::FloatParameterLabelUI(Array<Parameter*> parameters) :
+ 
+ 	showEditWindowOnDoubleClick = false;
+ 
+-	setSize(200, GlobalSettings::getInstance()->fontSize->floatValue() + 4);//default size
++	setSize(200, GlobalSettings::getUIFontSize(14.0f) + 4);//default size
+ 
+ 	valueChanged(parameter->getValue());
+ 	feedbackStateChanged();
+@@ -78,15 +78,16 @@ void FloatParameterLabelUI::resized()
+ {
+ 	juce::Rectangle<int> r = getLocalBounds();
+ 
+-	float fontHeight = customTextSize > 0 ? customTextSize : jmin<float>((float)r.getHeight(), maxFontHeight);
++	const float scale = GlobalSettings::getGlobalFontScale();
++	float baseFontHeight = customTextSize > 0 ? (float) customTextSize : jmin<float>((float) r.getHeight() / scale, maxFontHeight);
+ 	if (showLabel)
+ 	{
+-		nameLabel.setFont(valueLabel.getFont().withHeight(fontHeight));
++		GlobalSettings::setUIFont(nameLabel, baseFontHeight);
+ 		nameLabel.setBounds(r.removeFromLeft(nameLabel.getFont().getStringWidth(nameLabel.getText())));
+ 		r.removeFromLeft(4);
+ 	}
+ 
+-	valueLabel.setFont(valueLabel.getFont().withHeight(fontHeight));
++	GlobalSettings::setUIFont(valueLabel, baseFontHeight);
+ 	valueLabel.setBounds(r);
+ }
+ 
+@@ -160,8 +161,8 @@ void FloatParameterLabelUI::updateUIParamsInternal()
+ 	updateTooltip();
+ 	valueLabel.setTooltip(tooltip);
+ 
+-	if (customTextSize > 0) valueLabel.setFont(customTextSize);
+-	else valueLabel.setFont(Font());
++	if (customTextSize > 0) GlobalSettings::setUIFont(valueLabel, (float) customTextSize);
++	else GlobalSettings::setUIFont(valueLabel, 14.0f);
+ 
+ 	shouldRepaint = true;
+ }
+@@ -205,7 +206,7 @@ void FloatParameterLabelUI::handlePaintTimerInternal()
+ 	if (valueLabel.getFont().getStyleFlags() != newStyle) valueLabel.setFont(valueLabel.getFont().withStyle(newStyle));
+ 
+ 	String s = prefix + getValueString(parameter->value) + suffix;
+-	if (showLabel) s = (customLabel.isNotEmpty() ? customLabel : parameter->niceName) + " : " + s;
++	if (showLabel) s = (customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName()) + " : " + s;
+ 	valueLabel.setText(s, NotificationType::dontSendNotification);
+ 	if (autoSize)
+ 	{
+diff --git a/controllable/parameter/ui/FloatSliderUI.cpp b/controllable/parameter/ui/FloatSliderUI.cpp
+index 643ece3f..79564b9a 100644
+--- a/controllable/parameter/ui/FloatSliderUI.cpp
++++ b/controllable/parameter/ui/FloatSliderUI.cpp
+@@ -29,7 +29,7 @@ FloatSliderUI::FloatSliderUI(Array<Parameter*> parameters) :
+ 	setWantsKeyboardFocus(true);
+ 	ParameterUI::setNextFocusOrder(this);
+ 
+-	setSize(200, GlobalSettings::getInstance()->fontSize->floatValue() + 4);//default size
++	setSize(200, GlobalSettings::getUIFontSize(14.0f) + 4);//default size
+ }
+ 
+ FloatSliderUI::~FloatSliderUI()
+@@ -115,7 +115,7 @@ void FloatSliderUI::paint(Graphics& g)
+ 		String text = "";
+ 		if (showLabel)
+ 		{
+-			text += customLabel.isNotEmpty() ? customLabel : parameter->niceName;
++		text += customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName();
+ 			if (showValue) text += orientation == ROTARY ? "\n" : " : ";
+ 		}
+ 
+@@ -127,7 +127,8 @@ void FloatSliderUI::paint(Graphics& g)
+ 		}
+ 
+ 		float fontSizeLimit = orientation == HORIZONTAL ? destRect.getHeight() : (orientation == VERTICAL ? destRect.getWidth() : destRect.getHeight() / 3);
+-		float fontSize = customTextSize > 0 ? customTextSize : (float)jmin<int>(fontSizeLimit - 6, 16);
++		float fontSize = customTextSize > 0 ? GlobalSettings::getUIFontSize((float) customTextSize)
++			: GlobalSettings::getUIFontSize((float) jmin<int>(fontSizeLimit - 6, 16));
+ 		g.setFont(fontSize);
+ 
+ 		if (parameter->isOverriden) g.setFont(g.getCurrentFont().boldened());
+diff --git a/controllable/parameter/ui/FloatStepperUI.cpp b/controllable/parameter/ui/FloatStepperUI.cpp
+index 4f45f9ad..5952345c 100644
+--- a/controllable/parameter/ui/FloatStepperUI.cpp
++++ b/controllable/parameter/ui/FloatStepperUI.cpp
+@@ -49,7 +49,7 @@ FloatStepperUI::FloatStepperUI(Array<Parameter*> parameters) :
+ 	addAndMakeVisible(slider.get());
+ 
+ 
+-	setSize(200, GlobalSettings::getInstance()->fontSize->floatValue() + 4);
++	setSize(200, GlobalSettings::getUIFontSize(14.0f) + 4);
+ 
+ 	slider->addListener(this);
+ 	slider->addMouseListener(this, true);
+@@ -71,11 +71,11 @@ void FloatStepperUI::paint(Graphics& g)
+ 	if (showLabel)
+ 	{
+ 		juce::Rectangle<int> r = getLocalBounds();
+-		g.setFont(customTextSize > 0 ? customTextSize : Font());
+-		r = r.removeFromLeft(jmin(g.getCurrentFont().getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->niceName) + 10, r.getWidth() - 
++		g.setFont(customTextSize > 0 ? GlobalSettings::getUIFont((float) customTextSize) : GlobalSettings::getUIFont(14.0f));
++	r = r.removeFromLeft(jmin(g.getCurrentFont().getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName()) + 10, r.getWidth() -
+ 		 60));
+ 		g.setColour(useCustomTextColor ? customTextColor : TEXT_COLOR);
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->niceName, r, Justification::centred, 1);
++	g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName(), r, Justification::centred, 1);
+ 	}
+ }
+ 
+@@ -88,7 +88,7 @@ void FloatStepperUI::resized()
+ 	if (showLabel)
+ 	{
+ 		Font font(customTextSize > 0 ? customTextSize : jlimit(12, 40, jmin(r.getHeight() - 4, r.getWidth()) - 16));
+-		r.removeFromLeft(jmin(font.getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->niceName), r.getWidth() - 60));
++	r.removeFromLeft(jmin(font.getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName()), r.getWidth() - 60));
+ 		slider->setBounds(r.removeFromRight(jmin(r.getWidth(), 60)));
+ 	}
+ 	else
+diff --git a/controllable/parameter/ui/P2DUI.cpp b/controllable/parameter/ui/P2DUI.cpp
+index 4cc2b7d8..da7c9129 100644
+--- a/controllable/parameter/ui/P2DUI.cpp
++++ b/controllable/parameter/ui/P2DUI.cpp
+@@ -73,7 +73,7 @@ void P2DUI::paint(Graphics& g)
+ 	if (showLabel || showValue)
+ 	{
+ 		g.setColour(bgColor.brighter(.15f));
+-		if (showLabel) g.drawFittedText(parameter->niceName, canvasRect.toNearestInt(), Justification::centred, 3);
++		if (showLabel) g.drawFittedText(parameter->getDisplayName(), canvasRect.toNearestInt(), Justification::centred, 3);
+ 		if (showValue)
+ 		{
+ 			String xt = String::formatted("%." + String(3 + 1) + "f", p.x);
+diff --git a/controllable/parameter/ui/ParameterEditor.cpp b/controllable/parameter/ui/ParameterEditor.cpp
+index 576020b5..03f5dba5 100644
+--- a/controllable/parameter/ui/ParameterEditor.cpp
++++ b/controllable/parameter/ui/ParameterEditor.cpp
+@@ -59,7 +59,7 @@ void ParameterEditor::updateUI()
+ 	if (inspectable.wasObjectDeleted()) return;
+ 
+ 	baseHeight = ui->getHeight();
+-	if (baseHeight == 0) baseHeight = GlobalSettings::getInstance()->fontSize->floatValue() + 4;
++	if (baseHeight == 0) baseHeight = (int) GlobalSettings::getUIFontSize(14.0f) + 4;
+ 	subContentHeight = 0;
+ 
+ 	//cleanup
+diff --git a/controllable/parameter/ui/ParameterUI.cpp b/controllable/parameter/ui/ParameterUI.cpp
+index 6ac89f82..a294450b 100644
+--- a/controllable/parameter/ui/ParameterUI.cpp
++++ b/controllable/parameter/ui/ParameterUI.cpp
+@@ -69,13 +69,13 @@ void ParameterUI::showEditRangeWindowInternal()
+ {
+ 	if (!parameter->canHaveRange || !parameter->isCustomizableByUser) return;
+ 
+-	AlertWindow* nameWindow = new AlertWindow("Set the range", "Set a new range for this parameter", AlertWindow::AlertIconType::NoIcon, this);
+-
+-	nameWindow->addTextEditor("minVal", parameter->hasRange() ? String((float)parameter->minimumValue) : "", "Minimum");
+-	nameWindow->addTextEditor("maxVal", parameter->hasRange() ? String((float)parameter->maximumValue) : "", "Maximum");
+-
+-	nameWindow->addButton("OK", 1, KeyPress(KeyPress::returnKey));
+-	nameWindow->addButton("Cancel", 0, KeyPress(KeyPress::escapeKey));
++	AlertWindow* nameWindow = new AlertWindow(juce::translate("Set the range"), juce::translate("Set a new range for this parameter"), AlertWindow::AlertIconType::NoIcon, this);
++
++	nameWindow->addTextEditor("minVal", parameter->hasRange() ? String((float)parameter->minimumValue) : "", juce::translate("Minimum"));
++	nameWindow->addTextEditor("maxVal", parameter->hasRange() ? String((float)parameter->maximumValue) : "", juce::translate("Maximum"));
++
++	nameWindow->addButton(juce::translate("OK"), 1, KeyPress(KeyPress::returnKey));
++	nameWindow->addButton(juce::translate("Cancel"), 0, KeyPress(KeyPress::escapeKey));
+ 
+ 	nameWindow->enterModalState(true, ModalCallbackFunction::create([this, nameWindow](int result)
+ 		{
+@@ -160,16 +160,16 @@ void ParameterUI::addPopupMenuItems(PopupMenu* p)
+ 
+ 	if (isInteractable())
+ 	{
+-		p->addItem(1, "Reset value");
+-		p->addSeparator();
+-		p->addItem(-3, "Show Edit Window");
+-		p->addItem(-20, "Copy Value");
+-		p->addItem(-21, "Paste Value");
++		p->addItem(1, juce::translate("Reset value"));
++		p->addSeparator();
++		p->addItem(-3, juce::translate("Show Edit Window"));
++		p->addItem(-20, juce::translate("Copy Value"));
++		p->addItem(-21, juce::translate("Paste Value"));
+ 
+ 		if (parameter->canHaveRange && parameter->isCustomizableByUser)
+ 		{
+ 			PopupMenu rangeMenu;
+-			rangeMenu.addItem(-4, "Custom");
++			rangeMenu.addItem(-4, juce::translate("Custom"));
+ 			rangeMenu.addSeparator();
+ 			if (parameter->type == Parameter::FLOAT)
+ 			{
+@@ -218,12 +218,12 @@ void ParameterUI::addPopupMenuItems(PopupMenu* p)
+ 				}
+ 			}
+ 
+-			p->addSubMenu("Set Range...", rangeMenu);
+-			if (parameter->hasRange()) p->addItem(-5, "Clear Range");
++			p->addSubMenu(juce::translate("Set Range..."), rangeMenu);
++			if (parameter->hasRange()) p->addItem(-5, juce::translate("Clear Range"));
+ 		}
+ 	}
+ 
+-	if (showAlwaysNotifyOption) p->addItem(-6, "Always Notify changes", true, parameter->alwaysNotify);
++	if (showAlwaysNotifyOption) p->addItem(-6, juce::translate("Always Notify changes"), true, parameter->alwaysNotify);
+ 	addPopupMenuItemsInternal(p);
+ 
+ 	if (isInteractable() && showControlModeOption)
+@@ -232,11 +232,11 @@ void ParameterUI::addPopupMenuItems(PopupMenu* p)
+ 		if (!parameter->lockManualControlMode)
+ 		{
+ 			PopupMenu controlModeMenu;
+-			controlModeMenu.addItem(10, "Manual", true, parameter->controlMode == Parameter::MANUAL);
+-			controlModeMenu.addItem(11, "Expression", true, parameter->controlMode == Parameter::EXPRESSION);
+-			controlModeMenu.addItem(12, "Reference", true, parameter->controlMode == Parameter::REFERENCE);
+-			if (parameter->canBeAutomated) controlModeMenu.addItem(13, "Animation", true, parameter->controlMode == Parameter::AUTOMATION);
+-			p->addSubMenu("Control Mode", controlModeMenu);
++			controlModeMenu.addItem(10, juce::translate("Manual"), true, parameter->controlMode == Parameter::MANUAL);
++			controlModeMenu.addItem(11, juce::translate("Expression"), true, parameter->controlMode == Parameter::EXPRESSION);
++			controlModeMenu.addItem(12, juce::translate("Reference"), true, parameter->controlMode == Parameter::REFERENCE);
++			if (parameter->canBeAutomated) controlModeMenu.addItem(13, juce::translate("Animation"), true, parameter->controlMode == Parameter::AUTOMATION);
++			p->addSubMenu(juce::translate("Control Mode"), controlModeMenu);
+ 		}
+ 	}
+ }
+@@ -493,4 +493,4 @@ void ParameterUI::ValueEditCalloutComponent::parentHierarchyChanged()
+ 		labels[0]->showEditor();
+ #endif
+ }
+-}
+\ No newline at end of file
++}
+diff --git a/controllable/parameter/ui/StringParameterUI.cpp b/controllable/parameter/ui/StringParameterUI.cpp
+index 1ffdfc93..2429b3e6 100644
+--- a/controllable/parameter/ui/StringParameterUI.cpp
++++ b/controllable/parameter/ui/StringParameterUI.cpp
+@@ -32,7 +32,7 @@ StringParameterUI::StringParameterUI(Array<StringParameter*> parameters) :
+ 
+ 	updateUIParams();
+ 
+-	setSize(200, GlobalSettings::getInstance()->fontSize->floatValue() + 4);//default size
++	setSize(200, GlobalSettings::getUIFontSize(14.0f) + 4);//default size
+ }
+ 
+ StringParameterUI::~StringParameterUI()
+@@ -65,8 +65,8 @@ void StringParameterUI::updateUIParamsInternal()
+ 	valueLabel.setColour(valueLabel.textColourId, useCustomTextColor ? customTextColor : (isInteractable() ? TEXT_COLOR : BLUE_COLOR.brighter(.2f)));
+ 	valueLabel.setColour(CaretComponent::caretColourId, Colours::orange);
+ 
+-	if (customTextSize > 0) valueLabel.setFont(customTextSize);
+-	else valueLabel.setFont(Font());
++	if (customTextSize > 0) GlobalSettings::setUIFont(valueLabel, (float) customTextSize);
++	else GlobalSettings::setUIFont(valueLabel, 14);
+ }
+ 
+ void StringParameterUI::paint(Graphics& g)
+@@ -76,11 +76,11 @@ void StringParameterUI::paint(Graphics& g)
+ 	if (showLabel)
+ 	{
+ 		juce::Rectangle<int> r = getLocalBounds();
+-		float fontHeight = customTextSize > 0 ? customTextSize : jlimit(12, 40, jmin(r.getHeight() - 2, r.getWidth()) - 16);
+-		g.setFont(fontHeight);
+-		r = r.removeFromLeft(jmin(g.getCurrentFont().getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->niceName) + 10, r.getWidth() - 60));
++		float fontHeight = customTextSize > 0 ? (float) customTextSize : (float) jlimit(12, 40, jmin(r.getHeight() - 2, r.getWidth()) - 16);
++		g.setFont(GlobalSettings::getUIFont(fontHeight));
++		r = r.removeFromLeft(jmin(g.getCurrentFont().getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName()) + 10, r.getWidth() - 60));
+ 		g.setColour(useCustomTextColor ? customTextColor : TEXT_COLOR);
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->niceName, r, Justification::centred, 1);
++		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName(), r, Justification::centred, 1);
+ 	}
+ }
+ 
+@@ -93,7 +93,7 @@ void StringParameterUI::resized()
+ 	if (showLabel)
+ 	{
+ 		Font font(fontHeight);
+-		r.removeFromLeft(jmin(font.getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->niceName) + 10, r.getWidth() - 60));
++		r.removeFromLeft(jmin(font.getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName()) + 10, r.getWidth() - 60));
+ 		r.removeFromLeft(2);
+ 		valueLabel.setJustificationType(Justification::centred);
+ 	}
+diff --git a/controllable/parameter/ui/TargetParameterUI.cpp b/controllable/parameter/ui/TargetParameterUI.cpp
+index a1017e1b..a278f91e 100644
+--- a/controllable/parameter/ui/TargetParameterUI.cpp
++++ b/controllable/parameter/ui/TargetParameterUI.cpp
+@@ -43,7 +43,7 @@ TargetParameterUI::TargetParameterUI(Array<TargetParameter*> parameters, const S
+ 	targetBT->addListener(this);
+ 	setRepaintsOnMouseActivity(true);
+ 
+-	label.setFont(label.getFont().withHeight(14));
++	GlobalSettings::setUIFont(label, 14);
+ 	updateLabel();
+ 	label.setInterceptsMouseClicks(false, false);
+ 	addAndMakeVisible(label);
+@@ -218,7 +218,7 @@ void TargetParameterUI::updateLabel()
+ void TargetParameterUI::updateUIParamsInternal()
+ {
+ 	if (customTextSize > 0) label.setFont(customTextSize);
+-	else label.setFont(label.getFont().withHeight(14));
++	else GlobalSettings::setUIFont(label, 14);
+ 	if (useCustomShowLearnButton)
+ 	{
+ 		if (listeningToNextChangeBT != nullptr) listeningToNextChangeBT->setVisible(customShowLearnButton);
+diff --git a/controllable/parameter/ui/TripleSliderUI.cpp b/controllable/parameter/ui/TripleSliderUI.cpp
+index 8b7d3b7f..15dfab0c 100644
+--- a/controllable/parameter/ui/TripleSliderUI.cpp
++++ b/controllable/parameter/ui/TripleSliderUI.cpp
+@@ -70,7 +70,7 @@ TripleSliderUI::TripleSliderUI(Array<Point3DParameter*> parameters) :
+ 	addAndMakeVisible(ySlider.get());
+ 	addAndMakeVisible(zSlider.get());
+ 
+-	setSize(200, GlobalSettings::getInstance()->fontSize->floatValue() + 4);//default size
++	setSize(200, GlobalSettings::getUIFontSize(14.0f) + 4);//default size
+ 
+ 	updateUIParams(); //force update
+ }
+@@ -108,10 +108,10 @@ void TripleSliderUI::paint(Graphics& g)
+ 	if (showLabel)
+ 	{
+ 		juce::Rectangle<int> r = getLocalBounds();
+-		g.setFont(jlimit(12, 40, jmin(r.getHeight(), r.getWidth()) - 16));
+-		r = r.removeFromLeft(jmin(g.getCurrentFont().getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->niceName) + 10, r.getWidth() - 60));
++		g.setFont(GlobalSettings::getUIFont((float) jlimit(12, 40, jmin(r.getHeight(), r.getWidth()) - 16)));
++		r = r.removeFromLeft(jmin(g.getCurrentFont().getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName()) + 10, r.getWidth() - 60));
+ 		g.setColour(useCustomTextColor ? customTextColor : TEXT_COLOR);
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->niceName, r, Justification::centred, 1);
++		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName(), r, Justification::centred, 1);
+ 	}
+ }
+ 
+@@ -122,7 +122,7 @@ void TripleSliderUI::resized()
+ 	if (showLabel)
+ 	{
+ 		Font font(jlimit(12, 40, jmin(r.getHeight(), r.getWidth()) - 16));
+-		r.removeFromLeft(jmin(font.getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->niceName) + 10, r.getWidth() - 60));
++		r.removeFromLeft(jmin(font.getStringWidth(customLabel.isNotEmpty() ? customLabel : parameter->getDisplayName()) + 10, r.getWidth() - 60));
+ 		r.removeFromLeft(2);
+ 	}
+ 
+diff --git a/controllable/ui/ControllableEditor.cpp b/controllable/ui/ControllableEditor.cpp
+index cc28a269..8f3d2eec 100644
+--- a/controllable/ui/ControllableEditor.cpp
++++ b/controllable/ui/ControllableEditor.cpp
+@@ -26,8 +26,8 @@ ControllableEditor::ControllableEditor(Array<Controllable*> controllables, bool
+ 	addAndMakeVisible(&label);
+ 	label.setJustificationType(Justification::left);
+ 	label.setBorderSize(BorderSize<int>(0));
+-	label.setFont(label.getFont().withHeight(GlobalSettings::getInstance()->fontSize->floatValue()));
+-	label.setText(controllable->niceName, dontSendNotification);
++	GlobalSettings::setUIFont(label, 14.0f);
++	label.setText(controllable->getDisplayName(), dontSendNotification);
+ 	label.setTooltip(ui->tooltip);
+ 	label.setEditable(controllable->userCanChangeName);
+ 	label.addListener(this);
+@@ -68,7 +68,7 @@ ControllableEditor::ControllableEditor(Array<Controllable*> controllables, bool
+ 	baseHeight = ui->getHeight();
+ 	if (baseHeight == 0)
+ 	{
+-		baseHeight = GlobalSettings::getInstance()->fontSize->floatValue() + 4;
++		baseHeight = (int) GlobalSettings::getUIFontSize(14.0f) + 4;
+ 	}
+ 	setSize(100, baseHeight);
+ 
+@@ -232,7 +232,7 @@ void ControllableEditor::newMessage(const Controllable::ControllableEvent& e)
+ 	case Controllable::ControllableEvent::NAME_CHANGED:
+ 		if (!isMultiEditing())
+ 		{
+-			label.setText(controllable->niceName, dontSendNotification);
++			label.setText(controllable->getDisplayName(), dontSendNotification);
+ 		}
+ 		break;
+ 
+diff --git a/controllable/ui/ControllableUI.cpp b/controllable/ui/ControllableUI.cpp
+index 8b4d8550..89f743be 100644
+--- a/controllable/ui/ControllableUI.cpp
++++ b/controllable/ui/ControllableUI.cpp
+@@ -21,7 +21,7 @@ std::function<bool(ControllableUI*, int)> ControllableUI::handleCustomContextMen
+ std::function<void(ControllableUI*)> ControllableUI::customShowEditWindowFunction = nullptr;
+ 
+ ControllableUI::ControllableUI(Array<Controllable*> controllables) :
+-	Component(controllables.size() > 0 ? controllables[0]->niceName : "[notset]"),
++	Component(controllables.size() > 0 ? controllables[0]->getDisplayName() : juce::translate("[notset]")),
+ 	controllables(Inspectable::getWeakArray(controllables)),
+ 	controllable(controllables.size() > 0 ? controllables[0] : nullptr),
+ 	showLabel(true),
+@@ -143,20 +143,20 @@ void ControllableUI::showContextMenu()
+ 	if (controllable->userCanSetReadOnly)
+ 	{
+ 		p->addSeparator();
+-		p->addItem(-11, "Read Only", true, controllable->isControllableFeedbackOnly);
++		p->addItem(-11, juce::translate("Read Only"), true, controllable->isControllableFeedbackOnly);
+ 	}
+ 
+ 	if (controllable->canBeDisabledByUser)
+ 	{
+ 		p->addSeparator();
+-		p->addItem(-12, "Enabled", true, controllable->enabled);
++		p->addItem(-12, juce::translate("Enabled"), true, controllable->enabled);
+ 	}
+ 
+ 	if (controllable->includeInScriptObject)
+ 	{
+ 		p->addSeparator();
+-		if (showOSCControlAddressOption) p->addItem(-1, "Copy OSC Control Address");
+-		if (showScriptControlAddressOption) p->addItem(-2, "Copy Script Control Address");
++		if (showOSCControlAddressOption) p->addItem(-1, juce::translate("Copy OSC Control Address"));
++		if (showScriptControlAddressOption) p->addItem(-2, juce::translate("Copy Script Control Address"));
+ 	}
+ 
+ 
+@@ -172,7 +172,7 @@ void ControllableUI::showContextMenu()
+ 			controllable->type == Controllable::COLOR ||
+ 			controllable->type == Controllable::BOOL)
+ 		{
+-			p->addItem(-10, "Watch this with The Detective");
++			p->addItem(-10, juce::translate("Watch this with The Detective"));
+ 		}
+ 	}
+ 
+@@ -183,14 +183,14 @@ void ControllableUI::showContextMenu()
+ 		for (auto& pa : ParrotManager::getInstance()->items)
+ 		{
+ 			bool isInParrot = pa->getTargetForControllable(controllable) != nullptr;
+-			parrotMenu.addItem(index + 20000, pa->niceName, true, isInParrot);
++			parrotMenu.addItem(index + 20000, pa->getDisplayName(), true, isInParrot);
+ 			index++;
+ 		}
+ 
+ 		if (index > 0) parrotMenu.addSeparator();
+-		parrotMenu.addItem(19999, "Create new Parrot");
++		parrotMenu.addItem(19999, juce::translate("Create new Parrot"));
+ 
+-		p->addSubMenu("Set in Parrot", parrotMenu);
++		p->addSubMenu(juce::translate("Set in Parrot"), parrotMenu);
+ 	}
+ 
+ 
+@@ -200,14 +200,14 @@ void ControllableUI::showContextMenu()
+ 		int index = 0;
+ 		for (auto& di : DashboardManager::getInstance()->items)
+ 		{
+-			dashboardMenu.addItem(index + 10000, di->niceName);
++			dashboardMenu.addItem(index + 10000, di->getDisplayName());
+ 			index++;
+ 		}
+ 
+ 		if (index > 0) dashboardMenu.addSeparator();
+-		dashboardMenu.addItem(9999, "Create new Dashboard");
++		dashboardMenu.addItem(9999, juce::translate("Create new Dashboard"));
+ 
+-		p->addSubMenu("Send to Dashboard", dashboardMenu);
++		p->addSubMenu(juce::translate("Send to Dashboard"), dashboardMenu);
+ 	}
+ 
+ 
+@@ -396,7 +396,7 @@ void ControllableUI::updateTooltip()
+ 	}
+ 	else
+ 	{
+-		tooltip = controllable->description + "\nControl Address : " + controllable->controlAddress;
++		tooltip = controllable->getDisplayDescription() + "\n" + juce::translate("Control Address") + " : " + controllable->controlAddress;
+ 		if (controllable->type != Controllable::Type::TRIGGER) tooltip += " (" + controllable->argumentsDescription + ")";
+ 		if (controllable->isControllableFeedbackOnly) tooltip += " (read only)";
+ 	}
+diff --git a/controllable/ui/GenericControllableContainerEditor.cpp b/controllable/ui/GenericControllableContainerEditor.cpp
+index 4cf8867d..80056bfb 100644
+--- a/controllable/ui/GenericControllableContainerEditor.cpp
++++ b/controllable/ui/GenericControllableContainerEditor.cpp
+@@ -13,11 +13,11 @@
+ 
+ GenericControllableContainerEditor::GenericControllableContainerEditor(Array<ControllableContainer*> containers, bool isRoot, bool buildAtCreation) :
+ 	InspectableEditor(Inspectable::getArrayAs<ControllableContainer, Inspectable>(containers), isRoot),
+-	headerHeight(GlobalSettings::getInstance()->fontSize->floatValue() + 8),
++	headerHeight(GlobalSettings::getUIFontSize(14.0f) + 8),
+ 	isRebuilding(false),
+ 	prepareToAnimate(false),
+ 	contourColor(BG_COLOR.brighter(.3f)),
+-	containerLabel("containerLabel", dynamic_cast<ControllableContainer*>(inspectable.get())->niceName),
++	containerLabel("containerLabel", dynamic_cast<ControllableContainer*>(inspectable.get())->getDisplayName()),
+ 	containers(containers),
+ 	customCreateEditorForControllableFunc(nullptr),
+ 	customCreateEditorForContainerFunc(nullptr),
+@@ -29,7 +29,7 @@ GenericControllableContainerEditor::GenericControllableContainerEditor(Array<Con
+ 	container->addAsyncContainerListener(this);
+ 	addAndMakeVisible(containerLabel);
+ 
+-	containerLabel.setFont(containerLabel.getFont().withHeight(GlobalSettings::getInstance()->fontSize->floatValue()));
++	GlobalSettings::setUIFont(containerLabel, 14.0f);
+ 
+ 	containerLabel.setColour(containerLabel.backgroundWhenEditingColourId, Colours::black);
+ 	containerLabel.setColour(containerLabel.textWhenEditingColourId, Colours::white);
+@@ -210,7 +210,7 @@ void GenericControllableContainerEditor::showContextMenu()
+ 		int index = 0;
+ 		for (auto& di : DashboardManager::getInstance()->items)
+ 		{
+-			dashboardMenu.addItem(index + 10000, di->niceName);
++			dashboardMenu.addItem(index + 10000, di->getDisplayName());
+ 			index++;
+ 		}
+ 
+@@ -556,7 +556,7 @@ void GenericControllableContainerEditor::newMessage(const ContainerAsyncEvent& p
+ 		break;
+ 
+ 	case ContainerAsyncEvent::ChildAddressChanged:
+-		containerLabel.setText(container->niceName, dontSendNotification);
++		containerLabel.setText(container->getDisplayName(), dontSendNotification);
+ 		resized();
+ 		break;
+ 
+diff --git a/controllable/ui/TriggerBlinkUI.cpp b/controllable/ui/TriggerBlinkUI.cpp
+index 478e03d0..1bee4c3b 100644
+--- a/controllable/ui/TriggerBlinkUI.cpp
++++ b/controllable/ui/TriggerBlinkUI.cpp
+@@ -51,9 +51,9 @@ void TriggerBlinkUI::paint(Graphics& g)
+ 	if (showLabel)
+ 	{
+ 		juce::Rectangle<int> tr = getLocalBounds().reduced(2);
+-		g.setFont(jlimit(12, 40, jmin(tr.getHeight(), tr.getWidth()) - 16));
++		g.setFont(GlobalSettings::getUIFont((float) jlimit(12, 40, jmin(tr.getHeight(), tr.getWidth()) - 16)));
+ 		g.setColour(useCustomTextColor ? customTextColor : TEXT_COLOR);
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : trigger->niceName, tr, Justification::centred, 1);
++	g.drawFittedText(customLabel.isNotEmpty() ? customLabel : trigger->getDisplayName(), tr, Justification::centred, 1);
+ 	}
+ }
+ 
+diff --git a/controllable/ui/TriggerButtonUI.cpp b/controllable/ui/TriggerButtonUI.cpp
+index cb674ab6..faba0e50 100644
+--- a/controllable/ui/TriggerButtonUI.cpp
++++ b/controllable/ui/TriggerButtonUI.cpp
+@@ -14,7 +14,8 @@ TriggerButtonUI::TriggerButtonUI(Array<Trigger *> triggers) :
+     TriggerUI(triggers),
+ 	drawTriggering(false)
+ {
+-	setSize(Font(12).getStringWidth(triggers[0]->niceName)+4, GlobalSettings::getInstance()->fontSize->floatValue() + 4);
++	setSize(GlobalSettings::getUIFont(12).getStringWidth(triggers[0]->getDisplayName()) + 4,
++		GlobalSettings::getUIFontSize(14.0f) + 4);
+ 	setRepaintsOnMouseActivity(isInteractable());
+ }
+ 
+@@ -84,7 +85,7 @@ void TriggerButtonUI::paint(Graphics& g)
+ 		float fontSize = customTextSize > 0 ? customTextSize : jlimit(10, 40, jmin(tr.getHeight() - 4, tr.getWidth()) - 16);
+ 		g.setFont(fontSize);
+ 		g.setColour(useCustomTextColor ? customTextColor : TEXT_COLOR);
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : trigger->niceName, tr, Justification::centred, 1);
++	g.drawFittedText(customLabel.isNotEmpty() ? customLabel : trigger->getDisplayName(), tr, Justification::centred, 1);
+ 	}
+ }
+ 
+@@ -94,4 +95,4 @@ void TriggerButtonUI::timerCallback()
+ 	drawTriggering = false;
+ 	repaint();
+ 	stopTimer();
+-}
+\ No newline at end of file
++}
+diff --git a/controllable/ui/TriggerImageUI.cpp b/controllable/ui/TriggerImageUI.cpp
+index 5a8abdb7..81780b63 100644
+--- a/controllable/ui/TriggerImageUI.cpp
++++ b/controllable/ui/TriggerImageUI.cpp
+@@ -51,10 +51,11 @@ void TriggerImageUI::paint(Graphics & g)
+ 	if (showLabel)
+ 	{
+ 		juce::Rectangle<int> tr = getLocalBounds().reduced(2);
+-		float fontSize = customTextSize > 0 ? customTextSize : jlimit(10, 40, jmin(tr.getHeight() - 4, tr.getWidth()) - 16);
++		float fontSize = customTextSize > 0 ? GlobalSettings::getUIFontSize((float) customTextSize)
++			: GlobalSettings::getUIFontSize((float) jlimit(10, 40, jmin(tr.getHeight() - 4, tr.getWidth()) - 16));
+ 		g.setFont(fontSize);
+ 		g.setColour(useCustomTextColor ? customTextColor : TEXT_COLOR);
+-		g.drawFittedText(customLabel.isNotEmpty() ? customLabel : trigger->niceName, tr, Justification::centred, 1);
++	g.drawFittedText(customLabel.isNotEmpty() ? customLabel : trigger->getDisplayName(), tr, Justification::centred, 1);
+ 	}
+ }
+ 
+diff --git a/controllable/ui/TriggerUI.cpp b/controllable/ui/TriggerUI.cpp
+index e7ea722f..48d8c6cc 100644
+--- a/controllable/ui/TriggerUI.cpp
++++ b/controllable/ui/TriggerUI.cpp
+@@ -14,7 +14,7 @@ TriggerUI::TriggerUI(Array<Trigger*> triggers) :
+ 	trigger(triggers.size() > 0 ? triggers[0] : nullptr),
+ 	useCustomBGColor(false)
+ {
+-	setSize(80, GlobalSettings::getInstance()->fontSize->floatValue() + 4);
++	setSize(80, GlobalSettings::getUIFontSize(14.0f) + 4);
+ 	for (auto& t : triggers) t->addAsyncTriggerListener(this);
+ }
+ 
+diff --git a/help/HelpPanel.cpp b/help/HelpPanel.cpp
+index e42cf9ad..c59992ad 100644
+--- a/help/HelpPanel.cpp
++++ b/help/HelpPanel.cpp
+@@ -15,11 +15,11 @@ HelpPanel::HelpPanel(const String &name) :
+ 	helpLabel("HelpLabel")
+ {
+ 	helpLabel.setJustificationType(Justification::topLeft);
+-	helpLabel.setFont(14);
++	GlobalSettings::setUIFont(helpLabel, 14);
+ 
+ 	if (GlobalSettings::getInstance()->helpLanguage->getValueData().toString() == "cn")
+ 	{
+-		helpLabel.setFont(16);
++		GlobalSettings::setUIFont(helpLabel, 16);
+ 
+ 		Font font = helpLabel.getFont();
+ 		String fontName;
+diff --git a/inspectable/dashboard/ui/DashboardInspectableItemUI.cpp b/inspectable/dashboard/ui/DashboardInspectableItemUI.cpp
+index d7f72133..feb42531 100644
+--- a/inspectable/dashboard/ui/DashboardInspectableItemUI.cpp
++++ b/inspectable/dashboard/ui/DashboardInspectableItemUI.cpp
+@@ -19,7 +19,7 @@ void DashboardInspectableItemUI::paint(Graphics& g)
+ 	{
+ 		g.fillAll(Colours::white.withAlpha(.1f));
+ 		g.setColour(RED_COLOR);
+-		g.setFont(14);
++		g.setFont(GlobalSettings::getUIFont(14));
+ 		g.drawFittedText("#Missing : " + inspectableItem->inspectableGhostAddress, getLocalBounds(), Justification::centred, 3);
+ 	}
+ }
+@@ -32,4 +32,4 @@ void DashboardInspectableItemUI::newMessage(const DashboardInspectableItem::Insp
+ 		inspectableChanged();
+ 
+ 	}
+-}
+\ No newline at end of file
++}
+diff --git a/inspectable/ui/Inspector.cpp b/inspectable/ui/Inspector.cpp
+index 272a722f..ef60bafc 100644
+--- a/inspectable/ui/Inspector.cpp
++++ b/inspectable/ui/Inspector.cpp
+@@ -47,7 +47,7 @@ void Inspector::paint(Graphics& g)
+ 	{
+ 		g.setColour(Colours::white.withAlpha(.4f));
+ 		g.setFont(jmin(getHeight() - 2, 14));
+-		String text = "Select an object to edit its parameters here";
++		String text = juce::translate("Select an object to edit its parameters here");
+ 		if (text.isNotEmpty()) g.drawFittedText(text, getLocalBounds(), Justification::centred, 3);
+ 	}
+ }
+diff --git a/logger/ui/CustomLoggerUI.cpp b/logger/ui/CustomLoggerUI.cpp
+index 39e41fa9..9fdbe4e8 100644
+--- a/logger/ui/CustomLoggerUI.cpp
++++ b/logger/ui/CustomLoggerUI.cpp
+@@ -428,7 +428,7 @@ void CustomLoggerUI::LogList::paintCell(Graphics& g,
+ 
+ void CustomLoggerUI::LogList::refreshFont()
+ {
+-	logFont = Font(12.0f);
++	logFont = GlobalSettings::getUIFont(12.0f);
+ }
+ 
+ String CustomLoggerUI::LogList::getCellTooltip(int rowNumber, int /*columnId*/)
+diff --git a/manager/BaseManager.h b/manager/BaseManager.h
+index 95c5e840..836fab11 100644
+--- a/manager/BaseManager.h
++++ b/manager/BaseManager.h
+@@ -994,7 +994,7 @@ juce::PopupMenu BaseManager<T>::getItemsMenu(int startID)
+ 	for (int j = 0; j < numValues; j++)
+ 	{
+ 		T* c = items[j];
+-		menu.addItem(startID + j, c->niceName);
++		menu.addItem(startID + j, c->getDisplayName());
+ 	}
+ 	return menu;
+ }
+diff --git a/manager/ui/BaseItemUI.h b/manager/ui/BaseItemUI.h
+index f18ce319..107f18a9 100644
+--- a/manager/ui/BaseItemUI.h
++++ b/manager/ui/BaseItemUI.h
+@@ -136,7 +136,7 @@ BaseItemUI<T>::BaseItemUI(T* _item, Direction _resizeDirection, bool showMiniMod
+ 	BaseItemMinimalUI<T>(_item),
+ 	margin(3),
+ 	minContentHeight(2),
+-	headerHeight(GlobalSettings::getInstance()->fontSize->floatValue() + 2),
++	headerHeight(GlobalSettings::getUIFontSize(14.0f) + 2),
+ 	headerGap(2),
+ 	showEnableBT(true),
+ 	showRemoveBT(true),
+@@ -144,9 +144,9 @@ BaseItemUI<T>::BaseItemUI(T* _item, Direction _resizeDirection, bool showMiniMod
+ 	resizeDirection(_resizeDirection),
+ 	resizerWidth(0),
+ 	resizerHeight(0),
+-	resizer(nullptr),
+-	itemLabel("itemLabel", dynamic_cast<BaseItem*>(this->inspectable.get())->niceName)
+-{
++	resizer(nullptr),
++	itemLabel("itemLabel", dynamic_cast<BaseItem*>(this->inspectable.get())->getDisplayName())
++{
+ 
+ 	this->setName(this->baseItem->niceName);
+ 
+@@ -157,7 +157,7 @@ BaseItemUI<T>::BaseItemUI(T* _item, Direction _resizeDirection, bool showMiniMod
+ 	itemLabel.setColour(itemLabel.textWhenEditingColourId, juce::Colours::white);
+ 	itemLabel.setColour(juce::CaretComponent::caretColourId, juce::Colours::orange);
+ 
+-	itemLabel.setFont(GlobalSettings::getInstance()->fontSize->floatValue());
++	GlobalSettings::setUIFont(itemLabel, 14.0f);
+ 	itemLabel.setJustificationType(juce::Justification::centredLeft);
+ 
+ 	itemLabel.setEditable(false, this->baseItem->nameCanBeChangedByUser);
+@@ -498,7 +498,7 @@ void BaseItemUI<T>::labelTextChanged(juce::Label* l)
+ {
+ 	if (l == &itemLabel)
+ 	{
+-		if (l->getText().isEmpty()) itemLabel.setText(this->baseItem->niceName, juce::dontSendNotification); //avoid setting empty names
++		if (l->getText().isEmpty()) itemLabel.setText(this->baseItem->getDisplayName(), juce::dontSendNotification); //avoid setting empty names
+ 		else this->baseItem->setUndoableNiceName(l->getText());
+ 		resized();
+ 	}
+@@ -531,7 +531,7 @@ template<class T>
+ void BaseItemUI<T>::containerChildAddressChangedAsync(ControllableContainer*)
+ {
+ 
+-	itemLabel.setText(this->baseItem->niceName, juce::dontSendNotification);
++	itemLabel.setText(this->baseItem->getDisplayName(), juce::dontSendNotification);
+ }
+ 
+ template<class T>
+@@ -549,8 +549,8 @@ void BaseItemUI<T>::newMessage(const Parameter::ParameterEvent& e)
+ 		if (Engine::mainEngine->isLoadingFile || Engine::mainEngine->isClearing) return;
+ 
+ 		bool isDefaultHeight = headerHeight == itemLabel.getFont().getHeight() + 2;
+-		itemLabel.setFont(GlobalSettings::getInstance()->fontSize->floatValue());
+-		if (isDefaultHeight) headerHeight = GlobalSettings::getInstance()->fontSize->floatValue() + 2;
++		GlobalSettings::setUIFont(itemLabel, 14.0f);
++		if (isDefaultHeight) headerHeight = GlobalSettings::getUIFontSize(14.0f) + 2;
+ 		resized();
+ 	}
+ }
+diff --git a/manager/ui/BaseManagerUI.h b/manager/ui/BaseManagerUI.h
+index 1abf8802..d0917735 100644
+--- a/manager/ui/BaseManagerUI.h
++++ b/manager/ui/BaseManagerUI.h
+@@ -388,7 +388,7 @@ void BaseManagerUI<M, T, U>::setShowSearchBar(bool value)
+ 		searchBar->setColour(searchBar->backgroundColourId, BG_COLOR.darker(.1f).withAlpha(.7f));
+ 		searchBar->setColour(searchBar->outlineColourId, BG_COLOR.brighter(.1f));
+ 		searchBar->setColour(searchBar->textColourId, TEXT_COLOR.darker(.3f));
+-		searchBar->setFont(10);
++		GlobalSettings::setUIFont(*searchBar, 10);
+ 		searchBar->setMultiLine(false);
+ 		searchBar->setColour(juce::CaretComponent::caretColourId, juce::Colours::orange);
+ 		//searchBar->edit(true);
+@@ -523,14 +523,15 @@ void BaseManagerUI<M, T, U>::paint(juce::Graphics& g)
+ 		g.setColour(contourColor);
+ 		g.drawRoundedRectangle(r.toFloat(), 4, 2);
+ 
+-		g.setFont(g.getCurrentFont().withHeight(labelHeight));
+-		float textWidth = g.getCurrentFont().getStringWidth(managerUIName);
++		g.setFont(GlobalSettings::getUIFont((float) labelHeight));
++		const auto displayManagerUIName = juce::translate(managerUIName);
++		float textWidth = g.getCurrentFont().getStringWidth(displayManagerUIName);
+ 		juce::Rectangle<int> tr = r.removeFromTop(labelHeight + 2).reduced((r.getWidth() - textWidth) / 2, 0).expanded(4, 0);
+ 		g.fillRect(tr);
+ 		juce::Colour textColor = contourColor.withBrightness(contourColor.getBrightness() > .5f ? .1f : .9f).withAlpha(1.f);
+ 		g.setColour(textColor);
+ 
+-		g.drawText(managerUIName, tr, juce::Justification::centred, 1);
++		g.drawText(displayManagerUIName, tr, juce::Justification::centred, 1);
+ 	}
+ 	else
+ 	{
+@@ -577,8 +578,8 @@ void BaseManagerUI<M, T, U>::paint(juce::Graphics& g)
+ 	if (!this->inspectable.wasObjectDeleted() && this->manager->items.size() == 0 && noItemText.isNotEmpty())
+ 	{
+ 		g.setColour(juce::Colours::white.withAlpha(.4f));
+-		g.setFont(juce::jmin(getHeight() - 2, 14));
+-		g.drawFittedText(noItemText, getLocalBounds().reduced(5), juce::Justification::centred, 6);
++		g.setFont(GlobalSettings::getUIFont((float) juce::jmin(getHeight() - 2, 14)));
++		g.drawFittedText(juce::translate(noItemText), getLocalBounds().reduced(5), juce::Justification::centred, 6);
+ 	}
+ }
+ 
+@@ -937,7 +938,7 @@ void BaseManagerUI<M, T, U>::showMenuAndAddItem(bool isFromAddButton, juce::Poin
+ 		}
+ 
+ 		juce::PopupMenu p;
+-		p.addItem(1, addItemText);
++		p.addItem(1, juce::translate(addItemText));
+ 
+ 		addMenuExtraItems(p, 2);
+ 
+diff --git a/manager/ui/BaseManagerViewUI.h b/manager/ui/BaseManagerViewUI.h
+index f4602452..ab5fb34b 100644
+--- a/manager/ui/BaseManagerViewUI.h
++++ b/manager/ui/BaseManagerViewUI.h
+@@ -327,8 +327,8 @@ void BaseManagerViewUI<M, T, U>::paint(juce::Graphics& g)
+ 	if (this->manager->items.size() == 0 && this->noItemText.isNotEmpty())
+ 	{
+ 		g.setColour(juce::Colours::white.withAlpha(.4f));
+-		g.setFont(16);
+-		g.drawFittedText(this->noItemText, this->getLocalBounds(), juce::Justification::centred, 6);
++		g.setFont(GlobalSettings::getUIFont(16));
++		g.drawFittedText(juce::translate(this->noItemText), this->getLocalBounds(), juce::Justification::centred, 6);
+ 	}
+ }
+ 
+diff --git a/manager/ui/GenericManagerEditor.h b/manager/ui/GenericManagerEditor.h
+index d70fdc02..292b861b 100644
+--- a/manager/ui/GenericManagerEditor.h
++++ b/manager/ui/GenericManagerEditor.h
+@@ -153,7 +153,7 @@ void GenericManagerEditor<T>::paint(juce::Graphics& g)
+ 	if (this->manager->items.size() == 0 && this->noItemText.isNotEmpty())
+ 	{
+ 		g.setColour(PANEL_COLOR.brighter(.1f));
+-		g.drawFittedText(this->noItemText, this->getContentBounds().reduced(10), juce::Justification::centred, 4);
++		g.drawFittedText(juce::translate(this->noItemText), this->getContentBounds().reduced(10), juce::Justification::centred, 4);
+ 	}
+ 
+ 	if (isDraggingOver && highlightOnDragOver)
+@@ -195,10 +195,10 @@ void GenericManagerEditor<T>::resizedInternalHeader(juce::Rectangle<int>& r)
+ template<class T>
+ void GenericManagerEditor<T>::addPopupMenuItems(juce::PopupMenu* p)
+ {
+-	p->addItem(1001, "Paste (add)");
++	p->addItem(1001, juce::translate("Paste (add)"));
+ 
+-	if (manager->managerFactory != nullptr) p->addSubMenu("Add...", manager->managerFactory->getMenu(1101));
+-	else p->addItem(1101, addItemText);
++	if (manager->managerFactory != nullptr) p->addSubMenu(juce::translate("Add..."), manager->managerFactory->getMenu(1101));
++		else p->addItem(1101, juce::translate(addItemText));
+ 
+ }
+ 
+@@ -253,7 +253,7 @@ void GenericManagerEditor<T>::showMenuAndAddItem(bool isFromAddButton)
+ 		}
+ 
+ 		juce::PopupMenu p;
+-		p.addItem(1, addItemText);
++		p.addItem(1, juce::translate(addItemText));
+ 
+ 		p.showMenuAsync(juce::PopupMenu::Options(), [this, isFromAddButton](int result)
+ 			{
+diff --git a/outliner/Outliner.cpp b/outliner/Outliner.cpp
+index 5bbbdb9a..24ceeee5 100644
+--- a/outliner/Outliner.cpp
++++ b/outliner/Outliner.cpp
+@@ -38,7 +38,7 @@ Outliner::Outliner(const String& contentName) :
+ 	searchBar.setColour(searchBar.backgroundColourId, BG_COLOR.darker(.1f).withAlpha(.7f));
+ 	searchBar.setColour(searchBar.outlineColourId, BG_COLOR.brighter(.1f));
+ 	searchBar.setColour(searchBar.textColourId, TEXT_COLOR.darker(.3f));
+-	searchBar.setFont(10);
++	GlobalSettings::setUIFont(searchBar, 10);
+ 	searchBar.setColour(CaretComponent::caretColourId, Colours::orange);
+ 	searchBar.setEditable(true);
+ 	searchBar.addListener(this);
+@@ -336,7 +336,7 @@ void Outliner::buttonClicked(Button* b)
+ OutlinerItem::OutlinerItem(WeakReference<ControllableContainer> _container, bool parentsHaveHideInRemote, bool isFiltered) :
+ 	InspectableContent(_container),
+ 	isContainer(true),
+-	itemName(_container->niceName),
++	itemName(_container->getDisplayName()),
+ 	parentsHaveHideInRemote(parentsHaveHideInRemote),
+ 	isFiltered(isFiltered),
+ 	container(_container),
+@@ -348,7 +348,7 @@ OutlinerItem::OutlinerItem(WeakReference<ControllableContainer> _container, bool
+ OutlinerItem::OutlinerItem(WeakReference<Controllable> _controllable, bool parentsHaveHideInRemote, bool isFiltered) :
+ 	InspectableContent(_controllable),
+ 	isContainer(false),
+-	itemName(_controllable->niceName),
++	itemName(_controllable->getDisplayName()),
+ 	parentsHaveHideInRemote(parentsHaveHideInRemote),
+ 	isFiltered(isFiltered),
+ 	container(nullptr),
+@@ -391,7 +391,7 @@ void OutlinerItem::childAddressChanged(ControllableContainer*)
+ {
+ 	if (isContainer)
+ 	{
+-		itemName = container->niceName;
++		itemName = container->getDisplayName();
+ 		itemListeners.call(&OutlinerItemListener::itemNameChanged);
+ 	}
+ }
+@@ -471,7 +471,7 @@ OutlinerItemComponent::OutlinerItemComponent(OutlinerItem* _item) :
+ 	if (item->isContainer) color = container->nameCanBeChangedByUser ? HIGHLIGHT_COLOR : TEXT_COLOR;
+ 	else color = BLUE_COLOR.brighter(controllable->type == Controllable::TRIGGER);
+ 
+-	label.setFont(label.getFont().withHeight(12));
++	GlobalSettings::setUIFont(label, 12);
+ 	label.setColour(label.backgroundWhenEditingColourId, Colours::white);
+ 	label.setColour(Label::textColourId, inspectable->isSelected ? Colours::grey.darker() : color);
+ 
+@@ -632,7 +632,7 @@ void OutlinerItemComponent::inspectableSelectionChanged(Inspectable* i)
+ 
+ void OutlinerItemComponent::itemNameChanged()
+ {
+-	label.setText(item->container->niceName, dontSendNotification);
++	label.setText(item->container->getDisplayName(), dontSendNotification);
+ }
+ 
+ void OutlinerItemComponent::hideRemoteChanged()
+diff --git a/settings/GlobalSettings.cpp b/settings/GlobalSettings.cpp
+index d1bd1a7d..827bc465 100644
+--- a/settings/GlobalSettings.cpp
++++ b/settings/GlobalSettings.cpp
+@@ -19,6 +19,66 @@ namespace
+ {
+ using SafeComponent = Component::SafePointer<Component>;
+ 
++const juce::Identifier globalFontBaseHeightProperty("organicuiGlobalFontBaseHeight");
++
++void captureGlobalFontBase(Component& component)
++{
++	if (auto* label = dynamic_cast<Label*>(&component))
++	{
++		auto& properties = label->getProperties();
++		if (!properties.contains(globalFontBaseHeightProperty))
++			properties.set(globalFontBaseHeightProperty, label->getFont().getHeight());
++	}
++	else if (auto* editor = dynamic_cast<TextEditor*>(&component))
++	{
++		auto& properties = editor->getProperties();
++		if (!properties.contains(globalFontBaseHeightProperty))
++			properties.set(globalFontBaseHeightProperty, editor->getFont().getHeight());
++	}
++
++	for (int i = 0; i < component.getNumChildComponents(); ++i)
++		if (auto* child = component.getChildComponent(i)) captureGlobalFontBase(*child);
++}
++
++void applyGlobalFontToComponent(Component& component)
++{
++	if (auto* label = dynamic_cast<Label*>(&component))
++	{
++		auto& properties = label->getProperties();
++		if (!properties.contains(globalFontBaseHeightProperty))
++			properties.set(globalFontBaseHeightProperty, label->getFont().getHeight());
++
++		const float baseHeight = (float) properties[globalFontBaseHeightProperty];
++		label->setFont(label->getFont().withHeight(GlobalSettings::getUIFontSize(baseHeight)));
++	}
++	else if (auto* editor = dynamic_cast<TextEditor*>(&component))
++	{
++		auto& properties = editor->getProperties();
++		if (!properties.contains(globalFontBaseHeightProperty))
++			properties.set(globalFontBaseHeightProperty, editor->getFont().getHeight());
++
++		const float baseHeight = (float) properties[globalFontBaseHeightProperty];
++		editor->setFont(editor->getFont().withHeight(GlobalSettings::getUIFontSize(baseHeight)));
++	}
++}
++
++void applyGlobalFontToComponentTree(Component& component)
++{
++	SafeComponent safeComponent(&component);
++	applyGlobalFontToComponent(component);
++
++	if (safeComponent == nullptr) return;
++
++	std::vector<SafeComponent> children;
++	children.reserve((size_t)component.getNumChildComponents());
++
++	for (int i = 0; i < component.getNumChildComponents(); ++i)
++		children.emplace_back(component.getChildComponent(i));
++
++	for (auto& child : children)
++		if (child != nullptr) applyGlobalFontToComponentTree(*child);
++}
++
+ void relayoutComponentTree(Component& component)
+ {
+ 	SafeComponent safeComponent(&component);
+@@ -49,10 +109,14 @@ void relayoutAndRepaintTopLevelWindows()
+ 	for (int i = 0; i < TopLevelWindow::getNumTopLevelWindows(); ++i)
+ 		windows.emplace_back(TopLevelWindow::getTopLevelWindow(i));
+ 
++	for (auto& window : windows)
++		if (window != nullptr) captureGlobalFontBase(*window);
++
+ 	for (auto& window : windows)
+ 	{
+ 		if (window == nullptr) continue;
+ 
++		applyGlobalFontToComponentTree(*window);
+ 		relayoutComponentTree(*window);
+ 
+ 		if (window != nullptr)
+@@ -65,6 +129,7 @@ GlobalSettings::GlobalSettings() :
+ 	ControllableContainer("Global Settings"),
+ 	startupCC("Startup and Update"),
+ 	interfaceCC("Interface"),
++	interfaceLanguage(nullptr),
+ 	saveLoadCC("Save and Load"),
+ 	editingCC("Editing"),
+ 	launchArguments("Launch Arguments")
+@@ -103,14 +168,32 @@ GlobalSettings::GlobalSettings() :
+ 
+ 	addChildControllableContainer(&startupCC);
+ 
++	// Create the interface language parameter with the rest of the fixed
++	// interface settings.  Creating it later from the application class makes
++	// it persist correctly but leaves it out of an already-built settings UI.
++	interfaceLanguage = interfaceCC.addEnumParameter("Interface Language", "Select the language used by the Chataigne interface");
++	interfaceLanguage->addOption("English", "en")
++		->addOption("Chinese (Simplified)", "zh_CN", false)
++		->addOption("Chinese (Simplified) + English", "zh_CN_bilingual", false);
++
+ 	closeToSystemTray = interfaceCC.addBoolParameter("Close to system tray", "If checked, closing the main window will remove the window from desktop and put it on the system tray, but the app will still be running", false);
++	interfaceScale = interfaceCC.addIntParameter("Interface scale", "Overall interface scale percentage for high-DPI displays. Changes are applied immediately.", 100, 50, 300);
+ 	fontFamily = interfaceCC.addEnumParameter("Font family", "Typeface used by the interface. Changes are applied immediately; unavailable fonts fall back to the system default.");
+ 	fontFamily->addOption("System default", "");
+ 	StringArray fontNames = Font::findAllTypefaceNames();
+ 	fontNames.sortNatural();
+ 	for (const auto& fontName : fontNames) fontFamily->addOption(fontName, fontName, false);
+ 
+-	fontSize = interfaceCC.addIntParameter("Font size", "Global font size, may be altered in some cases but this is used as a reference", 14, 0, 30);
++	fontSize = interfaceCC.addIntParameter("Font size", "Global interface font size. All standard interface text follows this setting.", 14, 8, 40);
++	fontWeight = interfaceCC.addEnumParameter("Font weight", "Global interface font weight. Fonts without the selected weight use their closest available style.");
++	fontWeight->addOption("Regular", "Regular")
++		->addOption("Medium", "Medium")
++		->addOption("Semibold", "Semibold")
++		->addOption("Bold", "Bold")
++		->addOption("Heavy", "Heavy")
++		->addOption("Light", "Light")
++		->addOption("Thin", "Thin")
++		->addOption("Ultralight", "Ultralight");
+ 	bool reloadFontRendererByDefault = false;
+ #if JUCE_WINDOWS
+ 	reloadFontRendererByDefault = true;
+@@ -209,7 +292,11 @@ void GlobalSettings::onControllableFeedbackUpdate(ControllableContainer* cc, Con
+ 	{
+ 		HelpBox::getInstance()->loadHelp();
+ 	}
+-	else if (c == fontFamily)
++	else if (c == interfaceScale)
++	{
++		applyInterfaceScale();
++	}
++	else if (c == fontFamily || c == fontSize || c == fontWeight)
+ 	{
+ 		applyFontSettings();
+ 	}
+@@ -270,7 +357,10 @@ void GlobalSettings::applyFontSettings(bool clearCache)
+ 	const String selectedFont = fontFamily != nullptr ? fontFamily->getValueData().toString() : String();
+ 	auto apply = [selectedFont, clearCache]()
+ 		{
+-			if (clearCache) Typeface::clearTypefaceCache();
++			// Font weight is resolved through LookAndFeelOO::getTypefaceForFont().
++			// Clear the cache for both family and weight changes so existing Font
++			// instances cannot keep the previous native face.
++			Typeface::clearTypefaceCache();
+ 			LookAndFeel::getDefaultLookAndFeel().setDefaultSansSerifTypefaceName(selectedFont);
+ 
+ 			for (int i = 0; i < TopLevelWindow::getNumTopLevelWindows(); ++i)
+@@ -296,6 +386,67 @@ void GlobalSettings::applyFontSettings(bool clearCache)
+ 		apply();
+ }
+ 
++float GlobalSettings::getGlobalUIScale()
++{
++	if (auto* settings = getInstanceWithoutCreating())
++		if (settings->interfaceScale != nullptr)
++			return jlimit(0.5f, 3.0f, settings->interfaceScale->intValue() / 100.0f);
++
++	return 1.0f;
++}
++
++void GlobalSettings::applyInterfaceScale()
++{
++	const float scale = getGlobalUIScale();
++	const auto apply = [scale]()
++	{
++		Desktop::getInstance().setGlobalScaleFactor(scale);
++		relayoutAndRepaintTopLevelWindows();
++	};
++
++	auto* mm = MessageManager::getInstanceWithoutCreating();
++	if (mm != nullptr && !mm->isThisTheMessageThread() && !mm->hasStopMessageBeenSent())
++		MessageManager::callAsync(apply);
++	else if (mm == nullptr || !mm->hasStopMessageBeenSent())
++		apply();
++}
++
++float GlobalSettings::getGlobalFontScale()
++{
++	if (auto* settings = getInstanceWithoutCreating())
++		if (settings->fontSize != nullptr)
++			return jlimit(0.5f, 3.0f, settings->fontSize->floatValue() / 14.0f);
++
++	return 1.0f;
++}
++
++float GlobalSettings::getUIFontSize(float baseSize)
++{
++	return jmax(0.1f, baseSize * getGlobalFontScale());
++}
++
++juce::Font GlobalSettings::getUIFont(float baseSize, int styleFlags)
++{
++	return juce::Font(getUIFontSize(baseSize), styleFlags);
++}
++
++juce::Font OrganicUIFonts::getUIFont(float baseSize, int styleFlags)
++{
++	return GlobalSettings::getUIFont(baseSize, styleFlags);
++}
++
++void GlobalSettings::setUIFont(juce::Label& label, float baseSize)
++{
++	label.getProperties().set(globalFontBaseHeightProperty, baseSize);
++	label.setFont(label.getFont().withHeight(getUIFontSize(baseSize)));
++}
++
++void GlobalSettings::setUIFont(juce::TextEditor& editor, float baseSize)
++{
++	editor.getProperties().set(globalFontBaseHeightProperty, baseSize);
++	editor.setFont(editor.getFont().withHeight(getUIFontSize(baseSize)));
++}
++
+ void GlobalSettings::scheduleFontRendererReload()
+ {
+ 	if (reloadFontRendererOnStartup == nullptr || !reloadFontRendererOnStartup->boolValue()) return;
+@@ -312,6 +463,7 @@ void GlobalSettings::loadJSONDataInternal(var data)
+ {
+ 	openSpecificFileOnStartup->setEnabled(!openLastDocumentOnStartup->boolValue());
+ 	fileToOpenOnStartup->setEnabled(openSpecificFileOnStartup->boolValue());
++	applyInterfaceScale();
+ }
+ 
+ void GlobalSettings::loadKeyMappingsFromData()
+diff --git a/settings/GlobalSettings.h b/settings/GlobalSettings.h
+index 88e10c7c..f68e5584 100644
+--- a/settings/GlobalSettings.h
++++ b/settings/GlobalSettings.h
+@@ -49,10 +49,13 @@ public:
+ 	FileParameter * fileToOpenOnStartup;
+ 
+ 	ControllableContainer interfaceCC;
++	EnumParameter* interfaceLanguage;
+ 	BoolParameter* closeToSystemTray;
+ 	BoolParameter* enableTooltips;
++	IntParameter* interfaceScale;
+ 	EnumParameter* fontFamily;
+ 	IntParameter* fontSize;
++	EnumParameter* fontWeight;
+ 	BoolParameter* reloadFontRendererOnStartup;
+ 	IntParameter* fontRendererReloadDelay;
+ 	Trigger* resetFontCache;
+@@ -92,7 +95,14 @@ public:
+ 
+ 	void onControllableFeedbackUpdate(ControllableContainer *, Controllable * c) override;
+ 	void loadJSONDataInternal(juce::var data) override;
++	static float getGlobalUIScale();
++	static float getGlobalFontScale();
++	static float getUIFontSize(float baseSize);
++	static juce::Font getUIFont(float baseSize, int styleFlags = juce::Font::plain);
++	static void setUIFont(juce::Label&, float baseSize);
++	static void setUIFont(juce::TextEditor&, float baseSize);
+ 	void applyFontSettings(bool clearCache = false);
++	void applyInterfaceScale();
+ 	void scheduleFontRendererReload();
+ 
+ 	void loadKeyMappingsFromData();
+diff --git a/ui/LookAndFeelOO.cpp b/ui/LookAndFeelOO.cpp
+index 33a2c079..b1e84ae1 100644
+--- a/ui/LookAndFeelOO.cpp
++++ b/ui/LookAndFeelOO.cpp
+@@ -13,13 +13,45 @@
+ 
+ //juce_ImplementSingleton(LookAndFeelOO);
+ 
+-LookAndFeelOO::LookAndFeelOO(){
++LookAndFeelOO::LookAndFeelOO(){
+ 
+     for (int i = 0; i < numElementsInArray (LookAndFeelHelpers::standardColours); i += 2)
+         setColour ((int) LookAndFeelHelpers::standardColours [i], Colour ((uint32) LookAndFeelHelpers::standardColours [i + 1]));
+ 
+ 	//setUsingNativeAlertWindows(true);
+-}
++}
++
++juce::Typeface::Ptr LookAndFeelOO::getTypefaceForFont(const juce::Font& font)
++{
++	// Always resolve the family through the base look-and-feel first.  The
++	// default sans-serif family is stored by LookAndFeel, not in the Font
++	// placeholder itself; creating a weighted typeface directly from that
++	// placeholder can select a Latin-only fallback and turn CJK glyphs into
++	// corrupted symbols.
++	const auto baseTypeface = juce::LookAndFeel_V4::getTypefaceForFont(font);
++	if (baseTypeface == nullptr) return baseTypeface;
++
++	if (auto* settings = GlobalSettings::getInstanceWithoutCreating())
++	{
++		// The selected weight is the global plain-text face. Explicit bold and
++		// italic styles continue to use the semantic JUCE styles requested by a
++		// control (for example, overridden parameters remain visibly bold).
++		if (settings->fontWeight != nullptr && font.getStyleFlags() == juce::Font::plain)
++		{
++			const auto selectedWeight = settings->fontWeight->getValueData().toString();
++			if (selectedWeight.isNotEmpty() && selectedWeight != "Regular")
++			{
++				auto weightedFont = font;
++				if (baseTypeface->getName().isNotEmpty())
++					weightedFont.setTypefaceName(baseTypeface->getName());
++				weightedFont.setTypefaceStyle(selectedWeight);
++				return juce::Typeface::createSystemTypefaceFor(weightedFont);
++			}
++		}
++	}
++
++	return baseTypeface;
++}
+ 
+ LookAndFeelOO::~LookAndFeelOO()  {}
+ 
+@@ -87,10 +119,10 @@ void LookAndFeelOO::drawButtonBackground (Graphics& g,
+ }
+ 
+ 
+-Font LookAndFeelOO::getTextButtonFont (TextButton&, int buttonHeight)
+-{
+-    return Font (jmin (15.0f, buttonHeight * 0.6f));
+-}
++Font LookAndFeelOO::getTextButtonFont (TextButton&, int buttonHeight)
++{
++    return GlobalSettings::getUIFont(jmin (15.0f, buttonHeight * 0.6f));
++}
+ 
+ int LookAndFeelOO::getTextButtonWidthToFitText (TextButton& b, int buttonHeight)
+ {
+@@ -159,7 +191,7 @@ void LookAndFeelOO::drawToggleButton (Graphics& g, ToggleButton& button,
+         g.drawRect (0, 0, button.getWidth(), button.getHeight());
+     }
+ 
+-    float fontSize = jmin (12.0f, button.getHeight() * 0.75f);
++    float fontSize = GlobalSettings::getUIFontSize(jmin (12.0f, button.getHeight() * 0.75f));
+     const float tickWidth = fontSize * 1.1f;
+ 
+     drawTickBox (g, button, 4.0f, (button.getHeight() - tickWidth) * 0.5f,
+@@ -207,7 +239,7 @@ void LookAndFeelOO::drawDrawableButton (Graphics& g, DrawableButton& button,
+ 
+     if (textH > 0)
+     {
+-        g.setFont ((float) textH);
++        g.setFont (GlobalSettings::getUIFont((float) textH));
+ 
+         g.setColour (button.findColour (toggleState ? DrawableButton::textColourOnId
+                                         : DrawableButton::textColourId)
+@@ -299,7 +331,7 @@ void LookAndFeelOO::drawAlertBox (Graphics& g, AlertWindow& alert,
+         }
+ 
+         GlyphArrangement ga;
+-        ga.addFittedText (Font (iconRect.getHeight() * 0.9f, Font::bold),
++        ga.addFittedText (GlobalSettings::getUIFont (iconRect.getHeight() * 0.9f, Font::bold),
+                           String::charToString ((juce_wchar) (uint8) character),
+                           (float) iconRect.getX(), (float) iconRect.getY(),
+                           (float) iconRect.getWidth(), (float) iconRect.getHeight(),
+@@ -341,15 +373,15 @@ Font LookAndFeelOO::getAlertWindowTitleFont()
+     return messageFont.withHeight (messageFont.getHeight() * 1.1f).boldened();
+ }
+ 
+-Font LookAndFeelOO::getAlertWindowMessageFont()
+-{
+-    return Font (15.0f);
+-}
+-
+-Font LookAndFeelOO::getAlertWindowFont()
+-{
+-    return Font (12.0f);
+-}
++Font LookAndFeelOO::getAlertWindowMessageFont()
++{
++    return GlobalSettings::getUIFont (15.0f);
++}
++
++Font LookAndFeelOO::getAlertWindowFont()
++{
++    return GlobalSettings::getUIFont (12.0f);
++}
+ 
+ //==============================================================================
+ void LookAndFeelOO::drawProgressBar (Graphics& g, ProgressBar& progressBar,
+@@ -405,7 +437,7 @@ void LookAndFeelOO::drawProgressBar (Graphics& g, ProgressBar& progressBar,
+     if (textToShow.isNotEmpty())
+     {
+         g.setColour (Colour::contrasting (background, foreground));
+-        g.setFont (height * 0.6f);
++        g.setFont (GlobalSettings::getUIFont (height * 0.6f));
+ 
+         g.drawText (textToShow, 0, 0, width, height, Justification::centred, false);
+     }
+@@ -726,10 +758,10 @@ void LookAndFeelOO::drawBubble (Graphics& g, BubbleComponent& comp,
+ //==============================================================================
+ 
+ void LookAndFeelOO::preparePopupMenuWindow (Component& /*newWindow*/) {};
+-Font LookAndFeelOO::getPopupMenuFont()
+-{
+-    return Font (16.0f);
+-}
++Font LookAndFeelOO::getPopupMenuFont()
++{
++    return GlobalSettings::getUIFont (16.0f);
++}
+ 
+ void LookAndFeelOO::getIdealPopupMenuItemSize (const String& text, const bool isSeparator,
+                                                 int standardMenuItemHeight, int& idealWidth, int& idealHeight)
+@@ -919,10 +951,10 @@ void LookAndFeelOO::drawMenuBarBackground (Graphics& g, int width, int height, b
+ 		g.drawLine(0, height, width, height, 2);
+ }
+ 
+-Font LookAndFeelOO::getMenuBarFont (MenuBarComponent& menuBar, int /*itemIndex*/, const String& /*itemText*/)
+-{
+-    return Font (menuBar.getHeight() * 0.7f);
+-}
++Font LookAndFeelOO::getMenuBarFont (MenuBarComponent& menuBar, int /*itemIndex*/, const String& /*itemText*/)
++{
++    return GlobalSettings::getUIFont (menuBar.getHeight() * 0.7f);
++}
+ 
+ int LookAndFeelOO::getMenuBarItemWidth (MenuBarComponent& menuBar, int itemIndex, const String& itemText)
+ {
+@@ -1051,10 +1083,10 @@ void LookAndFeelOO::drawComboBox (Graphics& g, int width, int height, const bool
+     }
+ }
+ 
+-Font LookAndFeelOO::getComboBoxFont (ComboBox& box)
+-{
+-    return Font (jmin (15.0f, box.getHeight() * 0.85f));
+-}
++Font LookAndFeelOO::getComboBoxFont (ComboBox& box)
++{
++    return Font (jmin (15.0f, box.getHeight() * 0.85f));
++}
+ 
+ Label* LookAndFeelOO::createComboBoxTextBox (ComboBox&)
+ {
+@@ -1370,7 +1402,7 @@ Label* LookAndFeelOO::createSliderTextBox (Slider& slider)
+                               ? 0.7f : 1.0f));
+     l->setColour (TextEditor::outlineColourId, slider.findColour (Slider::textBoxOutlineColourId));
+     l->setColour (TextEditor::highlightColourId, slider.findColour (Slider::textBoxHighlightColourId));
+-	l->setFont(l->getFont().withHeight(12));
++	l->setFont(l->getFont().withHeight(12));
+     return l;
+ }
+ 
+@@ -1379,10 +1411,10 @@ ImageEffectFilter* LookAndFeelOO::getSliderEffect (Slider&)
+     return nullptr;
+ }
+ 
+-Font LookAndFeelOO::getSliderPopupFont (Slider&)
+-{
+-    return Font (15.0f, Font::bold);
+-}
++Font LookAndFeelOO::getSliderPopupFont (Slider&)
++{
++    return GlobalSettings::getUIFont (15.0f, Font::bold);
++}
+ 
+ int LookAndFeelOO::getSliderPopupPlacement (Slider&)
+ {
+@@ -1491,7 +1523,7 @@ void LookAndFeelOO::drawTooltip (Graphics& g, const String& text, int width, int
+ //==============================================================================
+ Button* LookAndFeelOO::createFilenameComponentBrowseButton (const String& text)
+ {
+-    return new TextButton (text, TRANS("click to browse for a different file"));
++    return new TextButton (text, juce::translate("click to browse for a different file"));
+ }
+ 
+ void LookAndFeelOO::layoutFilenameComponent (FilenameComponent& filenameComp,
+@@ -1517,7 +1549,7 @@ void LookAndFeelOO::drawConcertinaPanelHeader (Graphics& g, const juce::Rectangl
+     g.drawRect (area);
+ 
+     g.setColour (Colours::white);
+-    g.setFont (Font (area.getHeight() * 0.7f).boldened());
++    g.setFont (GlobalSettings::getUIFont (area.getHeight() * 0.7f, Font::bold));
+     g.drawFittedText (panel.getName(), 4, 0, area.getWidth() - 6, area.getHeight(), Justification::centredLeft, 1);
+ }
+ 
+@@ -1624,7 +1656,7 @@ void LookAndFeelOO::drawDocumentWindowTitleBar (DocumentWindow& window, Graphics
+     */
+ 	g.fillAll();
+ 
+-    Font font (h * 0.65f, Font::bold);
++    Font font (GlobalSettings::getUIFont (h * 0.65f, Font::bold));
+     g.setFont (font);
+ 
+     int textW = font.getStringWidth (window.getName());
+@@ -1902,7 +1934,7 @@ int LookAndFeelOO::getTabButtonSpaceAroundImage()
+ 
+ int LookAndFeelOO::getTabButtonBestWidth (TabBarButton& button, int tabDepth)
+ {
+-    int width = Font (tabDepth * 0.6f).getStringWidth (button.getButtonText().trim())
++    int width = GlobalSettings::getUIFont (tabDepth * 0.6f).getStringWidth (button.getButtonText().trim())
+     + getTabButtonOverlap (tabDepth) * 2;
+ 
+     if (Component* const extraComponent = button.getExtraComponent())
+@@ -2031,7 +2063,7 @@ void LookAndFeelOO::drawTabButtonText (TabBarButton& button, Graphics& g, bool i
+     if (button.getTabbedButtonBar().isVertical())
+         std::swap (length, depth);
+ 
+-    Font font (depth * 0.6f);
++    Font font (GlobalSettings::getUIFont (depth * 0.6f));
+     font.setUnderline (button.hasKeyboardFocus (false));
+ 
+     AffineTransform t;
+@@ -2217,7 +2249,7 @@ void LookAndFeelOO::drawTableHeaderColumn(Graphics & g, TableHeaderComponent &,
+     }
+ 
+     g.setColour (FRONT_COLOR);
+-    g.setFont (Font (height * 0.5f, Font::bold));
++    g.setFont (GlobalSettings::getUIFont (height * 0.5f, Font::bold));
+     g.drawFittedText (columnName, area, Justification::centredLeft, 1);
+ }
+ 
+@@ -2266,7 +2298,7 @@ void LookAndFeelOO::paintToolbarButtonLabel (Graphics& g, int x, int y, int widt
+     g.setColour (component.findColour (Toolbar::labelTextColourId, true)
+                  .withAlpha (component.isEnabled() ? 1.0f : 0.25f));
+ 
+-    const float fontHeight = jmin (14.0f, height * 0.85f);
++    const float fontHeight = GlobalSettings::getUIFontSize(jmin (14.0f, height * 0.85f));
+     g.setFont (fontHeight);
+ 
+     g.drawFittedText (text,
+@@ -2287,7 +2319,7 @@ void LookAndFeelOO::drawPropertyPanelSectionHeader (Graphics& g, const String& n
+     const int textX = (int) (buttonIndent * 2.0f + buttonSize + 2.0f);
+ 
+     g.setColour (Colours::black);
+-    g.setFont (Font (height * 0.7f, Font::bold));
++    g.setFont (GlobalSettings::getUIFont (height * 0.7f, Font::bold));
+     g.drawText (name, textX, 0, width - textX - 4, height, Justification::centredLeft, true);
+ }
+ 
+@@ -2302,7 +2334,7 @@ void LookAndFeelOO::drawPropertyComponentLabel (Graphics& g, int, int height, Pr
+     g.setColour (component.findColour (PropertyComponent::labelTextColourId)
+                  .withMultipliedAlpha (component.isEnabled() ? 1.0f : 0.6f));
+ 
+-    g.setFont (jmin (height, 24) * 0.65f);
++    g.setFont (GlobalSettings::getUIFont (jmin (height, 24) * 0.65f));
+ 
+     const juce::Rectangle<int> r (getPropertyComponentContentPosition (component));
+ 
+@@ -2352,8 +2384,8 @@ AttributedString LookAndFeelOO::createFileChooserHeaderText (const String& title
+     s.setJustification (Justification::centred);
+ 
+     const Colour colour (findColour (FileChooserDialogBox::titleTextColourId));
+-    s.append (title + "\n\n", Font (17.0f, Font::bold), colour);
+-    s.append (instructions, Font (14.0f), colour);
++    s.append (title + "\n\n", GlobalSettings::getUIFont (17.0f, Font::bold), colour);
++    s.append (instructions, GlobalSettings::getUIFont (14.0f), colour);
+ 
+     return s;
+ }
+@@ -2386,7 +2418,7 @@ void LookAndFeelOO::drawFileBrowserRow(Graphics &g, int width, int height, const
+ 
+     g.setColour (fileListComp != nullptr ? fileListComp->findColour (DirectoryContentsDisplayComponent::textColourId)
+                  : findColour (DirectoryContentsDisplayComponent::textColourId));
+-    g.setFont (height * 0.7f);
++    g.setFont (GlobalSettings::getUIFontSize(height * 0.7f));
+ 
+     if (width > 450 && ! isDirectory)
+     {
+@@ -2397,7 +2429,7 @@ void LookAndFeelOO::drawFileBrowserRow(Graphics &g, int width, int height, const
+                           x, 0, sizeX - x, height,
+                           Justification::centredLeft, 1);
+ 
+-        g.setFont (height * 0.5f);
++        g.setFont (GlobalSettings::getUIFontSize(height * 0.5f));
+         g.setColour (Colours::darkgrey);
+ 
+         if (! isDirectory)
+@@ -2509,7 +2541,7 @@ void LookAndFeelOO::drawKeymapChangeButton (Graphics& g, int width, int height,
+ 	g.drawRoundedRectangle(0, 0, width, height, 4, 1);
+ 
+     g.setColour (TEXT_COLOR);
+-    g.setFont (height * 0.6f);
++	g.setFont (GlobalSettings::getUIFontSize(height * 0.6f));
+     g.drawFittedText (keyDescription.isNotEmpty() ? keyDescription : "+",
+                         3, 0, width - 6, height,
+                         Justification::centred, 1);
+@@ -2595,10 +2627,10 @@ int LookAndFeelOO::getPopupMenuBorderSize()
+ {
+ 	return 2;
+ }
+-Font LookAndFeelOO::getTabButtonFont(TabBarButton &, float height)
+-{
+-	return Font(height);
+-}
++Font LookAndFeelOO::getTabButtonFont(TabBarButton &, float height)
++{
++	return GlobalSettings::getUIFont(height);
++}
+ #endif
+ 
+ //==============================================================================
+diff --git a/ui/LookAndFeelOO.h b/ui/LookAndFeelOO.h
+index d7a8ae59..5055d5df 100644
+--- a/ui/LookAndFeelOO.h
++++ b/ui/LookAndFeelOO.h
+@@ -11,6 +11,11 @@
+ #pragma once
+ #pragma warning( disable : 4505 )
+ 
++namespace OrganicUIFonts
++{
++	juce::Font getUIFont(float baseSize, int styleFlags = juce::Font::plain);
++}
++
+ //keep
+ namespace LookAndFeelHelpers {
+ 
+@@ -186,7 +191,7 @@ namespace LookAndFeelHelpers {
+ 
+         juce::AttributedString s;
+         s.setJustification(juce::Justification::centred);
+-        s.append(text, juce::Font(tooltipFontSize, juce::Font::bold), colour);
++        s.append(text, OrganicUIFonts::getUIFont(tooltipFontSize, juce::Font::bold), colour);
+ 
+         juce::TextLayout tl;
+         tl.createLayoutWithBalancedLineLengths(s, (float)maxToolTipWidth);
+@@ -204,6 +209,7 @@ public:
+ //  juce_DeclareSingleton(LookAndFeelOO, true);
+     LookAndFeelOO();
+     ~LookAndFeelOO();
++	juce::Typeface::Ptr getTypefaceForFont(const juce::Font&) override;
+     //==============================================================================
+     void drawButtonBackground (juce::Graphics&, juce::Button&, const juce::Colour& backgroundColour,
+                                bool isMouseOverButton, bool isButtonDown) override;
+diff --git a/ui/shapeshifter/ShapeShifterManager.cpp b/ui/shapeshifter/ShapeShifterManager.cpp
+index 182d3735..20546682 100644
+--- a/ui/shapeshifter/ShapeShifterManager.cpp
++++ b/ui/shapeshifter/ShapeShifterManager.cpp
+@@ -445,9 +445,9 @@ PopupMenu ShapeShifterManager::getPanelsMenu()
+ {
+ 	PopupMenu p;
+ 	PopupMenu layoutP;
+-	layoutP.addItem(baseSpecialMenuCommandID + 1, "Save Current layout");
+-	layoutP.addItem(baseSpecialMenuCommandID + 2, "Load Default Layout");
+-	layoutP.addItem(baseSpecialMenuCommandID + 3, "Load Layout...");
++	layoutP.addItem(baseSpecialMenuCommandID + 1, juce::translate("Save Current layout"));
++	layoutP.addItem(baseSpecialMenuCommandID + 2, juce::translate("Load Default Layout"));
++	layoutP.addItem(baseSpecialMenuCommandID + 3, juce::translate("Load Layout..."));
+ 	layoutP.addSeparator();
+ 
+ 	Array<File> layoutFiles = getLayoutFiles();
+@@ -468,8 +468,8 @@ PopupMenu ShapeShifterManager::getPanelsMenu()
+ 		li++;
+ 	}
+ 
+-	p.addSubMenu("Layout", layoutP);
+-	p.addItem(baseSpecialMenuCommandID + 4, "Lock Panels", true, lockMode);
++	p.addSubMenu(juce::translate("Layout"), layoutP);
++	p.addItem(baseSpecialMenuCommandID + 4, juce::translate("Lock Panels"), true, lockMode);
+ 
+ 	p.addSeparator();
+ 
+@@ -486,18 +486,18 @@ PopupMenu ShapeShifterManager::getPanelsMenu()
+ 				subMenuNames.add(subMenuName);
+ 
+ 			}
+-			subMenus.getReference(subMenuName).addItem(baseMenuCommandID + currentID, n->contentName, true);
++			subMenus.getReference(subMenuName).addItem(baseMenuCommandID + currentID, juce::translate(n->contentName), true);
+ 		}
+ 		else 
+ 		{
+-			p.addItem(baseMenuCommandID + currentID, n->contentName, true);
++			p.addItem(baseMenuCommandID + currentID, juce::translate(n->contentName), true);
+ 		}
+ 		currentID++;
+ 	}
+ 
+ 	for (int i = 0; i < subMenuNames.size(); i++) {
+ 		if (subMenuNames[i] != "") {
+-			p.addSubMenu(subMenuNames[i], subMenus.getReference(subMenuNames[i]));
++			p.addSubMenu(juce::translate(subMenuNames[i]), subMenus.getReference(subMenuNames[i]));
+ 		}
+ 	}
+ 	return p;
+@@ -522,7 +522,7 @@ void ShapeShifterManager::getCommandInfo(CommandID commandID, ApplicationCommand
+ 		//if (cid >= layouts.size()) return;
+ 		String fName = layouts.size() > cid ? layouts[cid].getFileNameWithoutExtension() : "empty";
+ 
+-		result.setInfo("Load Layout " + String(cid + 1) + " (" + fName + ")", "", "View", 0);
++			result.setInfo(juce::translate("Load Layout") + " " + String(cid + 1) + " (" + fName + ")", "", juce::translate("View"), 0);
+ 		result.addDefaultKeypress(KeyPress::createFromDescription(String(cid)).getKeyCode(), ModifierKeys::commandModifier);
+ 		result.addDefaultKeypress(keysArr[cid], ModifierKeys::commandModifier | ModifierKeys::shiftModifier);
+ 
+@@ -599,7 +599,7 @@ void ShapeShifterManager::newMessage(const Parameter::ParameterEvent& e)
+ 		{
+ 			for (auto& t : p->header.tabs)
+ 			{
+-				t->panelLabel.setFont(GlobalSettings::getInstance()->fontSize->floatValue());
++				GlobalSettings::setUIFont(t->panelLabel, 14.0f);
+ 			}
+ 			p->header.resized();
+ 		}
+diff --git a/ui/shapeshifter/ShapeShifterPanelTab.cpp b/ui/shapeshifter/ShapeShifterPanelTab.cpp
+index ed4115c7..efd67308 100644
+--- a/ui/shapeshifter/ShapeShifterPanelTab.cpp
++++ b/ui/shapeshifter/ShapeShifterPanelTab.cpp
+@@ -13,12 +13,12 @@ ShapeShifterPanelTab::ShapeShifterPanelTab(ShapeShifterContent* _content) : cont
+ {
+ 	panelLabel.setInterceptsMouseClicks(false, false);
+ 
+-	panelLabel.setFont(GlobalSettings::getInstance()->fontSize->floatValue());
++	GlobalSettings::setUIFont(panelLabel, 14.0f);
+ 	panelLabel.setColour(panelLabel.textColourId, TEXT_COLOR);
+ 	panelLabel.setJustificationType(Justification::centred);
+ 	jassert(content != nullptr);
+ 	String n = content->customName.isNotEmpty() ? content->customName : content->contentName;
+-	panelLabel.setText(content == nullptr ? "[No content]" : n, NotificationType::dontSendNotification);
++	panelLabel.setText(content == nullptr ? juce::translate("[No content]") : juce::translate(n), NotificationType::dontSendNotification);
+ 
+ 	addAndMakeVisible(&panelLabel);
+ 
+@@ -88,7 +88,7 @@ void ShapeShifterPanelTab::newMessage(const ShapeShifterContent::ShapeShifterCon
+ 	switch (e.type)
+ 	{
+ 	case ShapeShifterContent::ShapeShifterContentEvent::NAME_CHANGED:
+-		panelLabel.setText(content->customName.isNotEmpty() ? content->customName : content->contentName, NotificationType::dontSendNotification);
++		panelLabel.setText(juce::translate(content->customName.isNotEmpty() ? content->customName : content->contentName), NotificationType::dontSendNotification);
+ 		setSize(getLabelWidth(), 20);
+ 		tabListeners.call(&TabListener::nameChanged, this);
+ 		break;
+diff --git a/ui/shapeshifter/ShapeShifterWindow.cpp b/ui/shapeshifter/ShapeShifterWindow.cpp
+index 5d0cbcd2..e5b694aa 100644
+--- a/ui/shapeshifter/ShapeShifterWindow.cpp
++++ b/ui/shapeshifter/ShapeShifterWindow.cpp
+@@ -11,7 +11,7 @@
+ #include "JuceHeader.h"
+ 
+ ShapeShifterWindow::ShapeShifterWindow(ShapeShifterPanel* _panel, juce::Rectangle<int> bounds) :
+-	ResizableWindow(_panel->currentContent != nullptr ? _panel->currentContent->contentName : "", true),
++	ResizableWindow(_panel->currentContent != nullptr ? juce::translate(_panel->currentContent->contentName) : "", true),
+ 	panel(_panel),
+ 	dragMode(PANEL)
+ {
+@@ -64,7 +64,6 @@ void ShapeShifterWindow::resized()
+ 
+ 	if (panel == nullptr) return;
+ 
+-
+ 	panel->setPreferredWidth(getWidth());
+ 	panel->setPreferredHeight(getHeight());
+ 	pinBT->setBounds(panel->getLocalBounds().removeFromTop(20).removeFromRight(20).reduced(2));
+diff --git a/warning/ui/WarningReporterPanel.cpp b/warning/ui/WarningReporterPanel.cpp
+index c8b627b2..5fe7b5be 100644
+--- a/warning/ui/WarningReporterPanel.cpp
++++ b/warning/ui/WarningReporterPanel.cpp
+@@ -113,8 +113,8 @@ WarningReporterItem::WarningReporterItem(WeakReference<WarningTarget> target) :
+ 	resolveBT("Resolve"),
+ 	target(target)
+ {
+-	itemLabel.setFont(12);
+-	warningLabel.setFont(12);
++	GlobalSettings::setUIFont(itemLabel, 12);
++	GlobalSettings::setUIFont(warningLabel, 12);
+ 
+ 	addAndMakeVisible(&itemLabel);
+ 	addAndMakeVisible(&warningLabel);
+

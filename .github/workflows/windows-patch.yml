@@ -1,0 +1,102 @@
+name: Windows patch package
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  ProjectName: Chataigne
+
+jobs:
+  windows:
+    name: Windows ${{ matrix.arch }}
+    runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: win-x64
+            buildFolder: VisualStudio2022_CI
+          - arch: win7-x64
+            buildFolder: VisualStudio2022_Win7CI
+
+    steps:
+      - name: Checkout Chataigne
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Checkout JUCE
+        uses: actions/checkout@v4
+        with:
+          repository: benkuper/JUCE
+          ref: develop-local
+          path: JUCE
+
+      - name: Apply local module patches
+        shell: pwsh
+        run: |
+          git -C Modules/juce_organicui apply --ignore-whitespace "$env:GITHUB_WORKSPACE/Builds/Windows/patches/juce_organicui-localization.patch"
+          git -C Modules/juce_dmx apply --ignore-whitespace "$env:GITHUB_WORKSPACE/Builds/Windows/patches/juce_dmx-localization.patch"
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Force 64-bit linker
+        shell: powershell
+        run: |
+          cmd.exe /c "call `"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat`" && set > %temp%\vcvars.txt"
+          Get-Content "$env:temp\vcvars.txt" | Foreach-Object {
+            if ($_ -match "^(.*?)=(.*)$") {
+              Set-Content "env:\$($matches[1])" $matches[2]
+            }
+          }
+
+      - name: Build
+        shell: powershell
+        run: |
+          msbuild "Builds/${{ matrix.buildFolder }}/${{ env.ProjectName }}.sln" /p:PreferredToolArchitecture=x64 /m /verbosity:minimal /p:Configuration=Release
+
+      - name: Create patch package
+        id: package
+        shell: pwsh
+        run: |
+          $buildDir = Join-Path $env:GITHUB_WORKSPACE "Binaries/CI/App"
+          $patchName = "${{ env.ProjectName }}-${{ matrix.arch }}-patch"
+          $stageDir = Join-Path $env:RUNNER_TEMP $patchName
+          New-Item -ItemType Directory -Force -Path $stageDir | Out-Null
+
+          $exe = Join-Path $buildDir "Chataigne.exe"
+          $translations = Join-Path $buildDir "ChataigneTranslations.tsv"
+          if (-not (Test-Path $translations)) {
+            Copy-Item "$env:GITHUB_WORKSPACE/Source/UI/ChataigneTranslations.tsv" $translations
+          }
+          if (-not (Test-Path $exe)) { throw "Chataigne.exe was not produced" }
+          if (-not (Test-Path $translations)) { throw "ChataigneTranslations.tsv was not produced" }
+
+          Copy-Item $exe (Join-Path $stageDir "Chataigne.exe")
+          Copy-Item $translations (Join-Path $stageDir "ChataigneTranslations.tsv")
+          @"
+          Chataigne Windows 中文界面修改包
+
+          使用方法：
+          1. 完全退出 Chataigne。
+          2. 将 Chataigne.exe 和 ChataigneTranslations.tsv 复制到现有 Chataigne 安装目录并覆盖同名文件。
+          3. 重新启动 Chataigne，在界面语言中选择简体中文或中英双语。
+
+          This patch replaces only the application executable and translation table.
+          Keep the existing DLL files and other application resources.
+          "@ | Set-Content (Join-Path $stageDir "README.txt") -Encoding utf8
+
+          $zipPath = Join-Path $buildDir "$patchName.zip"
+          Compress-Archive -Path (Join-Path $stageDir "*") -DestinationPath $zipPath -Force
+          "zip=$zipPath" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Upload patch package
+        uses: actions/upload-artifact@v4
+        with:
+          name: Chataigne-${{ matrix.arch }}-patch
+          path: ${{ steps.package.outputs.zip }}
+          if-no-files-found: error

@@ -10,6 +10,8 @@
 
 #include "MainIncludes.h"
 
+#include "UI/ChataigneLocalization.cpp"
+
 #include "Common/InputSystem/InputSystemManager.h"
 #include "CustomVariables/CustomVariablesIncludes.h"
 #include "Guider/GuiderIncludes.h"

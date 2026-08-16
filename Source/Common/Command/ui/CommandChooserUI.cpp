@@ -26,7 +26,7 @@ CommandChooserUI::CommandChooserUI(CommandContext _context, bool multiplexMode) 
 	targetBT->addListener(this);
 	setRepaintsOnMouseActivity(true);
 
-	label.setFont(label.getFont().withHeight(12));
+	GlobalSettings::setUIFont(label, 12);
 	label.setInterceptsMouseClicks(false, false);
 	label.setText(noTargetText, dontSendNotification);
 	addAndMakeVisible(label);

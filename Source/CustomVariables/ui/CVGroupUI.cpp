@@ -29,8 +29,8 @@ void CVGroupVariablesEditor::addPopupMenuItems(PopupMenu* p)
 	PopupMenu dMenu;
 	for (auto& d : DashboardManager::getInstance()->items) dMenu.addItem(index++, d->niceName);
 	dMenu.addSeparator();
-	dMenu.addItem(-10001, "Create new Dashboard");
-	p->addSubMenu("Send All Variables to Dashboard", dMenu);
+	dMenu.addItem(-10001, juce::translate("Create new Dashboard"));
+	p->addSubMenu(juce::translate("Send All Variables to Dashboard"), dMenu);
 
 }
 
@@ -88,7 +88,7 @@ void CVGroupUI::itemDropped(const DragAndDropTarget::SourceDetails& details)
 		if (gui == this) return;
 
 		PopupMenu p;
-		p.addItem("Merge into group (after)", [this, gui] { this->item->addItemsFromGroup(gui->item); });
+			p.addItem(juce::translate("Merge into group (after)"), [this, gui] { this->item->addItemsFromGroup(gui->item); });
 		p.showMenuAsync(PopupMenu::Options());
 		return;
 	}

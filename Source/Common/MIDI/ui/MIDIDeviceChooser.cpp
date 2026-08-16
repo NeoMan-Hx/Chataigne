@@ -90,11 +90,11 @@ void MIDIDeviceChooser::resized()
 
 void MIDIDeviceChooser::setGhostValues(const String & inValue, const String & outValue)
 {
-	inputBox.setTextWhenNoChoicesAvailable(inValue.isEmpty() ? "No MIDI In Available" : "Disconnected : " + inValue);
-	outputBox.setTextWhenNoChoicesAvailable(outValue.isEmpty() ? "No MIDI Out Available" : "Disconnected : " + outValue);
+	inputBox.setTextWhenNoChoicesAvailable(inValue.isEmpty() ? juce::translate("No MIDI In Available") : juce::translate("Disconnected :") + " " + inValue);
+	outputBox.setTextWhenNoChoicesAvailable(outValue.isEmpty() ? juce::translate("No MIDI Out Available") : juce::translate("Disconnected :") + " " + outValue);
 
-	inputBox.setTextWhenNothingSelected(inValue.isEmpty() ? "No MIDI In Selected" : "Disconnected : " + inValue);
-	outputBox.setTextWhenNothingSelected(outValue.isEmpty() ? "No MIDI Out Selected" : "Disconnected : " + outValue);
+	inputBox.setTextWhenNothingSelected(inValue.isEmpty() ? juce::translate("No MIDI In Selected") : juce::translate("Disconnected :") + " " + inValue);
+	outputBox.setTextWhenNothingSelected(outValue.isEmpty() ? juce::translate("No MIDI Out Selected") : juce::translate("Disconnected :") + " " + outValue);
 }
 
 void MIDIDeviceChooser::updateInputComboBox()
@@ -102,7 +102,7 @@ void MIDIDeviceChooser::updateInputComboBox()
 	inputBox.clear(dontSendNotification);
 	int index = 1;
 	int idToSelect = 0;
-	inputBox.addItem("Don't use input", -1);
+		inputBox.addItem(juce::translate("Don't use input"), -1);
 	for (auto &i : MIDIManager::getInstance()->inputs)
 	{
 		if (currentInputDevice == i) idToSelect = index;
@@ -118,7 +118,7 @@ void MIDIDeviceChooser::updateOutputComboBox()
 	outputBox.clear(dontSendNotification);
 	int index = 1;
 	int idToSelect = 0;
-	outputBox.addItem("Don't use output", -1);
+	outputBox.addItem(juce::translate("Don't use output"), -1);
 	for (auto &o : MIDIManager::getInstance()->outputs)
 	{
 		if (currentOutputDevice == o) idToSelect = index;

@@ -1,0 +1,21 @@
+diff --git a/ui/DMXUniverseEditor.cpp b/ui/DMXUniverseEditor.cpp
+index 9935b5b..cadaed5 100644
+--- a/ui/DMXUniverseEditor.cpp
++++ b/ui/DMXUniverseEditor.cpp
+@@ -68,11 +68,11 @@ void DMXValueParameterUI::addPopupMenuItemsInternal(PopupMenu* p)
+ 	PopupMenu mp;
+ 	if (dmxParameters[0]->channel < 512)
+ 	{
+-		mp.addItem(500, "8-bit", true, dmxParameters[0]->type == DMXByteOrder::BIT8);
+-		mp.addItem(501, "16-bit MSB", true, dmxParameters[0]->type == DMXByteOrder::MSB);
+-		mp.addItem(502, "16-bit LSB", true, dmxParameters[0]->type == DMXByteOrder::LSB);
++		mp.addItem(500, juce::translate("8-bit"), true, dmxParameters[0]->type == DMXByteOrder::BIT8);
++		mp.addItem(501, juce::translate("16-bit MSB"), true, dmxParameters[0]->type == DMXByteOrder::MSB);
++		mp.addItem(502, juce::translate("16-bit LSB"), true, dmxParameters[0]->type == DMXByteOrder::LSB);
+ 	}
+-	p->addSubMenu("DMX Mode", mp);
++	p->addSubMenu(juce::translate("DMX Mode"), mp);
+ }
+ 
+ void DMXValueParameterUI::handleMenuSelectedID(int result)
+

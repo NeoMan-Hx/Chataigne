@@ -13,8 +13,8 @@ GamepadParameterUI::GamepadParameterUI(Array<GamepadParameter *> parameters) :
 	gamepadParams(parameters),
 	gamepadParam(parameters[0])
 {
-	chooser.setTextWhenNoChoicesAvailable("No gamepad connected");
-	chooser.setTextWhenNothingSelected("Select a gamepad");
+	chooser.setTextWhenNoChoicesAvailable(juce::translate("No gamepad connected"));
+	chooser.setTextWhenNothingSelected(juce::translate("Select a gamepad"));
 	chooser.addListener(this);
 
 	chooser.setColour(chooser.backgroundColourId, BG_COLOR);
@@ -46,8 +46,8 @@ void GamepadParameterUI::rebuild()
 	WeakReference<Gamepad> selectedGamepad = getGamepad();
 
 	chooser.clear(dontSendNotification);
-	chooser.setTextWhenNothingSelected(gamepadParam->ghostName.isNotEmpty()?gamepadParam->ghostName+" disconnected":"Select a gamepad");
-	chooser.addItem("Not connected", -2);
+	chooser.setTextWhenNothingSelected(gamepadParam->ghostName.isNotEmpty()?gamepadParam->ghostName+" "+juce::translate("disconnected"):juce::translate("Select a gamepad"));
+	chooser.addItem(juce::translate("Not connected"), -2);
 
 	if (InputSystemManager::getInstance()->gamepads.size() == 0) return;
 

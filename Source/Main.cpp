@@ -11,6 +11,7 @@
 
 ChataigneApplication::ChataigneApplication() :
 	OrganicApplication("Chataigne", true, ImageCache::getFromMemory(BinaryData::tray_icon_png, BinaryData::tray_icon_pngSize)),
+    interfaceLanguage(nullptr),
     crashSent(false)
 {
 	enableSendAnalytics = appSettings.addBoolParameter("Send Analytics", "This helps me improve the software by sending basic start/stop/crash infos", true);
@@ -20,6 +21,13 @@ ChataigneApplication::ChataigneApplication() :
 void ChataigneApplication::initialiseInternal(const String &)
 {
 	engine.reset(new ChataigneEngine());
+	interfaceLanguage = GlobalSettings::getInstance()->interfaceLanguage;
+	if (interfaceLanguage != nullptr)
+	{
+		interfaceLanguage->setValueWithData(ChataigneLocalization::englishLanguageId, true);
+		interfaceLanguage->addParameterListener(this);
+	}
+	ChataigneLocalization::setLanguage(ChataigneLocalization::englishLanguageId, false);
 	if(useWindow) mainComponent.reset(new MainContentComponent());
 
 	//Call after engine init
@@ -44,6 +52,18 @@ void ChataigneApplication::initialiseInternal(const String &)
 
 }
 
+void ChataigneApplication::afterSettingsLoaded()
+{
+	if (interfaceLanguage != nullptr)
+		ChataigneLocalization::setLanguage(interfaceLanguage->getValueData().toString(), false);
+}
+
+void ChataigneApplication::parameterValueChanged(Parameter* parameter)
+{
+	if (parameter == interfaceLanguage)
+		ChataigneLocalization::setLanguage(interfaceLanguage->getValueData().toString());
+}
+
 
 void ChataigneApplication::afterInit()
 {
@@ -61,6 +81,11 @@ void ChataigneApplication::afterInit()
 	{
 		mainWindow->setMenuBarComponent(new ChataigneMenuBarComponent((MainContentComponent*)mainComponent.get(), (ChataigneEngine*)engine.get()));
 	}
+
+	// The language is loaded before the main component is constructed. Refresh
+	// the completed component tree once so raw JUCE labels/tooltips created by
+	// modules after startup also use the selected language.
+	ChataigneLocalization::refreshAllComponents();
 
 }
 

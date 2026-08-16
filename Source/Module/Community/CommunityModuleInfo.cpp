@@ -104,10 +104,10 @@ void CommunityModuleInfo::onContainerTriggerTriggered(Trigger* t)
 	{
 		AlertWindow::showAsync(
 			MessageBoxOptions().withIconType(AlertWindow::QuestionIcon)
-			.withTitle("Remove custom module")
-			.withMessage("Are you sure you want to remove this custom module ?")
-			.withButton("Yes")
-			.withButton("No"),
+				.withTitle(juce::translate("Remove custom module"))
+				.withMessage(juce::translate("Are you sure you want to remove this custom module ?"))
+				.withButton(juce::translate("Yes"))
+				.withButton(juce::translate("No")),
 			[this](int result)
 			{
 				if (result)
@@ -153,5 +153,4 @@ InspectableEditor* CommunityModuleInfo::getEditorInternal(bool isRoot, Array<Ins
 {
 	return new CommunityModuleInfoEditor(this, isRoot);
 }
-
 

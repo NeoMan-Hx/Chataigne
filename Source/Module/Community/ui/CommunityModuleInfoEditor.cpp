@@ -11,7 +11,7 @@
 CommunityModuleInfoEditor::CommunityModuleInfoEditor(CommunityModuleInfo * cmi, bool isRoot) :
 	GenericControllableContainerEditor(cmi, isRoot, false),
 	cmi(cmi),
-	urlLabel("urlLabel","URL : "+cmi->url)
+		urlLabel("urlLabel",juce::translate("URL :")+cmi->url)
 {
 	description.setReadOnly(true);
 	description.setMultiLine(true);
@@ -20,17 +20,17 @@ CommunityModuleInfoEditor::CommunityModuleInfoEditor(CommunityModuleInfo * cmi, 
 	description.setColour(description.shadowColourId, Colours::transparentBlack);
 	description.setColour(description.textColourId, TEXT_COLOR);
 	description.setText(cmi->description);
-	urlLabel.setFont(14);
+	GlobalSettings::setUIFont(urlLabel, 14);
 
 	urlLabel.setEditable(false);
 	urlLabel.setColour(urlLabel.textColourId, BLUE_COLOR);
-	urlLabel.setFont(12);
+	GlobalSettings::setUIFont(urlLabel, 12);
 	urlLabel.setMouseCursor(MouseCursor::PointingHandCursor);
 	urlLabel.addMouseListener(this, false);
 
 	versionsLabel.setEditable(false);
 	versionsLabel.setColour(urlLabel.textColourId, TEXT_COLOR);
-	versionsLabel.setFont(12);
+	GlobalSettings::setUIFont(versionsLabel, 12);
 	versionsLabel.setJustificationType(Justification::centredRight);
 
 	
@@ -81,14 +81,14 @@ void CommunityModuleInfoEditor::setCollapsed(bool value, bool force, bool animat
 
 void CommunityModuleInfoEditor::updateVersionUI()
 {
-	String s = "Version : " + cmi->onlineVersion;
+	String s = juce::translate("Version :") + " " + cmi->onlineVersion;
 	if (!cmi->isLocal->boolValue()) installBT->customLabel = ""; //Default to "install"
 	else
 	{
-		s += (" (Local : " + cmi->localVersion + ")");
+		s += (" (" + juce::translate("Local :") + " " + cmi->localVersion + ")");
 			
-		if (cmi->onlineVersion == cmi->localVersion) installBT->customLabel = "Up to date";
-		else installBT->customLabel = "Update";
+		if (cmi->onlineVersion == cmi->localVersion) installBT->customLabel = juce::translate("Up to date");
+		else installBT->customLabel = juce::translate("Update");
 	}
 
 	versionsLabel.setText(s, dontSendNotification);

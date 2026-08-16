@@ -1,0 +1,2383 @@
+# Chataigne 简体中文 / English translation table
+# Format: 中文<TAB>English
+# Keep English source text stable; user-created names and project data are not part of this file.
+文件	File
+编辑	Edit
+时间线	Timeline
+视图	View
+指南	Guides
+帮助	Help
+模块	Modules
+自定义变量	Custom Variables
+状态机	State Machine
+状态	States
+仪表板	Dashboard
+模块路由	Module Router
+变形器	Morpher
+序列	Sequences
+序列编辑器	Sequence Editor
+检查器	Inspector
+日志	Logger
+警告	Warnings
+大纲	Outliner
+回放器	Parrots
+回放器	Parrot
+侦测器	The Detective
+命令模板	Command Templates
+时间	Time
+来源	Source
+内容	Content
+清除	Clear
+全部复制	Copy All
+自动滚动	Auto Scroll
+新建	New
+打开…	Open...
+打开上次文档	Open Last Document
+保存	Save
+另存为…	Save As...
+保存副本	Save Copy
+打开最近文件	Open recent file
+项目设置…	Project Settings...
+偏好设置	Preferences
+清除偏好设置	Clear Preferences
+检查更新	Check for updates
+退出	Quit
+撤销	Undo
+重做	Redo
+设置	Set
+值	value
+复制	Copy
+剪切	Cut
+粘贴	Paste
+创建副本	Duplicate
+删除	Delete
+全选	Select all
+选择上一个项目	Select Previous Item
+选择下一个项目	Select Next Item
+移到上一个	Move to previous
+移到下一个	Move to next
+切换全屏	Toggle Fullscreen
+切换仪表板编辑模式	Toggle Dashboard Edit Mode
+更新仪表板文件	Update Dashboard Files
+关于…	About...
+关于	About
+欢迎	Welcome
+显示欢迎界面…	Show Welcome Screen...
+退出	Exit
+打开网站	Go to website
+打开 Discord	Go to Discord
+打开帮助文档	Go to the Amazing Documentation
+查看更新日志	See the changelog
+提交 GitHub 问题	Post an issue on github
+社区模块管理器	Community Modules Manager
+重新加载自定义模块	Reload Custom Modules
+退出当前指南	Exit current guide
+导出所选内容	Export Selection
+导入…	Import...
+布局	Layout
+保存当前布局	Save Current layout
+加载默认布局	Load Default Layout
+加载布局…	Load Layout...
+锁定面板	Lock Panels
+添加并链接到自定义变量…	Add & Link to Custom Variable...
+添加并链接到序列…	Add & Link to Sequence...
+创建新映射	Create new Mapping
+只读	Read Only
+启用	Enabled
+复制 OSC 控制地址	Copy OSC Control Address
+复制脚本控制地址	Copy Script Control Address
+复制启用状态 OSC 地址	Copy Enable OSC Control Address
+使用侦测器监视	Watch this with The Detective
+新建回放器	Create new Parrot
+设置到回放器	Set in Parrot
+新建仪表板	Create new Dashboard
+发送到仪表板	Send to Dashboard
+重置值	Reset value
+显示编辑窗口	Show Edit Window
+复制值	Copy Value
+粘贴值	Paste Value
+设置选项…	Set Options...
+设置范围	Set the range
+为此参数设置新范围	Set a new range for this parameter
+确定	OK
+取消	Cancel
+自定义	Custom
+清除范围	Clear Range
+始终通知更改	Always Notify changes
+手动	Manual
+表达式	Expression
+引用	Reference
+动画	Animation
+最小值	Minimum
+最大值	Maximum
+值	Value
+键	Key
+目标已销毁	Target destroyed
+全局设置	Global Settings
+启动和更新	Startup and Update
+界面	Interface
+保存和加载	Save and Load
+编辑	Editing
+启动参数	Launch Arguments
+其他设置	Other Settings
+界面语言	Interface Language
+英语	English
+简体中文	Chinese (Simplified)
+简体中文 + English	Chinese (Simplified) + English
+帮助语言	Help language
+字体	Font family
+界面缩放	Interface scale
+字号	Font size
+字重	Font weight
+常规	Regular
+中等	Medium
+半粗	Semibold
+粗体	Bold
+特粗	Heavy
+细体	Light
+纤细	Thin
+超细	Ultralight
+重新加载字体渲染器	Reload font renderer
+启用工具提示	Enable Tooltips
+使用 OpenGL 渲染器	Use OpenGL Renderer
+界面刷新率	UI Refresh Rate
+日志刷新率	Logger Refresh Rate
+窗口置顶	Always on top
+系统默认	System default
+启用自动保存	Enable auto-save
+自动保存当前文件	Auto-save current file
+仅在更改后自动保存	Auto-save on change only
+启动时询问是否恢复	Ask to restore on startup
+自动保存数量	Auto-save count
+自动保存间隔	Auto-save time
+压缩文件	Compress file
+记录自动保存日志	Log auto-save
+崩溃时操作	Action On Crash
+报告	Report
+终止	Kill
+重新打开	Reopen
+恢复	Recover
+自动发送崩溃日志	Auto send crash log
+崩溃联系邮箱	Crash Contact Mail
+保存日志	Save logs
+删除项目之前询问	Ask before removing items
+默认缓动	Default Easing
+模块参数	Module Parameters
+默认行为	Default Behaviors
+记录输入	Log Incoming
+记录输出	Log Outgoing
+已连接	Is Connected
+已连接	Connected
+已连接客户端	Connected Clients
+使用安全连接	Use Secure Connection
+服务器	Server
+服务器名称	Server Name
+服务器路径	Server Path
+本地端口	Local Port
+远程端口	Remote Port
+端口	Port
+地址	Address
+主机	Host
+IP 地址	IP Address
+网络接口	Network Interface
+目标	Target
+位置	Position
+颜色	Color
+类型	Type
+名称	Name
+描述	Description
+模式	Mode
+控制模式	Control Mode
+控制地址	Control Address
+脚本控制地址	Script Control Address
+OSC 控制地址	OSC Control Address
+自动触发	Auto Trigger
+自动开始	Auto Start
+自动停止	Auto Stop
+结束后自动下一个	Auto Next On Finish
+循环	Loop
+始终更新	Always Update
+播放时发送	Send On Play
+停止时发送	Send On Stop
+跳转时发送	Send On Seek
+当前提示	Current Cue
+下一个提示	Next Cue
+当前提示名称	Current Cue Name
+下一个提示名称	Next Cue Name
+当前颜色	Current Color
+下一个颜色	Next Color
+当前文字颜色	Current Text Color
+下一个文字颜色	Next Text Color
+起始通道	Start Channel
+结束通道	End Channel
+通道	Channel
+宇宙	Universe
+字节序	Byte Order
+发送模式	Send Mode
+启用回环	Loopback Enabled
+插槽数量	Num Slots
+插槽	Slot
+录制	Arm
+自动停止录制	Auto Disarm
+背景路径	Background Path
+背景缩放	Background Scale
+背景不透明度	Background Opacity
+显示调试信息	Show Debug
+安全区域	Safe Zone
+使用吸引力	Use Attraction
+吸引力模式	Attraction Mode
+吸引力速度	Attraction Speed
+吸引力衰减	Attraction Decay
+权重	Weight
+插值进度	Interpolation Progress
+默认加载时间	Default Load Time
+关键帧吸附到帧	Snap Keys to Frames
+MTC 帧率	MTC Framerate
+LTC 模式	LTC Mode
+发送帧率	Send FPS
+同步偏移	Sync Offset
+反向偏移	Reverse Offset
+MTC 停止时重置	Reset on MTC Stop
+正在加载文件…	Loading File...
+客户端	clients
+客户端	client
+赞助	sponsorship
+捐赠	donation
+没有可粘贴的内容	Nothing to paste
+没有可删除的项目	Nothing to delete
+没有可复制的项目	Nothing to duplicate
+选择	Select
+[无内容]	[No content]
+设置范围…	Set Range...
+粘贴（添加）	Paste (add)
+粘贴（替换）	Paste (replace)
+添加…	Add...
+添加项目	Add item
+添加项目	Add Item
+切换子项目	Toggle childrens
+切换子项目	Toggle children
+复制此行（仅内容）	Copy this line (Content only)
+复制此行（全部）	Copy this line (All)
+将包络导出到新的映射层	Export Enveloppe to new mapping layer
+将包络导出到剪贴板	Export Enveloppe to clipboard
+将包络导出到剪贴板（仅数据）	Export Enveloppe to clipboard (data only)
+将烘焙值导出到剪贴板	Export baked values to clipboard
+将烘焙值导出到剪贴板（仅数据）	Export baked values to clipboard (data only)
+复制滤镜	Copy filters
+粘贴滤镜	Paste filters
+复制输出	Copy outputs
+粘贴输出	Paste outputs
+复制输入	Copy inputs
+粘贴输入	Paste inputs
+强制相对路径	Force Relative Path
+强制绝对路径	Force Absolute Path
+在访达中显示	Show in Explorer
+十六进制模式	Hex Mode
+拉伸模式	Stretch Mode
+反转 X	Invert X
+反转 Y	Invert Y
+插值	Interpolation
+线性	Linear
+无	None
+不透明	Opaque
+未连接	Not connected
+不使用输入	Don't use input
+不使用输出	Don't use output
+未找到服务	No service found
+移除	Remove
+获取更多模块…	Get more modules...
+通用	Generic
+脚本回调	Script callback
+选择一个元素	Select an element
+添加状态	Add State
+添加注释	Add Comment
+创建过渡	Create Transition
+从此处创建过渡	Create Transition from here
+吸附	Snapping
+隐藏工具	Hide Tools
+显示工具	Show Tools
+最大化	Maximize
+最小化	Minimize
+将所有变量发送到仪表板	Send All Variables to Dashboard
+添加组	Add Group
+添加共享纹理	Add Shared Texture
+添加仪表板链接	Add Dashboard Link
+添加 IFrame	Add IFrame
+添加输入	Add Input
+添加输出	Add Output
+动作输入	Action Input
+映射输入	Mapping Input
+动作结果	Action Consequence
+映射输出	Mapping Output
+输入	Input
+输出	Output
+结果 真	Consequence TRUE
+结果 假	Consequence FALSE
+复制条件	Copy conditions
+粘贴条件	Paste conditions
+复制真结果	Copy consequences TRUE
+粘贴真结果	Paste consequences TRUE
+复制假结果	Copy consequences FALSE
+粘贴假结果	Paste consequences FALSE
+移除连接	Remove connection
+取消链接	Unlink
+来自表达式	From Expression
+来自第一个元素	From First Element
+来自输入值	From Input Values
+来自容器	From Container
+容器模式	Container Mode
+更改所有缓动	Change all easings
+添加整数参数	Add Int Argument
+添加浮点参数	Add Float Argument
+添加字符串参数	Add String Argument
+添加布尔参数	Add Boolean Argument
+添加颜色参数	Add Color Argument
+添加二维点参数	Add Point2D Argument
+添加三维点参数	Add Point3D Argument
+添加音符	Add Note
+添加控制变化	Add Control Change
+添加弯音轮	Add Pitch Wheel
+添加通道压力	Add Channel Pressure
+添加触后	Add After Touch
+添加程序变化	Add Program Change
+复制样式	Copy Style
+粘贴样式	Paste Style
+添加仪表板	Add Dashboard
+常规	General
+将当前选择导出为稍后可导入的 *.lilnut 文件	This will export the current selection as *.lilnut file that can be later imported
+导入 *.lilnut 文件并添加到当前项目	This will import a *.lilnut file and add it to the current noisette
+Timeout	Timeout
+切换 模式	Toggle Mode
+切换 图像	Toggle image
+左上	Top Left
+主题	Topic
+幻灯片总数	Total Slides
+节拍总数	Total beats
+触摸位置	Touch Position
+轨道	Track
+已跟踪	Tracked
+触发器大小	Trigger Size
+触发器处理	Triggers Process
+裁剪到第一条数据	Trim To First Data
+裁剪到最后一条数据	Trim to Last Data
+URL	URL
+仅解锁一次	Unlock Only Once
+上	Up
+更新渠道	Update Channel
+更新率	Update Rate
+启动时更新帮助	Update help on startup
+更新率	Update rate
+使用自定义输入范围	Use Custom Input Range
+使用层级结构	Use Hierarchy
+使用抖动阈值	Use Jitter Threshold
+使用 LTC 日期	Use LTC Date
+使用多播	Use Multicast
+使用音高作为音符名称	Use Pitch For Note Names
+使用 TLS	Use TLS
+使用地址命名	Use address for naming
+用户名	Username
+验证进度	Validation Progress
+验证时间	Validation Time
+速度	Velocity
+触摸时振动	Vibrate On Touch
+振动类型	Vibration Type
+查看值范围	View Value Range
+视图 UI 位置	ViewUIPosition
+视图 UI 尺寸	ViewUISize
+音量	Volume
+星期名称	Week Day Name
+星期	Week day
+滚轮增量	Wheel Delta
+滚轮增量 - 水平	Wheel Delta - Horizontal
+滚轮增量 - 垂直	Wheel Delta - Vertical
+滚轮方向	Wheel Orientation
+工作区 ID	Workspace ID
+写入 UUID	Write UUID
+X	X
+Y	Y
+偏航	Yaw
+年	Year
+ZL	ZL
+ZR	ZR
+显示名称	display name
+建议分辨率	resolution recommended
+显示学习按钮	Show Learn Button
+显示父级名称	Show Parent Name
+显示吸附网格	Show Snap Grid
+显示值	Show Value
+Shutter 音频 状态	Shutter Audio Status
+Shutter Video 状态	Shutter Video Status
+侧边索引	Side Index
+静默模式	Silent mode
+简化方法	Simplification Method
+简化容差	Simplification Tolerance
+大小	Size
+平滑	Smoothing
+吸附网格模式	Snap Grid Mode
+吸附网格大小	Snap Grid Size
+拆分参数	Split Arguments
+扩散周期	Spread cycles
+交错	Stagger
+交错进度	Stagger Progression
+开始	Start
+从 0 开始	Start at 0
+状态	Status
+步长	Step Size
+结束时停止	Stop at Finish
+停止/时间/播放	Stop/Time/Play
+字符串大小	String Size
+样式	Style
+后缀	Suffix
+同步	Sync
+系统运行时间	System Up Time
+Tabs BG 颜色	Tabs BG Color
+Tabs 边框 颜色	Tabs Border Color
+Tabs 边框 宽度	Tabs Border Width
+Tabs 标签 颜色	Tabs Label Color
+Tabs 已选择 BG 颜色	Tabs Selected BG Color
+Tabs 已选择 边框 颜色	Tabs Selected Border Color
+Tabs 已选择 边框 宽度	Tabs Selected Border Width
+Tabs 已选择 标签 颜色	Tabs Selected Label Color
+点击速度平均	Tap tempo averaging
+每个周期的点击速度	Tap tempo per cycle
+锥度 1	Taper 1
+锥度 2	Taper 2
+目标设备	Target Device
+目标组	Target Group
+目标最大值	Target Max
+目标最小值	Target Min
+目标最小值/最大值	Target Min/Max
+目标位置	Target Position
+目标预设	Target Preset
+目标预设 2	Target Preset 2
+目标大小	Target Size
+温度错误	Temperature error
+文字	Text
+文字颜色	Text Color
+文字大小	Text Size
+文字大小	Text size
+纹理名称	Texture Name
+滴答	Tick
+时间窗口	Time Window
+随机性	Randomness
+范围	Range
+范围重映射模式	Range Remap Mode
+原始 Accel X	Raw Accel X
+原始 Accel Y	Raw Accel Y
+原始 Accel Z	Raw Accel Z
+Read UUID	Read UUID
+Record 发送 模式	Record Send Mode
+刷新	Refresh
+刷新率	Refresh Rate
+Regex 模式	Regex Mode
+相对	Relative
+相对位置	Relative position
+启动时重新加载字体渲染器	Reload font renderer on startup
+重映射到 0-	Remap to 0-
+远程主机	Remote Host
+远程端口	Remote port
+替换	Replace
+Resolume Version	Resolume Version
+结果类型	Result Type
+右	Right
+右加速度	Right Accel
+右轴	Right Axis
+右手张开	Right Hand Open
+右手 X	Right Hand X
+右手 Y	Right Hand Y
+右方向	Right Orientation
+右 SL	Right SL
+右 SR	Right SR
+右摇杆	Right Stick
+右键	Right button
+Roll	Roll
+Row	Row
+将布局保存到文件	Save Layout in file
+场景	Scene
+屏幕	Screen
+屏幕亮度	Screen Brightness
+Seconds	Seconds
+加载后发送	Send After Load
+发送分析数据	Send Analytics
+发送时钟	Send Clock
+发送日志反馈	Send Log Feedback
+仅在更改时发送	Send On Change Only
+仅在输入更改时发送	Send On Input Change Only
+仅在输出更改时发送	Send On Output Change Only
+发送速率	Send Rate
+激活时发送	Send on Activate
+监听时发送更新	Send update on listen
+分隔符	Separator
+序列索引	Sequence Index
+服务器端口	Server Port
+服务 UUID	Service UUID
+在客户端中设置	Set in Clients
+在原生端设置	Set in Native
+形状	Shape
+Shift	Shift
+Shift 已按下	Shift pressed
+启动时显示仪表板	Show Dashboard on startup
+显示完整地址	Show Full Address
+显示标签	Show Label
+Nunchuck Y	Nunchuck Y
+开启时间	ON Time
+OS 名称	OS Name
+OS 类型	OS Type
+OSC 反馈 端口	OSC Feedback Port
+Octave	Octave
+Octave Shift	Octave Shift
+Octaves	Octaves
+偏移	Offset
+偏移 值	Offset values
+加载时行为	On Load Behavior
+开启时间	On Time
+单音符开启	One Note On
+仅同步同名项目	Only sync from same name
+Opaque Background	Opaque Background
+操作	Operation
+运算符	Operator
+其他错误	Other error
+Out 音量	Out Volume
+Pad	Pad
+参数	Parameter
+参数 ID	Parameter ID
+参数名称	Parameter name
+参数类型	Parameter type
+父级标签层级	Parent Label Level
+密码	Password
+模式	Pattern
+负载	Payload
+对等端	Peers
+相位偏移	Phase Offset
+Ping 间隔	Ping Interval
+Ping 超时	Ping Timeout
+音高	Pitch
+音高 / 数字	Pitch / Number
+音高检测方法	Pitch Detection Method
+播放	Play
+从头播放	Play From Start
+播放模式	Play Mode
+播放进度	Play Progression
+播放状态	Play State
+点	Point
+点距离	Point Distance
+二维点控件尺寸	Point2D Size
+三维点控件尺寸	Point3D Size
+电源状态	Power Status
+Pre 开始	Pre Start
+Precision	Precision
+前缀	Prefix
+预览索引	Preview Index
+进程运行时间	Process Up Time
+产品名称	Product name
+程序	Program
+投影机 ID	Projector ID
+协议	Protocol
+量化值	Quantum
+R	R
+RTS	RTS
+随机	Random
+随机且始终唯一	Random Always Unique
+左	Left
+左加速度	Left Accel
+左轴	Left Axis
+左手张开	Left Hand Open
+左手 X	Left Hand X
+左手 Y	Left Hand Y
+左方向	Left Orientation
+左 SL	Left SL
+左 SR	Left SR
+左摇杆	Left Stick
+左 按钮	Left button
+长度	Length
+级别	Level
+已链接序列	Linked Sequence
+列表大小	ListSize
+监听	Listen
+监听反馈	Listen to Feedback
+加载上次	Load last
+加载指定	Load specific
+启动时加载上一个 .noisette	Load last .noisette on startup
+启动时加载指定的 .noisette	Load specific .noisette on startup
+启动时加载的文件	File to load on startup
+本地	Local
+已锁定	Locked
+日志	Log
+日志类型	Log Type
+MAC	MAC
+MAC 地址	MAC Address
+MIDI 路由器输出类型	MIDI Router Ouput Type
+MTC 时间	MTC Time
+最大分贝	Max DB
+最大索引	Max Index
+内存使用量	Memory Usage
+消息	Message
+消息结构	Message Structure
+方法	Method
+中键	Middle button
+最小截止频率	Min Cutoff
+最小分贝	Min DB
+最小索引	Min Index
+迷你模式	MiniMode
+分钟	Minutes
+型号	Model
+监视器输出：	Monitor Out :
+监听音量	Monitor Volume
+月份	Month
+月中的日期	Month day
+月份名称	Month name
+MotionPlus	MotionPlus
+多播地址	Multicast Adresse
+多播模式	Multicast Mode
+多播端口	Multicast port
+NL	NL
+归一化	Normalize
+音符	Note
+客户端数量	Num Clients
+点数量	Num Points
+投影机数量	Num Projectors
+字节数	Num bytes
+小数位数	Number of Decimals
+人数	Number of Persons
+摇杆	Nunchuck
+摇杆 X	Nunchuck X
+GPIO	GPIO
+GPIO 编号	GPIO Number
+手部距离	Hands Distance
+手部旋转	Hands Rotation
+强制终止	Hard kill
+头部 X	Head X
+头部 Y	Head Y
+头部 Z	Head Z
+触摸时高亮	Highlight On Touch
+高亮已按下按钮	Highlight pressed buttons
+主页	Home
+小时	Hour
+ID	ID
+IP	IP
+图像	Image
+索引	Index
+输入增益	Input Gain
+输入列表	Input List
+输入最小值/最大值	Input Min/Max
+输入值	Input Value
+输入分辨率	Input resolution
+整数大小	Int Size
+整数样式	Int Style
+插值时间	Interpolation time
+失效时间	Invalidation Time
+已绑定	Is Bound
+LTC 正在播放	Is LTC Playing
+本地	Is Local
+MTC 正在播放	Is MTC Playing
+在线	Is Online
+正在录制	Is Recording
+可见	Is Visible
+抖动阈值	Jitter Threshold
+保持连接	Keep Alive
+保持饱和度	Keep Saturation
+保持值	Keep Values
+同步时保留数值	Keep Values On Sync
+关键帧同步	Key Sync
+旋钮	Knob
+旋钮灵敏度	Knob sensitivity
+L	L
+LTC 通道	LTC Channel
+LTC 超出范围模式	LTC Out of Range Mode
+LTC 同步模块	LTC Sync Module
+LTC 同步容差	LTC Sync Tolerance
+LTC 时间	LTC Time
+灯泡错误	Lamp error
+灯泡型号	Lamp model
+灯泡小时数	Lamp(s) hours
+最后通道	Last Channel
+最后一个片段	Last Clip
+最后按键	Last Key
+最后按键代码	Last Key Code
+最后音高	Last Pitch
+最后力度	Last Velocity
+启动选项	Launch Options
+启动时最小化	Launch minimized
+系统启动时运行	Launch on system startup
+层	Layer
+自定义 WebSocket 端口	Custom Websocket Port
+自定义描述	Custom description
+自定义文字	Custom text
+DMX 类型	DMX Type
+DTR	DTR
+仪表板目标	Dashboard Target
+装饰	Decoration
+默认协议	Default Protocol
+延迟	Delay
+设备	Device
+设备选择	Device Select
+设备类型	Device type
+图表不透明度	Diagram Opacity
+Down	Down
+缓动类型	Easing Type
+编辑模式	Edit Mode
+Editable	Editable
+效果 ID	Effect ID
+效果名称	Effect name
+启用仪表板服务器	Enable Dashboard Server
+End	End
+Enum 大小	Enum Size
+Enum 样式	Enum Style
+在网页中公开	Expose on Web
+额外标头	Extra Headers
+额外按钮 1	Extra button 1
+额外按钮 2	Extra button 2
+Extract 组件	Extract Component
+FPS	FPS
+下降平滑	Fall Smoothing
+风扇错误	Fan error
+文件名	File Name
+滤镜	Filter
+滤镜模型	Filter Model
+滤镜错误	Filter error
+滤镜用法	Filter usage
+固件	Firmware
+第一个片段	First Clip
+第一 值 is the 名称	First value is the name
+固定前导	Fixed Leading
+浮点大小	Float Size
+浮点样式	Float Style
+焦点范围	Focus Range
+聚焦最后一个动作	Focus on Last Action
+字体重载延迟	Font reload delay
+强制	Force
+强制 Case	Force Case
+强制连续处理	Force Continuous Process
+强制 Float	Force Float
+强制从头播放	Force Play from start
+强制起始值	Force Start Value
+前景色	Foreground Color
+格式	Format
+频率	Freq
+频率	Frequency
+频率振幅	Frequency Amplitude
+摩擦力	Friction
+全天时间	Full Day Time
+完整范围	Full Range
+加载时全屏	Full Screen on load
+边框宽度	Border Width
+右下	Bottom right
+品牌	Brend
+亮度	Brightness
+置于顶部	Bring to top
+按钮	Button
+按钮 +	Button +
+按钮 -	Button -
+按钮 1	Button 1
+按钮 2	Button 2
+按钮 A	Button A
+按钮 B	Button B
+按钮 C	Button C
+按钮下	Button Down
+Home 按钮	Button Home
+按钮左	Button Left
+按钮右	Button Right
+按钮上	Button Up
+按钮 Z	Button Z
+CC 编号	CC Number
+CC 值	CC Value
+CPU 使用量	CPU Usage
+CR	CR
+回调	Callback
+触发时取消延迟	Cancel delays on Trigger
+画布大小	Canvas Size
+捕获	Capture
+输出通道：	Channel Out :
+激活时检查过渡	Check transitions on activate
+启动时检查更新	Check updates on startup
+客户端 ID	Client ID
+Clip	Clip
+关闭时移到系统托盘	Close to system tray
+颜色发送模式	Color Send Mode
+颜色 大小	Color Size
+图像着色	Colorize images
+列	Column
+命令	Command
+命令行	Command Line
+比较函数	Comparison Function
+组件	Component
+连接	Connect
+转换模式	Convert Mode
+数量	Count
+封面错误	Cover error
+Ctrl	Ctrl
+Ctrl 已按下	Ctrl Pressed
+提示触发结果	Cue Trigger Consequences
+提示触发设为当前	Cue Trigger Set Current
+Cur bar	Cur bar
+Cur 节拍	Cur beat
+当前组合	Current Combination
+当前录制	Current Record
+当前幻灯片	Current Slide
+当前屏幕	Current screen
+自定义图像	Custom Image
+自定义 OSC 端口	Custom OSC Port
+自定义分隔符	Custom Separator
++	+
+-	-
+A	A
+绝对位置	Absolute position
+加速度 X	Accel X
+加速度 Y	Accel Y
+加速度 Z	Accel Z
+动作	Action
+激活	Active
+活动阈值	Activity Threshold
+全部已连接	All Connected
+全部关闭	All Powered Off
+全部开启	All Powered On
+允许多开	Allow Multiple Instances
+Alt	Alt
+Alt 已按下	Alt Pressed
+Alt 缩放系数	Alt Scale factor
+始终触发	Always Trigger
+锚点 1	Anchor 1
+锚点 2	Anchor 2
+应用文件 1	App File 1
+应用名称	App Name
+追加 CR	Append CR
+追加 NL	Append NL
+参数名称	Argument name
+异步	Asynchronous
+吸引力	Attraction
+吸引力速度	Attraction speed
+吸引力更新率	Attraction update rate
+音频文件	Audio file
+自动添加	Auto Add
+自动反馈	Auto Feedback
+自动刷新屏幕	Auto Refresh Screen
+自动请求计时器	Auto Request Timer
+自动添加	Auto add
+轴	Axis
+B	B
+BPM	BPM
+背景透明度	Background Alpha
+背景颜色	Background Color
+背景图像	Background Image
+背景图像透明度	Background Image Alpha
+背景图像缩放	Background Image Scale
+基础地址	Base Address
+基础颜色	Base Color
+电池	Battery
+波特率	Baud Rate
+节拍进度	Beat progression
+节拍从 1 开始	Beats Start at 1
+测试版	Beta
+身体 X	Body X
+身体 Y	Body Y
+身体 Z	Body Z
+布尔值大小	Bool Size
+布尔值样式	Bool Style
+布尔值发送模式	Boolean Send Mode
+边框颜色	Border Color
+边框半径	Border Radius
+边框厚度	Border Thickness
+视频关闭	Video Off
+视频和音频关闭	Video & Audio Off
+视频和音频开启	Video & Audio On
+视频开启	Video On
+设置分配范围	Set the assignation range
+设置列表中所有参数的新范围	Set a new range for all parameters in the list
+设置此参数的新值	Set new values for this parameter
+设置此参数的新范围	Set new bounds for this parameter
+超长时高音 (veeeeeeee)	Really long length high-pitched (veeeeeeee)
+跳转到 0	Jump to 0
+跳转到最近位置	Jump to Closest
+跳转到结束位置	Jump to End
+跳过此版本	Skip this version
+近乎静音 (vr)	Almost silent (vr)
+近乎静音 (vrm)	Almost silent (vrm)
+选择手柄	Select a gamepad
+选择音频模块	Choose an audio module
+逗号（,）分隔	Comma (,) separated
+配置此值的参数	Configure the parameters for this value
+欢迎捐赠	Be cool and donate
+长时高音 (veeeeeee)	Long length high-pitched (veeeeeee)
+音频关闭	Audio Off
+音频开启	Audio On
+频道	Channels
+验证	Validate
+更改二维点范围	Change point 2D bounds
+更改颜色范围	Change color bounds
+更新	Update
+欢迎赞助！	Be even cooler and sponsor !
+未找到 LiveOSC 插件	LiveOSC plugin not found
+未找到 PowerPoint OSC 插件	Powerpoint OSC plugin not found
+未连接或已断开	Not connected or disconnected
+极长的持续振动 (veeeerrrrrrrr...)	Extremely long constant (veeeerrrrrrrr...)
+正在断电	Powering OFF
+正在通电	Powering ON
+每字节 1 个值	1 value per byte
+没有手柄连接	No gamepad connected
+没有模块	No Module
+没有音频模块	No audio module
+添加一个值	Add a value
+状态请求	Status Request
+暂不	Not now
+电源关闭	Power Off
+电源开启	Power On
+直接加载	Load directly
+短促深沉振动 (vum)	Short deep vibration (vum)
+好的	Ok, i guess
+确定要删除此项目吗？	Are you sure you want to delete this ?
+确定要移除此自定义模块吗？	Are you sure you want to remove this custom module ?
+社区模块	Community Modules
+空格分隔	Space separated
+等号（=）分隔	Equals (=) separated
+组	Group
+结束时更改	Change at end
+缓慢低沉 (vrrrmmm)	Slow and low (vrrrmmm)
+缓慢低沉 (vrrrrmmm)	Slow and low (vrrrrmmm)
+缓慢低沉 (vrrrrmmmmmm)	Slow and low (vrrrrmmmmmm)
+缓慢低沉 (vrrrrmmmmmmmmmmmm)	Slow and low (vrrrrmmmmmmmmmmmm)
+向上渐变 (...vvvoooeeeeee)	Ramp Up (...vvvoooeeeeee)
+向上渐变 (.vvvoooeeeeee)	Ramp Up (.vvvoooeeeeee)
+向上渐变 (ver-eh)	Ramp Up (ver-eh)
+向上渐变 (voe)	Ramp Up (voe)
+向上渐变 (vvoe)	Ramp Up (vvoe)
+向上渐变 (vvooe)	Ramp Up (vvooe)
+向上渐变 (vvooee)	Ramp Up (vvooee)
+向上渐变 (vvvooe)	Ramp Up (vvvooe)
+向上渐变 (vvvoooeee)	Ramp Up (vvvoooeee)
+向上渐变 (vvvvvoooooeeee)	Ramp Up (vvvvvoooooeeee)
+向上渐变 (vvvvvoooooooeeeee)	Ramp Up (vvvvvoooooooeeeee)
+向下再向上渐变 (vvrrrmmmeeerrr)	Ramp Down & Up (vvrrrmmmeeerrr)
+向下再向上渐变 (vvrrrmmmeeerrrrr)	Ramp Down & Up (vvrrrmmmeeerrrrr)
+向下再向上渐变 (vvrrrrmmmmmeeeeee)	Ramp Down & Up (vvrrrrmmmmmeeeeee)
+向下再向上渐变 (vvrrrrmmmmmeeeerrr)	Ramp Down & Up (vvrrrrmmmmmeeeerrr)
+向下再向上渐变 (vvvrrreee)	Ramp Down & Up (vvvrrreee)
+向下渐变 - 低沉细微 (vvrrmm)	Ramp Down - Low and Subtle (vvrrmm)
+向下渐变 - 低沉细微 (vvrrmmmm)	Ramp Down - Low and Subtle (vvrrmmmm)
+向下渐变 - 低沉细微 (vvvrrrmmmmm)	Ramp Down - Low and Subtle (vvvrrrmmmmm)
+向下渐变 - 低沉细微 (vvvrrrmmmmmm)	Ramp Down - Low and Subtle (vvvrrrmmmmmm)
+在外部编辑器中编辑此脚本	Edit this script in an external editor
+在远程控制中隐藏。如果偏好设置中启用了远程控制，此项决定是否将此项目及其所有子项目公开到 OSCQuery 结构中	Hide in Remote Control. If remote control is enabled in Preferences, this decides whether to expose or not this (and all its children) to the OSCQuery structure
+字符（有符号字节）	Char (signed Byte)
+入门指南	Getting Started
+开始录制	Record start
+开始时更改	Change at start
+快进	Fast forward
+恢复上次状态	Restore last state
+恢复自动保存？	Restore autosave ?
+投影机/显示设备故障	Projector / Display Failure
+知道了	Gotcha
+文件格式错误	File format error
+新的未保存会话	New unsaved session
+映射	Mapping
+更低沉的警报 (vu-ve-ve-ve-ve)	Deeper Alarm (vu-ve-ve-ve-ve)
+更改三维点值	Change point 3D values
+更改三维点范围	Change point 3D bounds
+更改二维点值	Change point 2D values
+一次中等时长振动 (veeeeee)	One medium length vibration (veeeeee)
+一次中等时长振动 (vuum)	One medium length vibration (vuum)
+一次短振动 (do)	One short vibration (do)
+三次快速振动 (do-de-de)	Three quick vibrations (do-de-de)
+上下渐变 (veeeeer-reeeeeh-reeh)	Up & Down (veeeeer-reeeeeh-reeh)
+上下渐变 (veeeer-reeeeh)	Up & Down (veeeer-reeeeh)
+上下渐变 (veeer-reeeh)	Up & Down (veeer-reeeh)
+上下渐变 (veer-reeh)	Up & Down (veer-reeh)
+上下渐变 (ver-reh-reee)	Up & Down (ver-reh-reee)
+上下渐变 (ver-reh)	Up & Down (ver-reh)
+下上渐变 (ver-ehh)	Down & Up (ver-ehh)
+下上渐变 (ver-ehhh)	Down & Up (ver-ehhh)
+下上渐变 (ver-ehhhh)	Down & Up (ver-ehhhh)
+下上渐变 (verr-eeh)	Down & Up (verr-eeh)
+下上渐变 (verr-eehhh)	Down & Up (verr-eehhh)
+不分隔（只创建一个参数）	No separation (will create only one parameter)
+不发送	Do not send
+不可用时间	Unavailable Time
+不执行操作	Do Nothing
+两次快速振动 (do-de)	Two quick vibrations (do-de)
+两次快速振动 (do-do)	Two quick vibrations (do-do)
+中等时长高音 (veeeee)	Medium length high-pitched (veeeee)
+二维 Voronoi	2D Voronoi
+二维画布	2D Canvas
+你确定要重新开始吗	So you want a fresh start
+从高到低渐变 (veeeeoooo)	High to low ramp (veeeeoooo)
+从高到低渐变 (vo)	High to low ramp (vo)
+从高到低渐变 (voo)	High to low ramp (voo)
+从高到低渐变 (vooo)	High to low ramp (vooo)
+从高到低渐变 (voooo)	High to low ramp (voooo)
+从高到低渐变 (vooooo)	High to low ramp (vooooo)
+从高到低渐变 (vooooooo)	High to low ramp (vooooooo)
+从高到低渐变 (voooooooo)	High to low ramp (voooooooo)
+会话保存错误	Session save error
+低沉中等振动 (vuuuuuuuu)	Low medium vibration (vuuuuuuuu)
+停止录制	Record stop
+冒号（:）分隔	Colon (:) separated
+分号（;）分隔	Semicolon (;) separated
+移除自定义模块	Remove custom module
+制表符分隔	Tab separated
+单次向下渐变 (dooooooooo)	Single ramp down (dooooooooo)
+反馈	Feedback
+发现较新的自动保存文件，是否恢复？	A more recent autosave file has been found, do you want to restore it ?
+发送原始值	Send original value
+发送新值	Send new value
+合并到组（之后）	Merge into group (after)
+向上渐变 (.....vvvoooeeeeee)	Ramp Up (.....vvvoooeeeeee)
+RGBA 浮点	RGBA Float
+右 Slider	Right Slider
+Rotary Slider	Rotary Slider
+旋转 X	Rotate X
+旋转 Y	Rotate Y
+旋转 Z	Rotate Z
+圆形	Round
+sACN/E1.31	sACN/E1.31
+饱和度	Saturation
+星期六	Saturday
+锯齿波	Saw
+缩放	Scale
+ScaleH	ScaleH
+ScaleW	ScaleW
+已选择 Clip	Selected Clip
+已选择 层	Selected Layer
+发送	Send
+九月	September
+SEQUENTIAL	SEQUENTIAL
+Simple	Simple
+正弦	Sine
+稳定版	Stable
+以此开头	Starts With
+停止	Stop
+已停止	Stopped
+StreamDeck (15 buttons)	StreamDeck (15 buttons)
+StreamDeck Mini (6 buttons)	StreamDeck Mini (6 buttons)
+StreamDeck XL (32 buttons)	StreamDeck XL (32 buttons)
+字符串	String
+减法	Subtract
+求和	Sum
+星期日	Sunday
+T-F	T-F
+星期四	Thursday
+切换按钮	Toggle Button
+切换复选框	Toggle Checkbox
+Transition	Transition
+三角波	Triangle
+星期二	Tuesday
+uInt16	uInt16
+uInt32	uInt32
+大写	UPPERCASE
+垂直	Vertical
+垂直条	Vertical Bar
+垂直滑块	Vertical Slider
+Warming 上	Warming Up
+警告	Warning
+星期三	Wednesday
+Weights	Weights
+宽度	Width
+Will 播放	Will Play
+Windows	Windows
+XML	XML
+YIN	YIN
+Loupedeck Live	Loupedeck Live
+小驼峰	lowerCamelCase
+小写	lowercase
+LSB	LSB
+MacOS	MacOS
+三月	March
+最大值	Max
+五月	May
+Middle	Middle
+最小值	Min
+取模	Modulo
+瞬时按钮	Momentary Button
+瞬时复选框	Momentary Checkbox
+星期一	Monday
+MPM	MPM
+MSB	MSB
+乘法	Multiply
+下一个选项	Next Option
+未设置	Not set
+音符关闭	Note Off
+音符开启	Note On
+十一月	November
+编号	Number
+十月	October
+不透明度	Opacity
+Open DMX	Open DMX
+OR	OR
+声像	Pan
+暂停	Pause
+Perlin	Perlin
+物理	Physics
+乒乓	Ping Pong
+音高 滚轮	Pitch Wheel
+播放中	Playing
+位置 X	Position X
+位置 Y	Position Y
+PowerPoint 插件已安装	Powerpoint plugin installed
+上一个选项	Previous Option
+Proportional	Proportional
+Ramp (vuuuuuu-ve)	Ramp (vuuuuuu-ve)
+斜坡（快速上升）	Ramp (vuuuuuu-vu)
+原始	Raw
+接收	Receive
+录制	Recording
+矩形	Rectangle
+Resolume 5	Resolume 5
+Resolume 6	Resolume 6
+Resolume 6.0.9+	Resolume 6.0.9+
+反向锯齿波	Reverse Saw
+倒回	Rewind
+RGB	RGB
+RGB 乘以 A	RGB multiplied with A
+RGB 浮点	RGB Float
+RGBA	RGBA
+冷却	Cooling
+自定义字符	Custom character
+Data255	Data255
+停用	Deactivate
+十二月	December
+Deck	Deck
+默认	Default
+Deferred 播放	Deferred play
+Difference	Difference
+直接	Direct
+距离	Distance
+除法	Divide
+椭圆	Ellipse
+以此结尾	Ends with
+Enttec DMX MkII	Enttec DMX MkII
+Enttec DMX Pro	Enttec DMX Pro
+等于	Equals
+错误	Error
+完全匹配	Exact match
+二月	February
+浮点数	Float
+Floor	Floor
+自由	Free
+法语	French
+星期五	Friday
+渐变带	Gradient Band
+高度	Height
+十六进制	Hexadecimal
+Hold	Hold
+水平	Horizontal
+水平条	Horizontal Bar
+水平滑块	Horizontal Slider
+HSV	HSV
+色相	Hue
+Idle	Idle
+信息	Info
+整数	Int
+整数	Integer
+插值	Interpolate
+反向	Inverse
+Invert 日志	Invert Log
+一月	January
+JSON	JSON
+七月	July
+六月	June
+保持	Keep
+左 Slider	Left Slider
+Linear (Douglas-Peucker)	Linear (Douglas-Peucker)
+Linear Interactive	Linear Interactive
+Lines	Lines
+Linux	Linux
+LiveOSC2 插件已安装	LiveOSC2 plugin installed
+Loupedeck CT	Loupedeck CT
+[源模块]	[Source Module]
+[输出模块]	[Out Module]
+1 字节	1 byte
+16 位 LSB	16-bit LSB
+16 位 MSB	16-bit MSB
+2 字节（Int16）	2 bytes (Int16)
+24	24
+25	25
+29.97	29.97
+30	30
+30 (1125_60)	30 (1125_60)
+30 (525_60)	30 (525_60)
+30 drop	30 drop
+4 字节（Int32）	4 bytes (Int32)
+4x4 (floats)	4x4 (floats)
+4x4 (RGBA colors)	4x4 (RGBA colors)
+8 位	8-bit
+绝对	Absolute
+激活	Activate
+添加	Add
+调整	Adjust
+Ajazz AKP03 (6 keys, 3 knobs/screens)	Ajazz AKP03 (6 keys, 3 knobs/screens)
+Ajazz AKP05 (10 keys, 4 knobs/screens)	Ajazz AKP05 (10 keys, 4 knobs/screens)
+Ajazz AKP153 (15 keys, 3 side displays)	Ajazz AKP153 (15 keys, 3 side displays)
+Alarm (vu-ve-ve-ve-ve)	Alarm (vu-ve-ve-ve-ve)
+全部	All
+Alt 0	Alt 0
+Alt 1	Alt 1
+Alt 2	Alt 2
+Alt 3	Alt 3
+Alt 4	Alt 4
+Alt 5	Alt 5
+锚点 X	Anchor X
+锚点 Y	Anchor Y
+锚点 Z	Anchor Z
+AND	AND
+四月	April
+Area	Area
+ARGB	ARGB
+Art-Net	Art-Net
+八月	August
+自动	Auto
+平均	Average
+Bezier	Bezier
+Bezier (Least square)	Bezier (Least square)
+布尔值	Boolean
+两者	Both
+驼峰式	CamelCase
+Ceil	Ceil
+Center	Center
+中文	Chinese
+COBS	COBS
+颜色圆形	Color Circle
+颜色矩形	Color Rectangle
+颜色方形	Color Square
+Composition	Composition
+包含	Contains
+Control Change	Control Change
+复制此行	Copy this line
+更新错误	Update error
+文件兼容性检查	File compatibility check
+恢复自动保存文件	Restore autosave
+需要声卡模块	Sound Card Module is required
+是	Yes
+否	No
+好的，偶尔会出错	Well, shit happens
+确定要删除偏好设置吗？	Are you sure you want to delete the Preferences ?
+拉伸	Stretch
+当前	Current
+已选择	Selected
+工具提示	Tooltip
+斜坡（快速下降）	Ramp (vuuuuuu-ve-ve)
+如果勾选，应用会在系统启动时自动运行	If checked, this app will automatically launch on system startup
+如果勾选，应用启动时会自动最小化	If checked, this app will automatically minimized it self when launched
+如果勾选，可以同时运行多个应用实例（在 Mac 上不适用，需要实际复制应用）	If checked, it will be possible to launch multiple instances of this application at the same time (not working on Mac, you would have to actually duplicate the app)
+启用后，应用会检查是否有可用更新	If enabled, app will check if any updates are available
+选择获取软件更新的渠道	Channel to pull software updates from
+启用后，应用会尝试将最新帮助文件下载到本地	If enabled, app will try and download the last help file locally
+启用后，应用会在启动时加载上一个 .noisette 文件	If enabled, app will load the last .noisette on startup
+启用后，应用会在启动时加载下方指定的 .noisette 文件	If enabled, app will load the .noisette specified below on startup
+如果勾选上方选项，启动时要加载的文件	File to load when start, if the option above is checked
+如果勾选，关闭主窗口会将窗口从桌面移除并放入系统托盘，但应用仍会继续运行	If checked, closing the main window will remove the window from desktop and put it on the system tray, but the app will still be running
+适用于高分辨率显示器的整体界面缩放百分比。更改会立即应用。	Overall interface scale percentage for high-DPI displays. Changes are applied immediately.
+界面使用的字体。更改会立即应用；不可用的字体会回退到系统默认字体。	Typeface used by the interface. Changes are applied immediately; unavailable fonts fall back to the system default.
+全局界面字号。所有标准界面文字都会遵循此设置。	Global interface font size. All standard interface text follows this setting.
+全局界面字重。不支持所选字重的字体会使用最接近的可用样式。	Global interface font weight. Fonts without the selected weight use their closest available style.
+完整界面创建后清除字形缓存。如果文字在点击“重新加载字体渲染器”前出现乱码，请启用此项。	Clears the glyph caches once the complete interface has been created. Enable this if text is corrupted until Reload font renderer is clicked.
+启动时重新加载字体渲染器前的延迟（毫秒）。如果启动后仍有面板乱码，请增大此数值。	Delay in milliseconds before the startup font renderer reload. Increase this if some panels are still corrupted after startup.
+清除软件和 OpenGL 字形缓存，重新布局所有组件并重绘完整界面。	Clears the software and OpenGL glyph caches, relayouts every component, and redraws the complete interface.
+如果勾选，将在鼠标悬停于参数上时显示工具提示	If checked, this will show tooltips when mouse is over a parameter
+要下载哪种语言？需要重启软件才能看到更改	What language to download ? You will need to restart the software to see changes
+为界面使用硬件加速。如果 GPU 驱动导致文字变形，请禁用此项以立即切换到软件渲染器；如果界面无法读取，可使用 -forceNoGL 启动参数。	Use hardware acceleration for the interface. Disable this to switch immediately to the software renderer if a GPU driver causes distorted text. The -forceNoGL launch argument is available if the interface is unreadable.
+界面刷新率（Hz）	The refresh rate of the UI in hz
+日志刷新率（Hz）	The refresh rate of the logger in hz
+如果勾选，主窗口将始终置于其他窗口之上	If checked, the main window will be always on top the others windows
+启用后，每 5 分钟会保存一个备份文件	When enabled, a backup file will be saved every 5 min
+如果勾选，自动保存时也会保存当前文件	If checked, the current file will be saved as well when auto-saving
+如果勾选，仅在检测到更改时自动保存	If checked, the auto-save will only save when a change is detected
+如果勾选，启动时发现更新的自动保存文件会询问是否恢复	If checked, the app will ask to restore the auto-saved file on startup if a more recent auto-saved file has been found
+要自动保存的备份文件数量	The number of backup files to auto-save
+两次自动保存之间的时间间隔（分钟）	The time in minutes between two auto-saves (will)
+如果勾选，JSON 内容会被压缩；否则内容易读，但文件也会更大	If checked, the JSON content will be minified, otherwise it will be human-readable but larger size as well
+如果勾选，自动保存操作会记录到日志中	If checked, the auto-save will be logged in the logger
+决定崩溃时要执行的操作。默认显示崩溃报告窗口	This determines what to do on a crash. Default shows the crash report window
+如果勾选且崩溃操作不是“报告”，崩溃日志会自动发送给开发团队	If checked and action on crash is not Report, the crash log will be automatically sent to the developer team
+如果希望开发团队联系你，请填写邮箱地址	A mail address to use if you wish to be contacted by the developer team
+这会导致应用崩溃，用于测试崩溃处理。除非你真的确定，否则不要触发！！！	This will cause a crash, allowing for testing crashes. Don't push this unless you REALLY want to !!!
+如果勾选，日志内容会自动保存到文件	If checked, the content of the Logger will be automatically saved to a file
+启用后，删除任何项目之前都会显示确认提示	If enabled, you will get a confirmation prompt before removing any item
+使用 Alt 编辑滑块时的缩放系数	Scale factor for editing sliders with alt
+创建新的自动化关键帧时默认使用的缓动	Easing that is set by default when creating new automation keys
+通过发送基本的启动/停止/崩溃信息来帮助改进软件	This helps me improve the software by sending basic start/stop/crash infos
+选择 Chataigne 界面使用的语言	Select the language used by the Chataigne interface
+完整命令行	Full commandline
+从这里开始添加模块，以连接其他软件或实体设备。	Start here by adding a module to connect to another software or a physical device.
+你可以先在这里创建一个组来管理自己的变量。	You can manage you own variables by first creating a group here.
+创建状态即可添加交互	Add interaction by creating a State
+选择一个对象以在此处编辑其参数	Select an object to edit its parameters here
+创建序列即可添加定时动画和控制	Add timed animation and control by creating a sequence
+请从“序列”面板创建一个序列，以便在此处编辑。	Create a sequence from the Sequences Panel to edit this sequence here.
+全选	Select All
+取消全选	Deselect All
+全部路由	Route All
+源值	Source Values
+文件路径	File Path
+IP 1	IP 1
+学习	Learn
+新建布尔参数	New Bool Parameter
+新建颜色参数	New Color Parameter
+新建文件参数	New FileParameter
+新建浮点参数	New Float Parameter
+新建整数参数	New Int Parameter
+新建 MIDI 值参数	New MIDI Value Parameter
+新建字符串参数	New StringParameter
+新建目标参数	New TargetParameter
+音符模式	Note Mode
+输出	Out
+进度	Progression
+接收频率	Receive Frequency
+同步设备	Sync Devices
+目标	Target 
+新建枚举参数	new Enum Parameter
+如果勾选，跳转时间时该值将经过映射	 If checked, this will force the value to go through the mapping when jumping time
+如果勾选，序列开始播放时该值将经过映射	 If checked, this will force the value to go through the mapping when sequence starts playing
+如果勾选，序列停止播放时该值将经过映射	 If checked, this will force the value to go through the mapping when sequence stops playing
+应用于原始文件音量的乘数	A multiplier to apply to the volume of the original file
+此命令要执行的操作	Action to do for this command
+启用或禁用将仪表板公开为 Web 服务器	Activates / Deactivates exposing Dashboard as a webserver
+自动添加收到的所有消息\n并根据消息内容尝试创建对应的值。	Add automatically any message that is received\nand try to create the corresponding value depending on the message content.
+在映射值前添加一些数据\n此操作不会自动追加空格！	Add some data before the mapped value\nThis does NOT automatically append a whitespace !
+启动应用时的其他选项	Additional options when launching the app
+要加入的多播组地址。PosiStageNet 默认值为 236.10.10.10	Address of the multicast group to join. PosiStageNet default is 236.10.10.10
+追加到模块基础地址的地址	Address to append to the module's base address
+要发送到的地址	Address to send to
+OSC 消息地址（例如 /example）	Adress of the OSC Message (e.g. /example)
+每次调用的随机程度	Amount of randomness in each call
+要监视、启动和终止的应用文件	App File to watch, launch and kill
+末尾追加 CR（回车符）	Append CR (Charriot Return) at the end
+末尾追加 NL（换行符）	Append NL (New Line) at the end
+在消息末尾追加 \\n	Append \\n at the end of the message
+在消息末尾追加 \\r	Append \\r at the end of the message
+是否所有启用的客户端都已连接？	Are all enabled client connected ?
+所有投影机是否都已关闭？	Are all projectors powered off ?
+所有投影机是否都已开启？	Are all projectors powered on ?
+当前是否正在播放音符	At least one note is playing right now
+吸引力	Attraction force
+带物理效果的二维插值控制中的吸引力	Attraction in a 2D interpolation control mode with physics
+自动添加收到但不在列表中的 MIDI 值	Auto Add MIDI values that are received but not in the list
+要连接的 BLE 设备	BLE Device to connect
+输入 MIDI 时钟检测到的 BPM	BPM detected by the incoming MIDI Clock
+Ableton 的 BPM	BPM from Ableton
+背光亮度	Backlight brightness
+背光强度	Backlight intensity
+Wiimote 的电量	Battery level of the wiimote
+每分钟节拍数（数值越大，速度越快）	Beats per minutes (the greater the value, the faster the tempo)
+LTC 时间超出序列时间范围时的行为	Behavior when LTC time is out of the sequence time range
+投影机品牌	Brend of the projector
+字节序，大多数设备使用 MSB	Byte ordering, most devices use MSB
+音符消息的通道	Channel for the note message
+选择自定义图像代替默认按钮	Choose a custom image instead of the default button
+选择用于此序列 LTC 同步的音频模块	Choose an Audio Module to use as LTC Sync for this sequence
+选择 DMX 通道的颜色顺序	Choose color DMX channels order
+选择音高检测方式。\nNone 将禁用检测（以节省性能），\nMPM 更适合单音声音，\nYIN 更适合高音人声和音乐	Choose how to detect the pitch.\nNone will disable the detection (for performance),\nMPM is better suited for monophonic sounds,\nYIN is better suited for high-pitched voices and music
+选择将 MIDI 模块作为路由器输出时的默认类型	Choose the default type when choosing a MIDI Module as Router output
+选择要连接的 DMX 接口类型	Choose the type of dmx interface you want to connect
+选择录制时的操作	Choose what to do when recording
+此路由使用的分辨率和字节序	Choosing the resolution and Byte order for this routing
+按钮颜色	Color for the button(s)
+Web 视图中标签页的颜色	Color for the tabs in the web view
+背景颜色	Color of the background
+边框颜色	Color of the border
+轮廓颜色	Color of the contour
+当前提示颜色	Color of the current cue
+下一个提示颜色	Color of the next cue
+下一个提示的文字颜色	Color of the next cue's text
+文字颜色	Color of the text
+用于绘制边框的颜色	Color to draw the border
+用于填充形状的颜色	Color to fill the shape
+用于转换的颜色	Color to use to convert
+按钮所在列	Column of the button
+要发送的命令	Command to send
+用于与源值比较的参考值	Comparison Reference to check against source value
+要操作的组件。保持全部以操作所有组件。Gamgie 让我这样做的。	Component to target. Keep all to target everything. Gamgie made me do this.
+转换模式	Conversion mode
+随时间变化的当前颜色	Current color depending on time
+相对于当天的当前小时（0 > 23）	Current hour relative to the day (0 > 23)
+相对于当前小时的当前分钟（0 > 59）	Current minute relative to the current hour (0 > 59)
+相对于当前分钟的当前秒（0 > 59）	Current second relative to the current minute (0 > 59)
+当前年份	Current year
+用于拆分消息的自定义分隔符	Custom Separator to use to split the message
+DMX 通道	DMX Channel
+DMX 颜色	DMX Color
+DMX 值	DMX Value
+数据终端就绪	Data Terminal Ready
+来自水平鼠标滚轮的数据，负值表示向右。	Data received from a horizontal mouse wheel, negative for right.
+来自垂直鼠标滚轮的数据，负值表示向下。	Data received from a vertical mouse wheel, negative for down.
+相对于当前月份的日期（1 > 31）	Day relative to the current month (1 > 31)
+相对于当前星期的日期（星期一 = 1，星期日 = 7）	Day relative to the current week (Monday = 1, Sunday = 7)
+每个目标的吸引力衰减速率（1 = 每 1 秒消耗 1 点吸引力）	Decay rate of the attraction on each target (1 = empty an attraction of 1 in 1s)
+决定检查条件是否有效的函数	Decides what function checks the activeness of the condition
+从参数中所选通道解码出的 LTC 时间	Decoded LTC Time from the selected channel in parameters
+此类型的默认大小	Default size for this type
+此类型的默认样式	Default style for this type
+延迟秒数	Delay in seconds
+延迟命令触发	Delay the triggering of the commands
+模拟输入的变化阈值。只有变化大于此阈值时才更新值。	Delta change threshold for analog inputs. Only update values if the change is greater than the threshold.
+检测到的音符	Detected note
+检测到的八度	Detected octave
+前两个点检测到的距离	Distance detected by the first 2 points
+发送设备是否在 LTC 用户位中使用日期？（几乎总是 false）	Does the sending device use the date in the LTC user bits? (Almost always false)
+绘制 Voronoi 权重调试信息	Draw debug information on voronoi weights
+接收或发送 LTC	Either receiving or sending LTC
+用于检查条件是否激活的源元素	Element that will be the source to check if condition is active or not
+启用或禁用此模块的输入数据日志	Enable / Disable logging of incoming data for this module
+启用或禁用此模块的输出数据日志	Enable / Disable logging of outgoing data for this module
+启用并选择用于解码 LTC 的通道	Enable and select the channel you want to use to decode LTC
+启用或禁用此元素。\n大多数情况下，这意味着停止其中正在进行的处理。	Enable or disable this element.\nMost of the time it will mean stopping the process of what's going on inside it.
+滤镜替换型号	Filter replacement model number
+MultiClip 的第一个片段	First Clip of the MultiClip
+第一个 DMX 通道	First DMX Channel
+对于二维 Voronoi，这是预设周围的区域，在该区域内值将精确设置为预设值	For 2D Voronoi, this is a zone around preset for which the value will be exactly set to the preset's one
+在应用停止过程时强制执行操作且不通知用户	Force action without notifying user if applications are stopping the proccedure
+信号频率	Frequency of the signal
+计时器频率（Hz），数值越大，节奏越快	Frequency of the timer, in Hz (the greater the value, the faster the tempo)
+应用于吸引力的摩擦力	Friction to apply to the attraction force
+输入音量增益	Gain for the input volume
+全局时间偏移	Global time offset
+此模块播放的所有声音的全局音量乘数	Global volume multiplier for all sound that is played through this module
+要添加到请求的 HTTP 请求头	HTTP headers to add to the request
+要用于平均的区间数？0 表示全部	How many intervals do you want to use in averaging ? 0 means all
+如何分配音符	How to assign the note
+如何筛选带值的窗口	How to filter windows with value
+如何解析收到的数据	How to parse the incoming data
+投影机 IP	IP of the projector
+检测到的最可能的局域网 IP	IP that has been detected than most probable to be a LAN IP
+要 Ping 的 IP	IP to ping
+效果链中根据位置确定的效果 ID	Id of the effect, depending on its position in the effect chain
+面板内根据位置确定的参数 ID	Id of the parameter, depending on its position inside in the panel
+如果未勾选，比较器只会在有效性变化时通知；如果勾选，每次检查比较器（也就是值发生变化时）都会通知。	If NOT checked the comparator notifies only when VALIDITY changes. If checked, the comparator notifies everytime the comparator is checked, meaning everytime the value is changed.
+激活后，状态的动作和映射才会生效，否则此状态不会执行任何操作。	If active, the state's actions and mappings will be effective, otherwise this state won't do anything.
+如果适用，这将允许从最大值跳到最小值，反之亦然。	If applicable, this will allow going from max val to min val and vice-versa.
+如果异步，这是值下降时使用的平滑方式	If async, this is the smoothing when value is falling
+如果勾选，将尝试加入多播网络，而不是绑定和连接。	If check, instead of binding and connecting, it will try to join a multicast network.
+如果勾选，将作为服务器发送数据，否则监听外部数据	If check, this will act as a server and send data, otherwise this will listen to external data
+如果勾选，第一个值为 0，第二个值为 1，以此类推。	If checked, #1 will be 0, #2 will be 1, etc.
+如果勾选，包含多个参数的消息将拆分为多个值	If checked, a message with multiple arguments will be exploded in multliple values
+如果勾选，所有更改的值都会自动发回输出	If checked, all changed values will be automatically sent back to the outputs
+如果勾选，所有更改的值都会自动重新发送到输出	If checked, all changed values will be resent automatically to the outputs
+如果勾选，序列中的所有映射关键帧都会自动吸附到帧	If checked, all mapping keys in sequences, will be automatically snapped to frames
+如果勾选，背景为不透明	If checked, background is opaque
+如果勾选，每次参数变化都会触发命令	If checked, every change of parameter will trigger the command
+如果勾选，收到的数据会根据“消息结构”参数解析，符合条件时会添加为值	If checked, incoming data will be parsed depending on the Message Structure parameter, and if eligible will be added as values
+如果勾选，收到的消息会排序到嵌套容器中，而不是一级列表	If checked, incoming messages will be sorted in nested containers instead of 1-level
+如果勾选，拖动项目靠近其他项目时会自动对齐	If checked, items are automatically aligned when dragging them closed to other ones
+如果勾选，项目可编辑；否则项目只能正常使用	If checked, items are editable. If not, items are normally usable
+如果勾选，控制器上会显示标签	If checked, label is shown on controller
+如果勾选，模块发送的消息也会被模块自身接收	If checked, messages sent from the module will also be received by the module
+如果勾选，收到的宇宙会自动添加到值列表。不适用于 OpenDMX 或 Enttec DMXPro 等单宇宙设备	If checked, received universed will automatically be added to the values. Not effective when using 1-universe devices like OpenDMX or Enttec DMXPro
+如果勾选，将 MIDI 时钟发送到输出；否则接收输入 MIDI 时钟	If checked, send MIDI Clock to the output. If not, receiving incoming MIDI Clock
+如果勾选，MTC 不再发送数据时序列将停止并重置时间；否则序列会保持当前时间	If checked, sequence will stop and reset time when MTC doesn't send data anymore. If not checked, sequence will just keep its current time
+如果勾选，显示学习功能	If checked, show learn function
+如果勾选，从 Web 仪表板切换时软件本地界面也会切换	If checked, switching from a web dashboard will change locally on the software
+如果勾选，会将 0-1 空间转换为屏幕空间	If checked, the 0-1 space will be converted to the screen space
+如果勾选，加载文件时应用会进入全屏，否则进入窗口模式	If checked, the app will go full screen when loading the file, otherwise it will go to window mode
+如果勾选，解析消息的第一个值将用于命名该值，否则各值按索引命名	If checked, the first value of a parsed message will be used to name the value, otherwise each values will be named by their index
+如果勾选，序列每次时间变化都会处理映射并发送输出	If checked, the mapping will be processed and output will be sent at each time change of the sequence
+如果勾选，以音高值而不是音符名称显示音符名称	If checked, the note names will be displayed as pitch values instead of note names
+如果勾选，使用参数的 ADDRESS 字段命名，而不是 DESCRIPTION 字段	If checked, the parameter's ADDRESS field will be used for naming instead of the DESCRIPTION field
+如果勾选，值会显示在控件上	If checked, the value will be shown on the control
+如果勾选，将作为切换开关，输入值为 1 时反转自身值	If checked, this will act as a toggle, and its value will be inverted when input value is 1
+如果勾选，每个会话只需解锁一次；刷新页面会重置锁定状态。	If checked, this will allow to only have to unlock once per session. Refreshing the page will reset the lock.
+如果勾选，按下按钮时会自动高亮按钮	If checked, this will automatically highlight the buttons when pressed
+如果勾选，将自动滚动以显示最后触发的动作	If checked, this will automatically scroll to make the last triggered action visible
+如果勾选，序列停止时会自动将 Arm 设为 false	If checked, this will automatically set Arm to false when the sequence stops
+如果勾选，会将此记录的长度截断到最后记录的数据时间	If checked, this will clip the length of this record to the last recorded data time
+如果勾选，会将 GPU 纹理转换为 CPU 重采样纹理并提供给 Web 客户端；代价是大图像会降低 UI 速度。	If checked, this will convert the GPU texture to a CPU rescaled one, and feed it to the web clients. The downside is that is will slow the UI on larger images.
+如果勾选，将启用此参数，否则禁用此参数。简单高效。	If checked, this will enable this parameter, otherwise it will disable it. Simple. Efficient.
+如果勾选，触发时会取消所有之前延迟的结果	If checked, this will ensure that when triggering, all previous delayed consequences are cancelled
+如果勾选，每次变化都会强制刷新；批量更改多个值时可用于优化刷新速度	If checked, this will force a refresh on every change. This is useful to optimize refresh speed when changing multiple values at once
+如果勾选，会强制高亮被触摸的按键	If checked, this will force highlighting the touched pad
+如果勾选，同步 OSCQuery 远程数据结构时强制保留当前值	If checked, this will force keeping the current values when syncing the OSCQuery remote data structure.
+如果勾选，强制从头播放序列	If checked, this will force playing the sequence from start
+如果勾选，每次变化都强制刷新，否则不会……	If checked, this will force refreshing on every change. Otherwise this will not...
+如果勾选，强制刷新屏幕；进行多项操作时关闭此项可优化性能。	If checked, this will force refreshing the screen. Deactivating this when doing multiple manipulation can help optimize performance.
+如果勾选，强制搜索 X 层父级	If checked, this will force search through X level of parents
+如果勾选，强制显示目标的完整地址	If checked, this will force show the full address of the target
+如果勾选，强制显示目标的父级名称	If checked, this will force show the parent name of the target
+如果勾选，强制将整数转换为浮点数	If checked, this will force transforming integer in floats
+如果勾选，保持背景图像的饱和度	If checked, this will keep saturation on the background image
+如果勾选，将监听此发送器随机分配的端口；某些软件会自动检测传入主机和端口并回传消息时很有用。	If checked, this will listen to the (randomly set) bound port of this sender. This is useful when some softwares automatically detect incoming host and port to send back messages.
+如果勾选，记录输入消息	If checked, this will log incoming messages
+如果勾选，记录输出消息	If checked, this will log outgoing messages
+如果勾选，验证状态会在有效和无效之间交替，可将普通值转换为切换值	If checked, this will make a validation alternate between validated and invalidated, useful to transform straight values into toggles
+如果勾选，一小节的第一拍为 1 而不是 0	If checked, this will make the first beat of a bar 1 instead or 0
+如果勾选，将输入值归一化到 0-1；仅在输入有范围时有效	If checked, this will normalize the input value to a 0-1 range. Only works if the input has a range
+如果勾选，服务器名称不同时不会同步	If checked, this will not sync if the server name is different
+如果勾选，通知所有已连接客户端切换到相同仪表板	If checked, this will notify any connected client to switch to the same dashboard
+如果勾选，根据提示播放序列	If checked, this will play the sequence on cue
+如果勾选，录制并保存音频	If checked, this will record audio and save it
+如果勾选，将布局保存到 .noisette 文件	If checked, this will save the layout in the .noisette file
+如果勾选，向已连接客户端发送日志消息	If checked, this will send log messages to connected clients
+如果勾选，将所有时间移动，使其从第一个动画参数关键帧开始。	If checked, this will shift all timings so it starts at the first animated parameter key.
+如果勾选，显示吸附网格	If checked, this will show the snap grid
+如果勾选，此提示不再是当前提示时停止序列	If checked, this will stop the sequence when this cue is not current anymore
+如果勾选，开始录制时为每个参数保存关键帧	If checked, this will store a key for every parameter when starting recording
+如果勾选，链接序列完成后触发下一个提示	If checked, this will trigger the next cue when the linked sequence is finished
+如果勾选，使用安全连接；连接服务器使用 wss:// 时应启用此项	If checked, this will use a secure connection. Use this if the server you're connecting to is using wss://
+如果勾选，使用颜色和图像设置按钮	If checked, this will use both colors and images to set buttons
+如果勾选，触摸按键时会振动	If checked, this will vibrate when touching the pad
+如果勾选，手动触发提示会将其设为当前提示，并将 cueIndex 设置为下一个提示	If checked, triggering a cue manually sets it current and sets cueIndex to next cue
+如果勾选，值会从 0-1 重映射到 0-255（16 位模式下为 0-65535）	If checked, value will be remapped from 0-1 will to 0-255 (or 0-65535 in 16-bit mode)
+如果勾选，直接启动提示时也会触发此指挥器的结果。	If checked, when directly launching a cue will also trigger this conductor's consequences.
+如果勾选，提示列表结束时将提示索引再次设为 0	If checked, when finishing the cue list, this will set the cue index to 0 again
+如果勾选，移动二维关键帧时，时间线中的关键帧会调整以保持相对于二维关键帧的相同时间	If checked, when moving 2d keys, the keys in the timeline will ajdust to keep the same timing relative to the 2D keys
+如果勾选，将项目置顶，否则保持原位置	If checked, will bring to top, otherwise will leave where it is
+如果勾选，不打开新的终端窗口；但如果进程不停止，只能关闭 Chataigne 才能终止它！	If checked, will not open a new terminal window, but if the process never stops, there is no way to shut it down without closing Chataigne !
+如果勾选，将根据收到的数据和预期数据类型尝试添加值	If checked, will try to add values depending on received data and expected data type
+如果勾选，可以通过安全的 wss:// 连接访问此 Web 服务器。	If checked, you will be able to access this webserver through secure, wss:// connection.
+启用后，输入范围将设置为源输入范围	If enabled, the input range will be set from the source input range
+启用后，实例化此模板时可以编辑参数	If enabled, the parameter will be editable when instantiating this template
+启用后，启动时显示所选仪表板	If enabled, the selected dashboard will be the one displayed on startup
+启用后，这是自动请求的间隔秒数，会交替查询电源和快门状态	If enabled, this is the number of seconds between auto request, alternating power and shutter status
+启用后，强制对象吸附到网格	If enabled, this will force moving objects snap to grid
+启用后，强制大小写保持一致	If enabled, this will force the cas
+启用后，强制输出在小数点前保留指定数量的数字	If enabled, this will force the output to be with a certain mount of digits before the decimals
+启用后，返回最小索引	If enabled, this will go back to the min index
+启用后，覆盖发送 OSC 的端口；默认发送到 OSCQuery 端口	If enabled, this will override the port to send OSC to, default is sending to the OSCQuery port
+启用后，覆盖发送 WebSocket 的端口；默认发送到 OSCQuery 端口	If enabled, this will override the port to send Websocket to, default is sending to the OSCQuery port
+启用后，触发命令时会先将时间定位到 0 再播放	If enabled, when the command is triggered, will position the time at 0 before playing
+启用后，设置时间后强制播放序列	If enabled, will force playing the sequence after setting the time
+启用后，将时间设置为提示时间后强制播放序列	If enabled, will force playing the sequence after setting the time to the cue
+启用后，会像老板一样终止进程，而且不会很温柔	If enabled, will kill like a boss, not very gently
+启用后，序列结束时停止序列	If enabled, will stop the sequence when finished
+启用后，可以分别设置上升平滑和下降平滑值	If enabled, you can have different rising smooth and falling smoothing values
+大于 0 时，只有从有效状态变为无效状态后持续无效达到此时长，条件才会失效	If greater than 0, the conditions will be invalidated only if they remain invalid for this amount of time, when coming from a valid state
+大于 0 时，只有从无效状态变为有效状态后持续有效达到此时长，条件才会生效	If greater than 0, the conditions will be validated only if they remain valid for this amount of time, when coming from an invalid state
+处于随机模式时，确保值始终不同于上一个值。	If in random mode, this will ensure that the value is always different from the previous one.
+存在多个结果时，每次结果触发之间的延迟	If multiple consequences are there, delay between each consequence trigger
+如果当前不是只读，将强制禁止从仪表板编辑	If not already read-only, this will force not being able to edit it from the dashboard
+如果不为空，将覆盖此控件的说明	If not empty, will override the description of this control
+如果不为空，将覆盖此控件的标签	If not empty, will override the label of this control
+如果设置，录制保存后会自动将 Arm 参数设为关闭	If set, the arm parameter will be automatically set to off when a record has been saved
+如果设置，序列播放时开始录制；序列停止或跳转时录制也会停止	If set, when a sequence will play, this will start recording. In any case, when a sequence is stopped or seeked, the recording stops as well
+如果使用交错，该参数会显示交错进度	If stagger is used, this animates the progression of the stagger
+如果为 true，输入值变化时会触发处理	If true, the input will trigger the process when its value changes
+如果未勾选，实例化此模板命令时参数不可编辑	If unchecked, this parameter will not be editable when instantiating this template command
+使用身份验证时，决定是否使用 TLS	If using authentication, this decides if using TLS or not
+使用身份验证时，用于身份验证的密码	If using authentication, this is the password to use for the authentication
+使用身份验证时，用于身份验证的用户名	If using authentication, this is the username to use for the authentication
+按钮图像	Image for the button
+要放入背景的图像	Image to put in the background
+片段索引，0 表示第一个片段	Index of the clip, 0 is first clip
+轨道中设备的索引，0 表示第一个设备	Index of the device in the track, 0 is first device
+场景索引，0 表示第一个场景	Index of the scene, 0 is first scene
+侧边图标的索引	Index of the side icon
+目标轨道索引，0 表示第一条轨道	Index of the target track, 0 is first track
+选中的输入	Input selected
+用于录制的输入值	Input value used for recording
+插值模式，设置插值方式	Interpolation mode, sets how interpolation is done
+插值到下一个关键帧	Interpolation to the next key
+音符开始和结束之间的间隔	Interval between the note on and note off
+是否已连接到服务器的 WebSocket	Is Connected to server's websocket
+音频输入中当前是否检测到 LTC？	Is LTC currently detected in audio input ?
+Live 当前是否正在播放	Is Live playing right now
+是否已连接 MQTT？	Is MQTT Connected ?
+MTC 当前是否正在播放？	Is MTC currently playing ?
+是否已连接 Stream Deck？	Is a streamdeck connected ?
+是否按下 Alt？	Is alt down ?
+是否已连接 Ajazz AKP？	Is an Ajazz AKP connected ?
+是否按下 Command？	Is command down ?
+是否按下额外按钮 1？	Is extra button 1 down ?
+是否按下额外按钮 2？	Is extra button 2 down ?
+是否按下左键？	Is left button down ?
+是否按下中键？	Is middle button down ?
+是否按下右键？	Is right button down ?
+是否按下 Shift？	Is shift down ?
+模块是否已连接到 PosiStageNet 多播组	Is the module connected to the PosiStageNet multicast group
+投影机快门是否打开	Is the projector's shutter on
+录音机当前是否正在录制，还是在吃意大利面	Is the recorder currently recording or eating pasta
+套接字是否已成功绑定并监听	Is the socket sucessfully bound and listening
+此模块是否已在本地安装？	Is this module installed locally ?
+此模块是否已在线注册？	Is this module registered online ?
+是否正在跟踪此人员	Is this person tracked
+此投影机是否已连接	Is this projector connected
+检测不到活动时保留上次检测到的值。	Keep last detected values when no activity detected.
+滞后频率（Hz）	Lag frequency in Hz
+灯泡更换型号	Lamp replacement model number
+MultiClip 的最后一个片段	Last Clip of the MultiClip
+最后一个 DMX 通道（包含该通道）	Last DMX Channel (inclusive)
+最后按下的按键代码	Last Key code pressed
+最后按下的按键	Last Key pressed
+最后播放的通道	Last played channel
+最后播放的音高	Last played pitch
+最后播放的力度	Last played velocity
+左手 X	Left hand X
+左手 Y	Left hand Y
+渐变长度	Length of the gradient
+此参数动画的长度	Length of this parameter animation
+要绑定的本地端口	Local Port to bind
+用于接收 OSC 消息的本地绑定端口	Local Port to bind to receive OSC Messages
+用于应用全局控制的本地连接端口	Local port to connect to for global control over the application
+无限循环播放	Loop indefinitely the playback
+到达最后一个片段时循环	Loop when reached last clip
+用于向外部系统发送和/或接收 MTC 以同步序列的 MIDI 设备。	MIDI Devices to send and/or receive MTC to sync the sequence with external systems.
+格式为 FF:FF:FF:FF:FF:FF 的 MAC 地址	Mac address in the format FF:FF:FF:FF:FF:FF
+IP 对应的 MAC 地址	Mac address of the IP
+最多保留的小数位数	Maximum number of decimals
+最小截止值	Minimum cutoff
+吸引力模式	Mode for attraction
+Loupedeck 型号	Model of the Loupedeck
+MotionPlus 是否已连接？	MotionPlus is connected ?
+作为输入的多路复用列表	Multiplex list to be the input
+参数的参数名	Name for the argument
+操作系统名称	Name of the OS
+当前月份的名称	Name of the current month
+星期几的名称	Name of the day in the week
+服务器名称	Name of the server
+变换菜单中的目标参数名称	Name of the target parameter in the transform menu
+输出的新最大值	New maximum for output
+输出的新最小值	New minimum for output
+从 C 到 B 的音符	Note from C to B
+要发送的字节数	Number of bytes to send
+已连接客户端数量	Number of connected clients
+已连接对等端数量	Number of connected peers
+Wiimote 检测到的红外源数量	Number of detected Infrared sources by the wiimote
+检测到的人员数量	Number of detected persons
+要控制的投影机数量	Number of projectors to control
+要使用的插槽数量	Number of slots to use
+CC 编号（0-127）	Number of the CC (0-127)
+要设置的 GPIO 编号	Number of the GPIO to set
+月份编号（1 = 一月，12 = 十二月）	Number of the month (1 = January, 12 = December)
+分布的值数量	Number of values spreaded
+用于平滑的值数量	Number of values to use for smoothing
+Nunchuck 是否已连接？	Nunchuck is connected ?
+OSC 接收端口	OSC Receive Port
+音符的八度	Octave for the note
+Perlin 噪声的八度参数	Octave parameter for perlin noise
+Perlin 噪声的偏移	Offset of the perlin
+仅当宇宙中的某个通道发生变化时才发送该宇宙	Only send a universe if one of its channels has changed
+仅当变化量大于抖动阈值时才发送加速度/方向/摇杆变化。	Only send accel/orentiation/stick changes if the delta is greater than the jitter threshold.
+Voronoi 图的透明度	Opacity of the Voronoi Diagram
+用于合并输入值的运算符	Operator to merge the input values to
+重映射后的输出颜色	Out color from remap
+作为输入的参数	Parameter to be the input
+PJLink 密码；如果投影机未设置密码，请留空	Password for the PJLink, leave empty if no pass set up on the Projector
+此仪表板 Web 客户端的密码；留空表示公开访问	Password for web clients for this specific dashboard, leave empty public access
+Web 客户端访问仪表板的密码；留空表示公开访问	Password for web clients to access the dashboard, leave empty public access
+脚本文件路径	Path to the script file
+服务器路径，即 ip:port/path，不包含 ws:// 或 wss://	Path to the server, meaning ip:port/path WITHOUT ws:// or wss://
+要在源数据中查找的模式	Pattern to look for in the source
+类型为音符时表示音高，类型为控制变化时表示编号	Pitch if type is a note, number if it is a controlChange
+Wiimote 的音高	Pitch of the wiimote
+播放模式	Play mode
+投影机端口	Port of the projector
+远程主机监听的端口	Port on which the remote host is listening to
+用于监听输入数据的绑定端口	Port to bind to listen to incoming data
+通信端口。PosiStageNet 默认值为 56565	Port to communicate. PosiStageNet default is 56565
+要发送到的端口	Port to send to
+渐变中的位置	Position in the gradient
+实际值前要添加的前缀	Prefix to put before the actual value
+投影机产品名称	Product name of the projector
+预设插值的进度	Progression of the preset interpolation
+随机选择第一个到最后一个片段之间的片段	Random between first and last clip
+加速度计的原始值	Raw values of accelerometer
+参数的参考值	Reference for parameter 
+触发后节拍器保持有效的相对时间（取决于频率）	Relative amount of time the metronome stays valid (depending on the frequency) when triggered
+要发送到的远程主机。	Remote Host to send to.
+请求方法	Request Method
+请求发送就绪	Request To Send
+信号分辨率	Resolution of the signal
+推荐分辨率	Resolution recommended
+Wiimote 的滚转角	Roll of the wiimote
+圆角	Rounded corners
+路由地址	Route Address
+按钮所在行	Row of the button
+选择设备 ID，取决于连接了多少个 Wiimote（最多 4 个）	Select the ID of the device, depending on how many wiimotes are connected (max 4)
+选择要控制的实体设备	Select the physical device to control
+发送前先发送 Stop，然后发送时间，最后播放	Sends a Stop before, then time and then play
+客户端发送 LISTEN 命令时，使用当前可控值发送反馈	Sends feedback with the current controllable value when a client sends a LISTEN command
+旋钮相对计算的灵敏度	Sensitivity for the relative computing of the knobs
+要连接的串口	Serial Port to connect
+设置迷你模式	Set the mini mode
+设置 Wiimote 方向算法的方向平滑	Set the orientation smoothing for the wiimote orientation algorithm
+设置控制台背光亮度	Sets the brightness of the deck's backlight
+设置控制台背光亮度	Sets the brigthness of the deck's backlight
+设置按钮上的文字大小	Sets the size of the text on the buttons
+设置此动作的验证状态。简单、高效，不吵不闹。Boom。	Sets the validation state of this action. Simple, efficient, no buzz no fuzz. Boom.
+要绘制的形状	Shape to draw
+此项目是否可见	Should this item be visible
+信号类型	Signal type
+模拟按下 Alt	Simulate alt pressed
+模拟按下 Ctrl（Mac 上为 Command）	Simulate ctrl (or command on Mac) pressed
+模拟按下 Shift	Simulate shift pressed
+列表中的大小	Size in list
+文字大小。禁用时自动调整大小	Size of the text. Auto size if disabled
+滤镜的平滑量。0 = 无平滑，1 = 最大平滑（值完全不会变化）	Smooth amount of the filter. 0=no smoothing, 1=max smoothing (value will not change at all)
+追加到结果的内容	Something appended  to the result
+添加到结果前面的内容	Something prepended to the result
+吸引力速度。效果取决于吸引力模式	Speed of the attraction. Effects depends on attraction mode
+投影机状态	Status of the projector
+要替换的字符串	String to replace with
+命令的目标	Target for the command
+目标参数值	Target parameter value
+Reaper 时间线上的目标时间	Target time on the Reaper timeline
+要设置的目标时间	Target time to set
+要监视的目标	Target to watch
+按钮文字	Text for the button
+要播放的音频文件	The Audio file to play
+通道	The Channel
+要用于预设的自定义变量组	The Custom Variable Group to target for presets
+要连接的游戏手柄	The Gamepad to connect to
+工作区 ID（未定义时留空）	The ID of the workspace (leave empty if not defined)
+触发时要执行的动作索引	The Index of the action that will be triggered when
+最后触发的动作索引	The Index of the last action triggered
+MQTT 代理服务器的主机地址	The MQTT Broker's host address
+MQTT 代理服务器端口	The MQTT Broker's port
+用于获取值并设置变量的预设	The Preset to get the values from and set the variables to
+纹理的 Spout / Syphon 名称	The Spout / Syphon name of the texture
+Syphon 应用名称。仅适用于 Mac	The Syphon App Name. Only for Mac
+目标图层	The Target layer
+日志类型	The Type of log
+要使用的宇宙，可在模块参数中创建多个宇宙	The Universe to use, you can create multiple ones in the Module Parameters
+要设置此元素的激活/启用状态	The activation / enable state to set this element to.
+Alpha 通道	The alpha
+滚轮移动量，负值表示向下或向右	The amount to move the wheel, negative for down or right
+要添加到命令地址前面的基础地址	The base adress to prepend to command addresses
+要设置的亮度	The brightness to set to
+要更改的按钮	The button to change
+要模拟事件的按钮	The button to simulate the event to
+要使用的客户端 ID，必须唯一	The client ID to use. Needs to be unique
+背景颜色	The color of the background
+二维插值编辑器中手柄的颜色	The color of the handle in a 2D interpolation editor
+项目颜色	The color of the item
+要设置给按钮的颜色	The color to set the button to
+要设置的按钮所在列	The column of the button to set
+要启动的命令。每行都是一条新命令	The command to launch.Every line is a new command
+注释文字	The comment text
+连接速度。常用值为 9600、57600、115200	The connection speed. Common values are 9600, 57600, 115200
+字符串形式的当前组合	The current combination in a string representation
+当前幻灯片	The current slide
+当天的当前时间，精确到秒。\n可用于检查当天的特定时间	The current time in the day, second accurate.\nA convenient way to check a particular time in the day
+曲线在当前位置的当前值	The current value of the curve at the current position
+要跳转到的仪表板	The dashboard to go to
+要发送的数据	The data to send
+要设置此触发器的启用状态	The enable state to set this trigger
+消息的预期结构，用于决定如何解释消息并从中自动创建值	The expected structure of a message, determining how it should be interpreted to auto create values from it
+验证时间大于 0 时的进度反馈	The feedback of the progress if validation time is more than 0
+要打开的文件。这将替换当前会话！	The file to open. This will replace this session !
+用于保存/加载预设的文件	The file to save/load the preset to/from
+要上传的文件	The file to upload
+适用时使用的前景色	The foreground color if applicable
+字符串格式	The format of the string
+MTC 发送的帧率	The framerate at which the MTC is sent
+用于解码 LTC 的帧率	The framerate to use to decode LTC
+用于发送 LTC 的帧率	The framerate to use to send LTC
+接收数据的频率，仅在需要很高频率时更改	The frequency at which to receive data, only change it if you need much high frequency
+命令触发时要执行的函数	The function to trigger when the command is triggered
+此命令的目标组	The group to target for this command
+切换开关图像	The image of the toggle
+要设置给按钮的图像	The image to set the button to
+要预览的此多路复用器索引（1-N）。改变此值后，映射 UI、检查器、滤镜和输出中显示的参数都会改变。	The index (1-N) of this multiplex to preview. The parameters shown in the mapping UI and inspector, filter and outputs are changed when you changed this value.
+要显示的仪表板索引	The index of the dashboard to show
+指挥器将触发的下一个提示索引	The index of the next cue that will be triggered by the conductor.
+指针当前所在屏幕的索引	The index of the screen the pointer is currently on
+两个预设之间用于加权的插值值	The interpolation value to weight between the 2 presets
+要按下的按键	The key to hit
+曲线长度	The length of the curve
+LTC 时间与序列时间允许的最大差值（秒），超过后会跳转	The maximum time difference (in seconds) allowed between the LTC time and the sequence time before a jump is made
+要记录的消息	The message to log
+要使用的模式	The mode to use
+OSCQuery 服务器名称（如果提供）	The name of the OSCQuery server, if provided
+触发指挥器时要触发的提示名称	The name of the cue that will be trigger if triggering the conductor
+最后触发的提示名称	The name of the last triggered Cue.
+用于筛选的窗口名称	The name of the window, used with filter
+一小节中的拍数	The number of beats in a bar
+此多路复用器每个列表中的项目数	The number of items for each list of this multiplex
+请求超时前等待的毫秒数	The number of ms before giving up on a request
+背景图像的不透明度	The opacity of the background image
+此滤镜使用的操作	The operation to use for this filter
+要应用的运算符。如果只想设置值，请保留 = 选项。	The operator to apply. If you simply want to set the value, leave at the = option.
+音符的音高	The pitch of the note
+服务器绑定的端口	The port that the server binds to
+关键帧的位置	The position of the key
+要终止的进程名称	The process name to kill
+要设置的程序	The program to set
+下载进度	The progression of the download
+要发送到的投影机 ID；禁用时发送到所有投影机。	The projector id to send to, leave disable to send to all projectors.
+发送数据的速率。	The rate at which to send data.
+更新鼠标信息的速率	The rate at which to update the mouse informations
+用于录制/播放的记录	The record to use for recording/playing
+要设置的按钮所在行	The row of button to set
+图像的缩放倍数	The scale to multiply the image with
+要绘制到的屏幕	The screen to draw to
+用于插值的第二个预设	The second preset to use for the interpolation
+信号值	The signal value
+吸附网格单元的大小	The size of the grid cells to snap to
+此回放器的状态	The status of this parrot
+用于分隔各个值的字符串	The string that separate each values
+此 UI 的样式	The style of this UI
+目标仪表板	The target dashboard
+此命令使用的应用目标文件	The target file of app for this command
+此仪表板项目的目标	The target for this dashboard item
+要从中记录值的目标	The target to log the value from
+要设置值或触发操作的目标	The target to set the value to or trigger
+要修改的目标值	The target value to modify
+要设置的目标音量	The target volume to set
+文字大小	The text size
+要放置的文字	The text to put
+要设置给按钮的文字	The text to set the button to
+连接保持时间（秒）	The time to keep alive the connection, in seconds
+发送和接收时要偏移的时间	The time to offset when sending and receiving
+加载此预设时默认使用的时间	The time to use by default when loading this preset
+要监视的时间窗口	The time window to watch
+幻灯片总数	The total number of slides
+要路由的 MIDI 命令类型	The type of MIDI Command to route
+接收数据时预期的内容类型	The type of content to expect when receiving data
+要解析收到数据的类型。默认让模块根据 Protocol 参数决定	The type of data to parse the received data. Default will let the module decide, depending on its Protocol parameter
+要使用的插值类型	The type of interpolation to use
+参数类型	The type of parameter
+振动类型，选择你喜欢的方式！	The type of vibration, choose your flavor !
+通道压力值	The value of the channel pressure
+按键值	The value of the key
+弯音轮值	The value of the pitchWheel
+要记录的值	The value that will be logged
+改变范围时重新计算关键帧值的方式。\nAbsolute 表示不做修改。Proportional 表示保持关键帧的相对值。	The way of recaculating the key values when changing the range.\nAbsolute means no modification is done. Proportional means that the relative value of the key will be maintained.
+发送布尔参数的方式。\nInt 会发送值为 0 或 1 的“i”参数\nFloat 会发送值为 0.0 或 1.0 的“f”参数\nT-F 会为 True 或 False 发送 T 或 F 参数	The way to send boolean arguments.\nInt will send a 'i' argument with the value to 0 or 1\nFloat will send a 'f' argument with the value to 0.0 or 1.0\nT-F will send T or F arguments for True or False
+发送颜色参数的方式。\nColor 会发送带编码颜色的“r”参数。\nRGB Float 会发送 3 个浮点数，RGBA Float 会发送 4 个浮点数。	The way to send color arguments.\nColor will send a 'r' argument with the encoded color.\nRGB Float will send 3 floats and RGBA Float will send 4 floats.
+设置频率的方式	The way to set the frequency
+要设置的预设权重	The weight of the preset to set
+边框厚度	Thickness of the border
+轮廓厚度	Thickness of the contour
+允许聚焦曲线在当前位置附近的特定部分。	This allow to focus on a specific part of the curve around the position.
+允许负偏移	This allows negative offset
+转换音高为音符名称时适配其他软件约定。因为 MIDI 很糟糕。	This allows to adjust to other software's conventions when converting Pitch to Note name. Because MIDI sucks.
+要发送的数据	This data to send
+决定映射输出是在源变化时始终触发，还是仅在滤镜输出值变化时触发。	This decides whether the Mapping Outputs are always triggered on source change, or only when a value's filtered output has changed.
+决定映射输出是在滤镜变化时始终触发，还是仅在输入变化时触发。	This decides whether the Mapping Outputs are always triggered when a filter changes, or only when an input has changed.
+决定简化录制数据时使用的算法。\nBezier 使用最小二乘方法，适合自然曲线。\nLinear 使用 Douglas-Peucker 方法，最适合直线和线性信号。\nLinear Interactive 允许录制后交互式修改简化结果，而 Linear 会自动应用结果（适合自动录制）。	This decides which algorithm to use when simplifying the recorded data.\nBezier is using the least square approach and is best suited for natural curves.\nLinear is using the Douglas-Peucker method, and works best for straight lines and linear signal.\nLinear Interactive allows you to change the simplification interactively after the recording, where Linear will apply it automatically (useful for automated recording).
+如果连接了 BLE 设备，此项为 true。	This is checked if a ble device is connected.
+如果连接了串口，此项为 true。	This is checked if a serial port is connected.
+如果模块至少连接了一个输入或输出设备，此项为 true	This is checked if the module is connected to at least one input or output device
+可以放入请求正文的内容	This is content that you can put in the request body.
+定义加载时状态的初始化方式	This is defining how the state is initializing when loading
+要从源参数提取的组件	This is the component of the source parameter to extract
+要播放的第一个序列索引	This is the index of the first sequence that will play
+要播放的最后一个序列索引	This is the index of the last sequence that will play
+触发时要播放的序列索引	This is the index of the sequence that will play on trigger
+要从服务器端获取的名称	This is the name to retrieve on the server side.
+记录播放的时间	This is the time of the record playback
+应用于录制数据简化的容差。数值越大，保留的点越多。目前仅适用于 Linear 方法。	This is the tolerance of the simplification to apply to the recorded data. A higher value means more points will remain. Only available for Linear method right now.
+映射处理的更新速率。仅在存在 Smooth、Damping 等连续滤镜时使用	This is the update rate at which the mapping is processing. This is used only when continuous filters like Smooth and Damping are presents
+启用对此容器的监听	This will activate listening to this container
+启用对此容器的同步	This will activate syncing on this container
+追加到最终字符串，位于选中的 NL 和 CR 之前	This will be appended to the final string, but before NL and CR if selected
+添加到最终字符串前面的内容	This will be prepended to the final string
+加载后强制发送一次值	This will force sending values once after loading
+每次映射激活时强制发送一次值	This will force sending values once each time the mapping is activated
+即使没有连续滤镜，也强制映射持续处理	This will force the mapping to process continuously, even if no continuous filters are present
+源数据活动阈值。\n仅当音量大于此参数时才进行分析	Threshold to consider activity from the source.\nAnalysis will compute only if volume is greater than this parameter
+每次 Ping 例程之间的时间（秒）。	Time between each ping routine, in seconds.
+每次 tick 之间的时间（数值越大，节奏越慢）	Time between each ticks (the greater the value, the lower the tempo)
+动画移动到目标预设所需的时间	Time for the animation to go to the target preset
+颜色持续时间	Time for the color
+值更新的时间间隔（Hz）	Time interval between value updates, in Hz
+MTC 发送的时间	Time sent by the MTC.
+系统启动后的时间（秒）	Time since the system has been started, in seconds
+此应用启动后的时间（秒）	Time since the system this app has started, in seconds
+移动到该值所需的时间	Time to go to the value
+要跳转到的时间	Time to jump to
+相对于小节、等待对等端启动的时间	Time to wait until peer starts, relative to a bar
+每次 Ping 例程的超时时间（秒）。	Timeout for each ping routine, in seconds.
+要发送到的主题	Topic to send to
+要订阅的主题	Topic to subscribe to
+总 CPU 使用率（0 到 1）	Total CPU Usage from 0 to 1
+总内存使用率（0 到 1）	Total Memory Usage from 0 to 1
+重复指定次数以形成一个循环	Type X times to make a cycle
+操作系统类型	Type of OS
+发送到设备的整数类型，决定此变量发送的字节数	Type of int sent to the device, determine the number of bytes sent for this variable
+设备类型	Type of the device
+要显示的 IFrame URL	URL of the iFrame to show
+要使用的服务 UUID	UUID for service to use
+如果设备类型适用，在接收和发送时使用多播	Use Multicast on receive and send if applicable with the device type
+对模式使用正则表达式	Use regex for pattern
+用于从脚本轻松启用/禁用日志记录的工具参数	Utility parameter to easily activate/deactivate logging from the script
+CC 值	Value of the CC
+此引脚的值。由于是模拟量，这是归一化值	Value of this pin. Since it's analog, this is the normalized value
+此引脚的值。由于是数字量，只能为 HIGH 或 LOW	Value of this pin. Since it's digital, it can only be HIGH or LOW
+要分配给路由的值。	Value to assign the routing to.
+通过 TCP 发送的值	Value to send via TCP
+音符力度，范围为 0 到 127	Velocity of the note, between 0 and 127
+Resolume 版本	Version of Resolume
+监听器输出音量乘数。会影响所有输入通道和所有选中的输出通道	Volume multiplier for the monitor output. This will affect all the input channels and all the selected output channels
+音频输入音量	Volume of the audio input
+非自由控制模式下此预设的权重	Weight of this preset in a non-free control mode
+枚举中要转换的内容	What to convert in the enum
+启用吸引力时，设置变形器更新权重的速率	When attraction is enabled, it sets the rate at which the morpher is updating the weights
+节拍器正在 tick 时	When the metronome is ticking
+此参数开启时，任何变化的参数都会自动分配给此目标	When this parameter is on, any parameter that changes will be auto assigned to this target
+命令将作用于整个合成、指定图层还是片段	Whether the command will target the whole composition, a specific layer or a clip
+Web 视图标签页的边框宽度	Width for the border of tabs in the web view
+要显示的边框宽度	Width of the border to show
+Wiimote 是否已连接？	Wiimote is connected ?
+接收器绑定后将处于活动状态	Will be active if receiver is bound
+发送器连接后将处于活动状态	Will be active is sender is connected
+启用或禁用装饰。禁用此参数可避免更改装饰	Will enable or disable decoration. Disable this parameter to not change it
+插入 Nunchuck 时的 X 轴	X axis of the nunchuck if plugged
+插入 Nunchuck 时的 Y 轴	Y axis of the nunchuck if plugged
+Wiimote 的偏航角。\n必须连接 Motion Plus！	Yaw of the wiimote.\nMotion Plus must be connected !
+你可以选择一个序列，以便根据提示自动播放/停止	You can choose a sequence to link for automatic play/stop on cue
+投影机显示名称	display name of the projector
+固件版本	firmware version
+水平或垂直滚轮移动	horizontal or vertical wheel movement
+如果勾选，项目会在 UI 中锁定	if checked, item is locked in UI
+分布值的循环次数	number of cycles for spreaded values
+灯泡运行总小时数	total hours of lamp(s) operation
+IP：	IPs :
+此表达式将用于填充列表中的每个项目。可以使用通配符 {index} 和 {index0} 替换正在处理项目的索引，也可以修改起始和结束索引以缩小计算范围。	This expression will be used to fill each item in this list. You can use wildcards {index} and {index0} to replace with index of the item that is processed. You can also modify the start and end index for narrowing down the evaluation.
+是否按下 Control？	Is Control down ?
+效果名称，可以是视图名称（例如“我的效果”）或控制名称（例如“myeffect”）	Name of the effect, either its view name (e.g. "My Effect") or its control name (e.g. "myeffect")
+参数名称，可以是视图名称（例如“我的参数”）或控制名称（例如“myparam”）	Name of the parameter, either its view name (e.g. "My Param") or its control name (e.g. "myparam")
+协议处理收到数据的方式。\nLines 会在检测到换行时处理消息。\nDirect 会将每次收到的数据视为新数据。\nData255 使用字节 255 作为消息分隔符。\nJSON 会尝试将数据解析为 JSON 对象。\nCOBS 是另一种消息协议。	Protocol for treating the incoming data.\nLines will detect new lines and process messages when it finds one.\nDirect will just consider any incoming data as a new data.\nData255 uses the byte 255 as message split.\nJSON will try to parse the incoming data as a JSON Object.\nCOBS is another messaging protocol.
+发送到本地 IP（127.0.0.1）。可在本地和远程 IP 之间快速切换。	Send to Local IP (127.0.0.1). Allow to quickly switch between local and remote IP.
+更新函数的调用频率	The Rate at which the "update()" function is called
+启用后，可以为目标添加吸引力因素，MainTarget 会自动移动	When enabled, you can add attraction factors to targets and the MainTarget will move automatically
+自定义变量组	Add Custom Variable Group
+源模块	Source Module
+输出模块	Out Module
+源值	Source Value
+值反馈	Value Feedback
+输出参数	Out Parameters
+在模块之间开始路由值，请从左侧菜单添加路由器	To start routing values between modules, add a router from the menu on the left
+值	Values
+URL：	URL :
+版本：	Version :
+本地：	Local :
+来自映射输入	From Mapping Input
+索引（0-	Index (0-
+索引（1-	Index (1-
+列表：	List :
+预设：	Presets :
+来自多路复用器	From Multiplex
+没有可用的 MIDI 输入	No MIDI In Available
+未连接：	Disconnected :
+没有可用的 MIDI 输出	No MIDI Out Available
+未选择 MIDI 输入	No MIDI In Selected
+未选择 MIDI 输出	No MIDI Out Selected
+选择此滤镜要处理的通道	Choose which channels will be processed by this filter
+选择一个模块以编辑其命令模型或创建新模型	Select a Module to edit its command models or create new ones
+命令模板：	Command Templates for
+此处可以为模块添加自定义命令	Here you can add your own commands for the module
+DMX 模式	DMX Mode
+不再询问	Don't ask me again
+下载 Max 补丁	Download Max Patch
+此插件运行所必需的步骤：下载压缩包，解压到任意位置，然后将 OSCControl.amxd 导入 Live 的主轨（也可以导入其他轨道）。	This is necessary to make this plugin run. Just download the zip file, unzip it wherever you want and import the OSCControl.amxd into Live's master track (or any track actually.
+单击以浏览其他文件	click to browse for a different file
+加载布局	Load Layout
+未选择序列	No Sequence selected
+提示	Cues
+触发器	Triggers
+区块管理器	Block Manager
+添加序列	Add Sequence
+导入音频文件	Import audio files
+选择此范围内的项目	Select items in this range
+删除此范围内的项目	Remove items in this range
+删除时间段	Remove timespan
+插入时间段	Insert timespan
+添加提示	Add Cue
+添加触发器	Add Trigger
+清除自动化编辑器	Clear automation editor
+编辑包络自动化	Edit enveloppe automation
+删除包络自动化	Remove enveloppe automation
+添加区块	Add Block
+播放/暂停序列	Play/Pause Sequence
+上一个提示	Previous cue
+下一个提示	Next cue
+上一个时间步	Previous time step
+下一个时间步	Next time step
+跳到开头	Go to start
+跳到末尾	Go to end
+在当前位置添加提示	Add Cue at position
+向后移动一帧	Move one frame after
+向前移动一帧	Move one frame before
+播放全部	Play All
+播放全部序列	Play all sequences
+停止全部	Stop All
+停止全部序列	Stop all sequences
+正在播放序列	Is one sequence playing
+如果至少有一个序列正在播放	If at least one sequence is playing
+跟随时间	View follow time
+如果勾选，时间线会自动跟随当前时间，使光标保持在时间线中央。	If checked, this will automatically follow the current time so the cursor is at the center of the timeline.
+循环跳转提示	Loop Jump Cue
+如果提示动作设为循环跳转，则决定要跳转到哪个提示	If Cue Action is set to Loop Jump, this will decide which Cue to jump to
+从此处播放	Play From Here
+从此提示开始播放序列	Play the sequence from this cue
+图层高度	UI Height
+编辑器中图层的高度	Height of the layer in the editor
+锁定全部	Lock All
+解锁全部	Unlock All
+跳到上一个关键帧	Go to Previous Key
+跳到下一个关键帧	Go to Next Key
+已触发	Is Triggered
+此时间触发器是否已在当前播放过程中触发？	Is this Time Trigger already triggered during this playing ?
+淡出	Fade Out
+片段末尾的淡出时间	Fade time at end of the clip
+序列起始偏移	Sequence Start Offset
+序列开始时的偏移	Offset at which the sequence will start
+已激活	Is Active
+用于判断区块当前是否在时间线中处于活动状态	This is a feedback to know if block is currently active in the timeline
+安装	Install
+安装或更新此模块	Install or Update this module
+卸载	Uninstall
+卸载此模块	Uninstall this module
+设置全部控制变化	Set All ControlChange
+自动将全部设置为控制变化	Auto set all to control change
+设置全部音符	Set All Notes
+自动将全部设置为音符	Auto set all to notes
+自动设置音高	Auto-set pitch
+自动将所有音符和控制变化设置为递增音高/编号	Auto set all notes and controlChange to incrementing pitch/number
+目标	The Target
+自动设置通道	Auto-set channels
+自动设置通道	Auto set channels
+自动设置宇宙	Auto-set universes
+将 DMX 模块的第一个宇宙设置为全部	Set the first universe of the DMX Module to all
+如果勾选，将自动把 0-1 的值重新映射到 0-255	If checked, this will automatically remap values from 0-1 to 0-255
+如果勾选，将自动把 0-1 的值重新映射到 0-65535	If checked, this will automatically remap values from 0-1 to 0-65535
+侧边按钮文本	Text for side button
+此点的归一化 -1/1 位置	Normalized -1/1 position of this point
+行文本	Text for row
+第一个触摸点的相对位置	Relative position of the first touch
+窗口大小。禁用后不会修改窗口大小	The window size. Leave disable to not change it
+如果启用，则将此图层的音频发送到该通道	If enabled, sends audio from this layer to this channel
+此插槽的位置	Position of this slot
+要发送的位置	Position to send
+偏移值	Value for offset
+GPIO 值	Value for GPIO
+色相偏移到源值的偏移量	The Hue offset to shift to the source value
+饱和度偏移到源值的偏移量	The Saturation offset to shift to the source value
+亮度偏移到源值的偏移量	The Brightness offset to shift to the source value
+重置	Reset
+重置这些值	Reset the values
+触发	Trigger
+触发此命令	Trigger this command
+触发预览	Trigger Preview
+这将触发当前预览的多路复用动作，并在预览索引处触发所有真结果	This will trigger the currently previewed action in this multiplex and trigger all the Consequences:TRUE at the previewed index
+关闭触发	Trigger Off
+这将按条件无效的方式触发，并触发所有假结果	This will trigger as if the conditions have been invalidated, and trigger all the Consequences:FALSE
+触发此模板中的命令	Trigger a command from this template
+参数 #	Argument #
+发送到 0 到 15 之间的宇宙	The Universe to send to, from 0 to 15
+如果勾选，表示设备已连接	If checked, the device is connected
+优先级	Priority
+要发送的数据包优先级	Priority of the packets to send
+前往	Go
+触发后前往所选仪表板	When triggered, this will go to the selected dashboard
+用于 Voronoi 或渐变带等二维插值器	Use for 2D interpolator such as Voronoi or Gradient band
+选择一个使用二维 Voronoi 模式的自定义变量组\n以在此处编辑其变形器	Select a Custom Variable Group with 2D Voronoi mode\nto edit its morpher here.
+如果是这样，请务必重启	If so, you should definitely restart
+清除后才能看到更改。	after clearing in order to see changes.
+发生崩溃？	Got crashed ?
+发送并关闭	Send and close
+仅关闭	Close only
+发送并恢复	Send and recover
+仅恢复	Recover Only
+如果你愿意接受联系以协助修复问题，请填写联系邮箱（仅用于此目的）。	Your contact email if you accept to be contacted to help fix the problem (and only that !).
+请在此填写尽可能完整且有趣的说明。只有真心想写时，也可以写些祝福。	Your super comprehensive yet fun explanation here. You can write love messages as well, but only if you mean it.
+提示动作	Action on Cue
+音符已播放	A note has been played
+绝对无限滚动	Absolute infinite scrolling
+二次曲线的锚点 1	Anchor 1 of the quadratic curve
+二次曲线的锚点 2	Anchor 2 of the quadratic curve
+命令参数	Argument for this command
+自动吸附	Auto Snap
+BPM 预览	BPM Preview
+用于在时间线中预览的 BPM。	BPM for previewing in the timeline.
+每小节拍数	Beats Per Bar
+边界框右下角	Bottom right of the bounding box
+清除所有值	Clear Values
+清除模块中的所有值	Clear all values in the module
+清除值	Clear values
+片段长度	Clip Length
+片段起始偏移	Clip Start Offset
+时钟继续信号	Clock Continue signal
+时钟开始信号	Clock Start signal
+时钟停止信号	Clock Stop signal
+继续模式	Continue Mode
+继续模式	Continue mode
+提示备注	Cue Notes
+提示编号	Cue Number
+提示目标	Cue Target
+提示时间	Cue Time
+当前时间	Current Time
+此序列在时间线中的当前位置	Current position in time of this sequence
+节拍器自定义第一拍声音文件	Custom 1st beat sound file for metronome
+自定义 Bip	Custom Bip
+自定义 Bop	Custom Bop
+自定义输入范围	Custom input range
+节拍器自定义其他拍声音文件	Custom other beats sound file for metronome
+此类型的默认大小	Default Size for this type
+鸭音电平	Duck Level
+鸭音电平	Duck level
+效果索引	Effect Index
+在此处启用并控制节拍器音量	Enable and control metronome volume here
+视图结束时间	End time of the view
+根据检测到的点估算的三维位置	Estimated 3D position from the detected points
+跳转时评估	Evaluate on Seek
+淡入	Fade In
+淡出并停止其他	Fade and stop others
+片段开始处的淡出时间	Fade time at start of the clip
+文件目标路径	File Target Path
+插值的第一个锚点	First anchor for this interpolation
+旗帜 Y 坐标	Flag Y
+正弦波的频率和振幅	Frequency and amplitude of the sine wave
+应用于此输入通道的增益	Gain to apply to this input channel
+跳到此图层的下一个关键帧	Go to the next key in this layer
+跳到此图层的上一个关键帧	Go to the previous key in this layer
+是否收到水平鼠标滚轮的数据？	Has data been received from the horizontal mouse wheel?
+是否收到垂直鼠标滚轮的数据？	Has data been received from the vertical mouse wheel?
+如果勾选，开始播放一个序列后会停止其他所有序列	If checked, as soon as one sequence is playing, all the other ones stop
+如果勾选，移动项目时会自动吸附	If checked, this will automatically snap when moving items
+如果勾选，将在文件中保存和加载当前时间；否则加载文件时当前时间将重置为 0。	If checked, this will save and load the current time in the file. Otherwise the current time will be reset to 0 on file load.
+如果选中，序列将在文件加载后立即开始播放	If selected, the sequence will start playing just after loading the file
+如果音频为单声道，则将其路由到所有选中的输出通道	If the audio is mono, route it to all selected output channels
+如果控制器在初始化时未通电，可以单击此处连接	If the controllers were not powered on at initialization, then you can connect by clicking here
+如果当前提示关联了序列，将停止该序列	If the current cue has a linked sequence, this will stop it
+如果当前提示关联了序列，将切换其播放/暂停状态	If the current cue has a linked sequence, this will toggle play/pause it.
+图板索引	Index of the Board
+列索引	Index of the Column
+电路索引	Index of the circuit
+组索引	Index of the group
+序列索引	Index of the sequence
+幻灯片索引	Index of the slide
+子母线索引	Index of the submaster
+要选择的索引	Index to select
+噪声靠近末尾时的影响	Influence of the noise close to the end
+噪声靠近末尾时的影响；垂直方向表示八度	Influence of the noise close to the end. Vertical is octaves
+噪声靠近开头时的影响	Influence of the noise close to the start
+噪声靠近开头时的影响；垂直方向表示种子	Influence of the noise close to the start. Vertical is the seed
+输入值目标	Input Value Target
+正在播放	Is Playing
+是否正在播放序列？	Is the sequence playing ?
+此按钮是否被按下	Is this button pressed
+此旋钮是否被按下	Is this knob pressed
+此面板是否至少被一个触摸点按下	Is this pad pressed by at least one touch
+此滑块是否至少被一个触摸点按下	Is this slider pressed by at least one touch
+如果上一个提示前不足 1 秒，则跳到更早的上一个提示	Jump to previous cue, if previous cue is less than 1 sec before, jump to the one before that.
+跳到下一个提示	Jump to the next cue
+此处仅用于强制触发，来自 HeavyM 文档。	Just here to force trigger, from the HeavyM doc.
+该主题最近收到的消息	Last received message for this topic
+图层名称	Layer Name
+左右简单声像	Left/Right simple panning
+片段长度（秒）	Length of the clip (in seconds)
+片段核心长度，不含循环（秒）	Length of the clip's core, without looping (in seconds)
+片段核心之后的循环长度	Length of the clip's oop, after the core
+灯光名称	Light Name
+所有网络接口的 IP 列表	List all IPs of all network interfaces
+监听全部	Listen to all
+不监听	Listen to none
+使用默认时间和默认插值曲线加载此预设	Load this preset with the default time and the default interpolation curve
+触发器层中锁定所有现有触发器	Lock all existing triggers in this layer
+循环长度	Loop Length
+媒体名称	Media name
+信号的最小值和最大值	Min and max values of the signal
+缩放时视图的最小范围	Minimum range of the view when zooming
+最小视图范围	Minimum view range
+仅播放一个序列	Only one sequence playing
+面板叠加文字	Overlay text for this pad
+滑块叠加文字	Overlay text for this slider
+参数名称	Param Name
+提示目标文件路径	Path to the cue target file
+项目文件路径	Path to the project file
+暂停序列并保持当前时间不变。	Pause the sequence and keep the current time as is.
+中心死区百分比，用于避免输入噪声	Percentage of dead zone in the center to avoid noisy input
+播放速度	Play Speed
+加载时播放	Play at Load
+播放此序列	Play the sequence
+播放器 ID	Player ID
+播放速度因子，1 为正常速度，2 为两倍速度，0.5 为半速	Playing speed factor, 1 is normal speed, 2 is double speed and 0.5 is half speed
+播放回放	Plays the playback
+二维插值控制模式中的位置，例如 Voronoi 或 Gradient Band	Position in a 2D interpolation control mode, such as Voronoi or Gradient Band
+触摸时面板中的位置	Position in this pad, if touched
+触发器旗帜的位置	Position of the trigger's flag
+定位视图	Position the view
+上一个提示	Prev Cue
+随机化所有值	Randomize all values
+重新连接控制器	Reconnect Controllers
+刷新 Wiimote	Refresh Wiimotes
+根据旋钮灵敏度进行相对滚动	Relative scrolling depending on knob sensitivity
+重新加载脚本	Reload the script
+重置拉伸	Reset Stretch
+重置节拍器时间	Reset the metronome time
+将拉伸因子重置为 1	Reset the stretch factor to 1
+重置 Ajazz AKP	Resets the Ajazz AKP
+重置 Stream Deck	Resets the stream deck
+需要此参数来触发 Resolume	Resolume needs this arg to trigger
+休止时间	Rest Time
+将单声道路由到所有通道	Route Mono to all channels
+保存当前时间	Save Current Time
+第二触发动作	Second Trigger Action
+插值的第二个锚点	Second anchor for this interpolation
+第二触发动作	Second trigger action
+视图中的大小	Size in the view
+每一步的大小	Size of each step
+幻灯片索引	Slide Index
+开始时间	Start Time
+视图的开始时间	Start time of the view
+此 IP 的状态	Status for this IP
+此进程的状态	Status for this process
+停止关联的序列	Stop Linked Sequence
+拉伸因子	Stretch Factor
+此片段的拉伸方式	Stretching of  this clip
+同步数据	Sync Data
+同步数据	Sync the data
+点击节拍	Tap Tempo
+目标旋转	Target Rotation
+目标时间	Target Time
+目标值	Target Value
+测试崩溃	Test crash
+总时间	Total Time
+此序列的总时间（秒）	Total time of this sequence, in seconds
+触发当前项	Trigger Current
+触发上一个项	Trigger Previous
+触发所有结果；多路复用时触发预览索引处的结果	Trigger all the consequences. Triggers at the previewed index if multiplexed
+每拍触发	Trigger on every beat
+每小节开始时触发	Trigger on every start of bar
+尝试重新连接 Wiimote	Try to reconnect the wiimotes
+解锁此图层中所有现有触发器	Unlock all existing triggers in this layer
+更新信息	Update informations
+更新输入分辨率	Update input resolution
+命令的值	Value for this command
+参数值	Value of the parameter
+垂直滑块位置	Vertical slider position
+视图结束时间	View end time
+视图开始时间	View start time
+音量乘数	Volume multiplier
+图层音量乘数	Volume multiplier for the layer
+水平滚轮数据	Wheel Data - Horizontal
+垂直滚轮数据	Wheel Data - Vertical
+序列自然到达末尾且没有循环时	When the sequence reached naturally its end, and there is no loop
+触发后移除模块中存储的所有值	When triggered, this will remove all stored values in this module
+播放到末尾时是否从头重新播放	Whether the sequence plays again from the start when reached the end while playing
+按节拍触发	press me at least twice to set tempo
+更新输入分辨率	to update the input resolution
+更新信息	update informations
+图板索引	Board Index
+图板名称	Board Name
+此按钮的颜色	Color for this button
+此面板的颜色	Color for this pad
+此滑块的颜色	Color for this slider
+列索引	Column Index
+列名称	Column Name
+取消选择所有值	Deselect all values
+发送 Art-Net 的目标 IP	IP to which send the Art-Net to
+播放器 ID	Id of the player
+适用时，此宇宙的子网	If applicable the subnet for this universe
+适用时，此宇宙的网络	If appliccable the net for this universe
+如果启用，则以多播模式接收	If checked, this will receive in Multicast Mode
+如果启用，则以多播模式发送	If checked, this will send in Multicast Mode
+如果启用，将把此输入的音频直接发送到输出	If enabled, sends audio from this input directly to the output
+如果启用，将画布限制为此大小	If enabled, this will limit the canvas to this size
+此面板的图像	Image for this pad
+旋钮旋转尚不受此型号支持	Knob rotation is not yet supported on this model.
+IP 列表	List IPs
+接收 ArtNet 数据的本地端口	Local port to receive ArtNet data
+接收 ArtNet 数据的本地端口；必须启用此项才能接收数据	Local port to receive ArtNet data. This needs to be enabled in order to receive data
+接收 SACN 数据的本地端口	Local port to receive SACN data
+接收 SACN 数据的本地端口；必须启用此项才能接收数据	Local port to receive SACN data. This needs to be enabled in order to receive data
+我的值是	My value is
+图板名称	Name of the Board
+列名称	Name of the Column
+效果名称	Name of the Effect
+图层名称	Name of the Layer
+灯光名称	Name of the Light
+Quartz 输入名称	Name of the Quartz Input
+效果参数名称	Name of the effect's parameter
+要在目标图层中启动的媒体名称	Name of the media to launch in the target layer
+要跳转到的片段名称	Name of the segment to go to
+广播名称	Name to advertise
+新小节	New Bar
+新节拍	New Beat
+新的节拍速度（BPM）	New tempo value, in BPM
+节点名称	Node Name
+已播放音符	Note Played
+提示的备注	Notes of the cue
+每小节的拍数；仅用于界面预览	Number of beats in a bar. Only for preview in UI
+提示编号	Number of the cue
+目标提示编号	Number of the target cue
+轴未居中时的偏移	Offset if axis is not centered
+项目路径	Project path
+Quartz 输入名称	Quartz Input Name
+开始录制	Start Record
+停止录制	Stop Record
+停止播放	Stops the playback
+停止序列并将当前时间设置为 0。	Stops the sequence and set the current time at 0.
+目标序列	The target Sequence to control
+二维插值器中的目标位置	The target position in the 2D interpolator
+要设置的鼠标目标位置	The target position of the mouse to set
+接收器的宇宙，范围为 0 到 15	The Universe to receive from, from 0 to 15
+接收器的网络，范围为 0 到 15	The net to receive from, from 0 to 15
+发送器的网络，范围为 0 到 15	The net to send to, from 0 to 15
+接收器的子网，范围为 0 到 15	The subnet to receive from, from 0 to 15
+发送器的子网，范围为 0 到 15	The subnet to send to, from 0 to 15
+宇宙	The universe
+窗口位置。禁用后不会修改窗口位置	The window position. Leave disable to not change it
+提示到达时可执行额外动作。Pause 会在提示处暂停，Loop Jump 会跳到另一个提示，从而方便创建循环。	This can be used to add an extra action when the timeline hits the cue. Pause will pause at the cue, Loop Jump will jump to another cue, allowing for easy loop in-out behaviour.
+决定手动跳转时何时评估数据（例如触发时间触发器）。	This decides when it should evaluate data (like triggering time triggers) when seeking manually.
+这会自动关闭所有容器的监听	This will automatically disable listen to all containers
+这会自动启用所有容器的监听	This will automatically enable listen to all containers
+程序即将终止时触发	This will be triggered when the program is about to terminate.
+程序崩溃、即将像一只悲伤的小狗一样终止前触发	This will be triggered when the program has crashed, just before killing itself like a sad puppy.
+重新触发当前提示	This will re-trigger the current cue
+将增量重置为 0	This will reset the increment to 0
+重置时间	This will reset the time
+条件验证通过时触发，并触发所有真结果	This will trigger as if the conditions have been validated, and trigger all the Consequences:TRUE
+触发下一个提示并将当前提示设为下一个	This will trigger the next cue and set the current one to next
+使用组中当前值更新预设的所有值	This will update all the preset's values with the current ones from the Group
+动作触发时间	Time at which the action is triggered
+片段开始时间	Time of the start of the clip
+切换关联序列	Toggle Linked Sequence
+根据序列设置在播放/暂停或播放/停止之间切换	Toggle between play/pause or play/stop depending on sequence settings
+边界框左上角	Top left of the bounding box
+选择所有用于路由的值	Select all values for routing
+立即触发所有已启用的路由	Immediately trigger all enabled routes
+正在加载…	Loading...
+已断开	disconnected
+输入 #	Input #
+已是最新	Up to date
+# Timeline, routing, and common enum values that are stored as model keys but
+# displayed directly by the generic parameter and manager editors.
+路由器	Router
+路由器	Routers
+添加路由器	Add Router
+序列	Sequence
+切换播放	TogglePlay
+仅播放时	When Playing Only
+未播放时	When Not Playing
+始终	Always
+从不	Never
+无	Nothing
+循环跳转	Loop Jump
+完成	Finish
+声像	Panning
+节拍器	Metronome
+继续	Continue
+随机化	Randomize
+加载	Load
+清除日志	Clear Logs
+启用图层	Enable Layer
+禁用图层	Disable layer
+前往提示	Go to cue
+前往下一个提示	Go to next cue
+前往上一个提示	Go to prev cue
+前往列表值	Go to List Value
+前往参数值	Go to Parameter Value
+前往值	Go to Value
+搜索…	Search...
+浏览…	Browse...
+片段起始偏移	Offset at which the clip starts
+撤销最后操作	Undo the last action
+重做已撤销操作	Redo the undone action
+复制所选项目	Copy the selected items
+剪切所选项目	Cut the selected items
+粘贴剪贴板内容	Paste whatever is in the clipboard
+创建所选项目副本	Duplicate the selected items
+删除所选项目	Delete the selected items
+选择所有包含项目或同级项目	Select all the containing items or siblings
+选择列表中的上一个项目	Select previous item in the list
+选择列表中的下一个项目	Select next item in the list
+将此项目与上一个交换	Swap this item with the previous one
+将此项目与下一个交换	Swap this item with the next one
+创建新的滤镜图文件	Creates a new filter graph file
+打开滤镜图文件	Opens a filter graph file
+将当前图形保存到文件	Saves the current graph to a file
+将当前图形的副本保存到文件	Saves a copy of the current graph to a file
+检查更新并下载最新软件	Check if updates are available and download latest software
+编辑项目相关设置	Edit the settings related to this project
+编辑应用程序常规设置	Edit the general settings related to this application
+清除偏好设置以恢复默认状态	If you got some funky things going on, just clear your preferences and hopefully everything will be awesome again !
+在窗口模式和信息亭模式之间切换	Toggle between window mode and kiosk mode
+在仪表板编辑模式和播放模式之间切换	Toggle between edit and play mode for the dashboard
+更新仪表板服务器文件	Update the Dashboard server files

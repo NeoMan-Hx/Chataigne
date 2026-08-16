@@ -12,7 +12,7 @@ StateManagerUI::StateManagerUI(const String &contentName, StateManager * _manage
 	BaseManagerShapeShifterUI<StateManager, State, StateUI>(contentName, _manager)
 {
 	addItemText = "Add State";
-	noItemText = "Add interaction by creating a State";
+	noItemText = juce::translate("Add interaction by creating a State");
 
 	setShowSearchBar(true);
 	addExistingItems();

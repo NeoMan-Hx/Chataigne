@@ -20,7 +20,7 @@ StateMachineView::StateMachineView(const String &contentName, StateManager * _ma
 	canZoom = true;
 	contentIsFlexible = true;
 	addItemText = "Add State";
-	noItemText = "Add interaction by creating a State";
+	noItemText = juce::translate("Add interaction by creating a State");
 
 	acceptedDropTypes.add("Comment");
 
@@ -135,11 +135,11 @@ void StateMachineView::updateItemsVisibility()
 void StateMachineView::showMenuAndAddItem(bool fromAddButton, Point<int> position)
 {
 	PopupMenu p;
-	p.addItem(1, "Add State");
-	p.addItem(2, "Add Comment");
-	p.addItem(3, "Create Transition", manager->items.size() >= 2);
-	p.addItem(4, "Snapping",true, enableSnapping);
-	p.addItem(5, showTools ? "Hide Tools" : "Show Tools");
+	p.addItem(1, juce::translate("Add State"));
+	p.addItem(2, juce::translate("Add Comment"));
+	p.addItem(3, juce::translate("Create Transition"), manager->items.size() >= 2);
+	p.addItem(4, juce::translate("Snapping"),true, enableSnapping);
+	p.addItem(5, showTools ? juce::translate("Hide Tools") : juce::translate("Show Tools"));
 
 	p.showMenuAsync(PopupMenu::Options(), [this, fromAddButton, position](int result)
 		{

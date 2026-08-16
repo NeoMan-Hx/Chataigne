@@ -12,6 +12,7 @@
 
 #include "JuceHeader.h"
 
+#include "UI/ChataigneLocalization.h"
 #include "UI/AboutWindow.h"
 #include "UI/ChataigneAssetManager.h"
 #include "UI/WelcomeScreen.h"

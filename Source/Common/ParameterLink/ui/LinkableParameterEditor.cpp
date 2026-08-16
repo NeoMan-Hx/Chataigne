@@ -129,10 +129,10 @@ void LinkableParameterEditor::buttonClicked(Button* b)
 			{
 				bool t = link->linkType == link->MAPPING_INPUT && link->mappingValueIndex == i;
 				ticked |= t;
-				mappingMenu.addItem(1 + i, "Value " + String(i + 1) + " : " + link->inputValueNames[i], true, t);
+				mappingMenu.addItem(1 + i, juce::translate("Value") + " " + String(i + 1) + " : " + link->inputValueNames[i], true, t);
 			}
 
-			p.addSubMenu("From Mapping Input", mappingMenu, true, Image(), ticked);
+			p.addSubMenu(juce::translate("From Mapping Input"), mappingMenu, true, Image(), ticked);
 		}
 
 		if (link->isMultiplexed())
@@ -142,8 +142,8 @@ void LinkableParameterEditor::buttonClicked(Button* b)
 
 			bool ticked = link->linkType == link->INDEX_ZERO || link->linkType == link->INDEX;
 
-			itMenu.addItem(-2, "Index (0-" + String(link->getMultiplexCount() - 1) + ")", true, link->linkType == link->INDEX_ZERO);
-			itMenu.addItem(-3, "Index (1-" + String(link->getMultiplexCount()) + ")", true, link->linkType == link->INDEX);
+				itMenu.addItem(-2, juce::translate("Index (0-") + String(link->getMultiplexCount() - 1) + ")", true, link->linkType == link->INDEX_ZERO);
+				itMenu.addItem(-3, juce::translate("Index (1-") + String(link->getMultiplexCount()) + ")", true, link->linkType == link->INDEX);
 			itMenu.addSeparator();
 
 			for (int i = 0; i < link->multiplex->listManager.items.size(); i++)
@@ -156,7 +156,7 @@ void LinkableParameterEditor::buttonClicked(Button* b)
 				//if ((pList == nullptr && !link->fullPresetSelectMode) || (pList != nullptr && link->fullPresetSelectMode))
 				//{
 				bool ti = link->linkType == link->MULTIPLEX_LIST && link->list == bli;
-				itMenu.addItem(1000 + i, "List : " + bli->niceName, true, ti);
+				itMenu.addItem(1000 + i, juce::translate("List :") + " " + bli->niceName, true, ti);
 				//}
 
 				if (CVPresetMultiplexList* pList = dynamic_cast<CVPresetMultiplexList*>(bli))
@@ -173,17 +173,17 @@ void LinkableParameterEditor::buttonClicked(Button* b)
 								presetMenu.addItem(10000 + i * 100 + j, group->values.items[j]->niceName, true, pt);
 							}
 
-							itMenu.addSubMenu("Presets : " + pList->niceName, presetMenu, true, Image(), t);
+						itMenu.addSubMenu(juce::translate("Presets :") + " " + pList->niceName, presetMenu, true, Image(), t);
 						}
 					}
 				}
 			}
 
-			p.addSubMenu("From Multiplex", itMenu, true, Image(), ticked);
+			p.addSubMenu(juce::translate("From Multiplex"), itMenu, true, Image(), ticked);
 		}
 
 		p.addSeparator();
-		p.addItem(-1, "Unlink", link->linkType != link->NONE);
+			p.addItem(-1, juce::translate("Unlink"), link->linkType != link->NONE);
 
 
 		Component::SafePointer<LinkableParameterEditor> safeThis(this);

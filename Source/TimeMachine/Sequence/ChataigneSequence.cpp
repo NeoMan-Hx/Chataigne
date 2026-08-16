@@ -224,10 +224,10 @@ void ChataigneSequence::checkForNewAudioLayer(SequenceLayer* layer, bool showMen
 			{
 				AlertWindow::showAsync(
 					MessageBoxOptions().withIconType(AlertWindow::WarningIcon)
-					.withTitle("Sound Card Module is required")
-					.withMessage("This Audio layer needs a Sound Card module to be able to actually output sound. Do you want to create one now ?")
-					.withButton("Yes")
-					.withButton("No"),
+						.withTitle(juce::translate("Sound Card Module is required"))
+						.withMessage(juce::translate("This Audio layer needs a Sound Card module to be able to actually output sound. Do you want to create one now ?"))
+						.withButton(juce::translate("Yes"))
+						.withButton(juce::translate("No")),
 					[this, audioLayer](int result)
 					{
 						if (result == 1)

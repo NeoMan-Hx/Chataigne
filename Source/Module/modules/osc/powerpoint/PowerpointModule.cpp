@@ -44,12 +44,12 @@ void PowerPointModule::installPowerPointPlugin()
 	{
 		AlertWindow::showAsync(
 			MessageBoxOptions().withIconType(AlertWindow::QuestionIcon)
-			.withTitle("Powerpoint OSC plugin not found")
-			.withMessage("The Powerpoint plugin is required to be able to actually use this module with Powerpoint.\n \
-Do you want to install it ? Also, you need to have Powerpoint installed.")
-.withButton("Yes")
-.withButton("No")
-.withButton("Don't ask me again"),
+				.withTitle(juce::translate("Powerpoint OSC plugin not found"))
+				.withMessage(juce::translate("The Powerpoint plugin is required to be able to actually use this module with Powerpoint.\n \
+	Do you want to install it ? Also, you need to have Powerpoint installed."))
+				.withButton(juce::translate("Yes"))
+				.withButton(juce::translate("No"))
+				.withButton(juce::translate("Don't ask me again")),
 [this](int result)
 			{
 				if (result == 1)

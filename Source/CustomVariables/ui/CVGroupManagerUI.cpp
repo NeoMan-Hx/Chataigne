@@ -11,8 +11,8 @@
 CVGroupManagerUI::CVGroupManagerUI(const String & contentName) :
 	BaseManagerShapeShifterUI(contentName, CVGroupManager::getInstance())
 {
-	addItemText = "Add Custom Variable Group";
-	noItemText = "You can manage you own variables by first creating a group here.";
+	addItemText = juce::translate("Add Custom Variable Group");
+	noItemText = juce::translate("You can manage you own variables by first creating a group here.");
 	
 	setShowSearchBar(true);
 	addExistingItems();

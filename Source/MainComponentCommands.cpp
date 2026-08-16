@@ -35,7 +35,7 @@ void MainContentComponent::getCommandInfo(CommandID commandID, ApplicationComman
 {
 	if (commandID >= ChataigneCommandIDs::guideStart && commandID < ChataigneCommandIDs::guideStart + 99)
 	{
-		result.setInfo(Guider::getInstance()->getGuideName(commandID - ChataigneCommandIDs::guideStart), "", "Guides", result.readOnlyInKeyEditor);
+		result.setInfo(juce::translate(Guider::getInstance()->getGuideName(commandID - ChataigneCommandIDs::guideStart)), "", juce::translate("Guides"), result.readOnlyInKeyEditor);
 		return;
 	}
 
@@ -106,6 +106,11 @@ void MainContentComponent::getCommandInfo(CommandID commandID, ApplicationComman
 		OrganicMainContentComponent::getCommandInfo(commandID, result);
 		break;
 	}
+
+	result.shortName = juce::translate(result.shortName);
+	result.description = juce::translate(result.description);
+	result.categoryName = juce::translate(result.categoryName);
+	result.shortName = ChataigneLocalization::translateCommandLabel(result.shortName);
 }
 
 
@@ -141,7 +146,7 @@ PopupMenu MainContentComponent::getMenuForIndex(int topLevelMenuIndex, const Str
 {
 	PopupMenu menu = OrganicMainContentComponent::getMenuForIndex(topLevelMenuIndex, menuName);
 
-	if (menuName == "Help")
+	if (menuName == juce::translate("Help"))
 	{
 		menu.addCommandItem(&getCommandManager(), ChataigneCommandIDs::showAbout);
 		menu.addCommandItem(&getCommandManager(), ChataigneCommandIDs::showWelcome);
@@ -155,7 +160,7 @@ PopupMenu MainContentComponent::getMenuForIndex(int topLevelMenuIndex, const Str
 		menu.addCommandItem(&getCommandManager(), ChataigneCommandIDs::postGithubIssue);
 
 	}
-	else if (menuName == "Guides")
+	else if (menuName == juce::translate("Guides"))
 	{
 		for (int i = 0; i < Guider::getInstance()->factory.defs.size(); ++i)
 		{
@@ -196,14 +201,14 @@ bool MainContentComponent::perform(const InvocationInfo& info)
 	case ChataigneCommandIDs::showAbout:
 	{
 		aboutWindow.reset(new AboutWindow());
-		DialogWindow::showDialog("About", aboutWindow.get(), getTopLevelComponent(), Colours::transparentBlack, true);
+		DialogWindow::showDialog(juce::translate("About"), aboutWindow.get(), getTopLevelComponent(), Colours::transparentBlack, true);
 	}
 	break;
 
 	case ChataigneCommandIDs::showWelcome:
 	{
 		welcomeScreen.reset(new WelcomeScreen());
-		DialogWindow::showDialog("Welcome", welcomeScreen.get(), getTopLevelComponent(), Colours::black, true);
+		DialogWindow::showDialog(juce::translate("Welcome"), welcomeScreen.get(), getTopLevelComponent(), Colours::black, true);
 
 	}
 	break;
@@ -271,7 +276,7 @@ bool MainContentComponent::perform(const InvocationInfo& info)
 StringArray MainContentComponent::getMenuBarNames()
 {
 	StringArray names = OrganicMainContentComponent::getMenuBarNames();
-	names.add("Guides");
-	names.add("Help");
+	names.add(juce::translate("Guides"));
+	names.add(juce::translate("Help"));
 	return names;
 }
