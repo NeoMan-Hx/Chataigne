@@ -6,6 +6,7 @@ env:
 
 jobs:
   windows:
+    if: github.repository == 'benkuper/Chataigne'
     name: Windows
     # if: false # always skip job
     runs-on: windows-2022
@@ -89,6 +90,7 @@ jobs:
           pass: ${{ secrets.UPLOADPASS }}
 
   osx:
+    if: github.repository == 'benkuper/Chataigne'
     # if: false # tmp disable
     name: OSX
     runs-on: macos-latest
@@ -211,6 +213,7 @@ jobs:
           pass: ${{ secrets.UPLOADPASS }}
 
   linux:
+    if: github.repository == 'benkuper/Chataigne'
     name: Linux (x64)
     runs-on: ubuntu-22.04
 
@@ -495,6 +498,7 @@ jobs:
           pass: ${{ secrets.UPLOADPASS }}
 
   raspberrypi:
+    if: github.repository == 'benkuper/Chataigne'
     name: Raspberry Pi (Cross-Compile)
     runs-on: ubuntu-22.04
     strategy:

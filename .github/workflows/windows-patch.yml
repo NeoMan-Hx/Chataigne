@@ -1,6 +1,9 @@
 name: Windows patch package
 
 on:
+  push:
+    branches:
+      - agent/windows-patch
   workflow_dispatch:
 
 permissions:
